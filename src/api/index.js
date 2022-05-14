@@ -16,3 +16,11 @@ export const getCurrentUser = () => {
     },
   });
 };
+
+export const getBoardList = () => {
+  return client.get("/api/boards", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

@@ -21,8 +21,8 @@ function Nav() {
           <img className="logo" src="/logo192.png" alt="logo" />
         </Link>
       </div>
-      <NavLink to="/workbooks">게시판 </NavLink>
-      <NavLink to="/boards">보관함 </NavLink>
+      <NavLink to="/boards">게시판 </NavLink>
+      <NavLink to="/workbooks">보관함 </NavLink>
       {authenticated ? (
         <div>
           <div>{currentUser.name}</div>
