@@ -1,4 +1,30 @@
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { getBoard } from "../../api";
+
 function BoardDetailSearch() {
-  return "게시물 상세 페이지";
+  const { id } = useParams();
+  const [board, setBoard] = useState({});
+  const loadBoard = async () => {
+    const response = await getBoard(id);
+    setBoard({
+      title: response.title,
+      description: response.description,
+      userName: response.userName,
+    });
+    // 예외 처리 추가
+  };
+
+  useEffect(() => {
+    loadBoard(id);
+  }, []);
+
+  return (
+    <div>
+      {board.title}
+      {board.description}
+      {board.userName}
+    </div>
+  );
 }
 export default BoardDetailSearch;

@@ -8,9 +8,7 @@ function BoardMain() {
 
   const loadBoardList = () => {
     getBoardList().then((response) => {
-      setBoards({
-        response,
-      });
+      setBoards(response.data);
     });
   };
 

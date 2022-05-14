@@ -7,6 +7,7 @@ import Oauth2RedirectHandler from "../component/auth/Oauth2RedirectHandler";
 import Storage from "../component/storage/Storage";
 import BoardMain from "../component/board/BoardMain";
 import Workbook from "../component/workbook/Workbook";
+import BoardDetailSearch from "../component/board/BoardDetailSearch";
 
 function Router() {
   return (
@@ -15,6 +16,7 @@ function Router() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/boards" element={<BoardMain />} />
+        <Route path="/boards/:id" element={<BoardDetailSearch />} />
         <Route path="/workbooks" element={<Workbook />} />
         <Route path="/storages" element={<Storage />} />
         <Route path="/login" element={<Login />} />

@@ -6,7 +6,7 @@ function SearchedBoard({ board }) {
       <Link to={`/boards/${board.id}`}>
         <div>{board.title}</div>
       </Link>
-      <div>{board.writer}</div>
+      <div>{board.userName}</div>
     </div>
   );
 }

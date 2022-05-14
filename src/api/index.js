@@ -24,3 +24,11 @@ export const getBoardList = () => {
     },
   });
 };
+
+export const getBoard = (id) => {
+  return client.get(`/api/boards/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

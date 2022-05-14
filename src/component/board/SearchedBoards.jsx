@@ -1,6 +1,7 @@
 import SearchedBoard from "./SearchedBoard";
 
 function SearchedBoards({ boards }) {
+  console.log(boards);
   return (
     <div>
       {boards.map((board) => (
