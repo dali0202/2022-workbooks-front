@@ -8,9 +8,9 @@ function BoardDetailSearch() {
   const loadBoard = async () => {
     const response = await getBoard(id);
     setBoard({
-      title: response.title,
-      description: response.description,
-      userName: response.userName,
+      title: response.data.title,
+      description: response.data.description,
+      userName: response.data.userName,
     });
     // 예외 처리 추가
   };

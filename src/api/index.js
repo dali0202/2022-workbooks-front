@@ -32,3 +32,11 @@ export const getBoard = (id) => {
     },
   });
 };
+
+export const createBoard = (data) => {
+  return client.post("/api/boards/write"), {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

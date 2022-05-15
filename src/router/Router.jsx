@@ -8,6 +8,7 @@ import Storage from "../component/storage/Storage";
 import BoardMain from "../component/board/BoardMain";
 import Workbook from "../component/workbook/Workbook";
 import BoardDetailSearch from "../component/board/BoardDetailSearch";
+import BoardAddPage from "../component/board/BoardAddPage";
 
 function Router() {
   return (
@@ -17,6 +18,7 @@ function Router() {
         <Route path="/" element={<Home />} />
         <Route path="/boards" element={<BoardMain />} />
         <Route path="/boards/:id" element={<BoardDetailSearch />} />
+        <Route path="/boards/write" element={<BoardAddPage />} />
         <Route path="/workbooks" element={<Workbook />} />
         <Route path="/storages" element={<Storage />} />
         <Route path="/login" element={<Login />} />

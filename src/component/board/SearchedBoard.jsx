@@ -2,12 +2,12 @@ import { Link } from "react-router-dom";
 
 function SearchedBoard({ board }) {
   return (
-    <div>
-      <Link to={`/boards/${board.id}`}>
-        <div>{board.title}</div>
-      </Link>
-      <div>{board.userName}</div>
-    </div>
+    <tr>
+      <td>
+        <Link to={`/boards/${board.id}`}>{board.title}</Link>
+      </td>
+      <td>{board.userName}</td>
+    </tr>
   );
 }
 export default SearchedBoard;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import SearchedBoards from "./SearchedBoards";
-import SearchContainer from "./SearchContainer";
+import BoardServiceContainer from "./BoardServiceContainer";
 import { getBoardList } from "../../api";
 
 function BoardMain() {
@@ -18,8 +18,8 @@ function BoardMain() {
 
   return (
     <div>
-      <SearchContainer />
       <SearchedBoards boards={boards} />
+      <BoardServiceContainer />
     </div>
   );
 }
