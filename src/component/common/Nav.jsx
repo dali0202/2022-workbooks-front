@@ -18,7 +18,12 @@ function Nav() {
     <div className="nav">
       <div className="logo-container">
         <Link to="/">
-          <img className="logo" src="/logo192.png" alt="logo" />
+          <img
+            style={{ width: "10%" }}
+            className="logo"
+            src="/logo192.png"
+            alt="logo"
+          />
         </Link>
       </div>
       <NavLink to="/workbooks">문제집 만들기 </NavLink>

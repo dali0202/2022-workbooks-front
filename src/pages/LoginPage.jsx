@@ -1,4 +1,4 @@
-function Login() {
+function LoginPage() {
   return (
     <div style={{ textAlign: "center" }}>
       <GoogleLogin />
@@ -37,4 +37,4 @@ function NaverLogin() {
     </div>
   );
 }
-export default Login;
+export default LoginPage;

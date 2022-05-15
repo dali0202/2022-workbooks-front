@@ -4,7 +4,7 @@ const client = axios.create({
   baseUrl: "http://127.0.0.1:8080",
 });
 
-export const getCurrentUser = () => {
+export const requestGetCurrentUser = () => {
   if (!localStorage.getItem("accessToken")) {
     // eslint-disable-next-line prefer-promise-reject-errors
     return Promise.reject("엑세스 토큰이 존재하지 않습니다.");
@@ -17,7 +17,7 @@ export const getCurrentUser = () => {
   });
 };
 
-export const getBoardList = () => {
+export const requestGetBoardList = () => {
   return client.get("/api/boards", {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -25,7 +25,7 @@ export const getBoardList = () => {
   });
 };
 
-export const getBoard = (id) => {
+export const requestGetBoard = (id) => {
   return client.get(`/api/boards/${id}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -33,8 +33,24 @@ export const getBoard = (id) => {
   });
 };
 
-export const createBoard = (data) => {
-  return client.post("/api/boards/write"), {
+export const requestPostBoard = (data) => {
+  return client.post("/api/boards/write", data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};
+
+export const requestPatchBoard = (id, data) => {
+  return client.patch(`/api/boards/edit/${id}`, data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};
+
+export const requestDeleteBoard = (id) => {
+  return client.delete(`/api/boards/${id}`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
