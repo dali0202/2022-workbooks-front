@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import {
   requestPostBoard,
@@ -9,15 +9,15 @@ import useMovePage from "../hooks/useMovePage";
 
 function BoardEditPage() {
   const { id } = useParams();
-  const [board, setBoard] = useState({ title: "", description: "" });
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const { goBoardDetailPage } = useMovePage();
 
   const getBoard = async () => {
     const response = await requestGetBoard(id);
-    setBoard({
-      title: response.data.title,
-      description: response.data.description,
-    });
+    setTitle(response.data.title);
+    setDescription(response.data.description);
+
     // 예외 처리 추가
   };
   if (id !== undefined) {
@@ -26,31 +26,13 @@ function BoardEditPage() {
     }, []);
   }
 
-  const changeTitle = (event) => {
-    const { value } = event.target;
-    setBoard({ ...board, title: value });
-  };
-  const changeDescription = (event) => {
-    const { value } = event.target;
-    setBoard({ ...board, description: value });
-  };
-
-  const convertDataToBoardRequest = (data) => {
-    const boardRequest = {
-      title: data.title,
-      description: data.description,
-      // workbookId: data.workbookId,
-    };
-    return boardRequest;
-  };
-
   const onSubmit = async () => {
     if (id === undefined) {
-      const response = await requestPostBoard(convertDataToBoardRequest(board));
+      const response = await requestPostBoard({ title, description });
       goBoardDetailPage(response.data);
       return;
     }
-    await requestPatchBoard(id, convertDataToBoardRequest(board));
+    await requestPatchBoard(id, { title, description });
     goBoardDetailPage(id);
   };
 
@@ -58,17 +40,13 @@ function BoardEditPage() {
     <div>
       <div>
         <input
-          name="title"
-          value={board.title}
-          onChange={changeTitle}
+          onChange={(event) => setTitle(event.target.value)}
           placeholder="제목을 입력하세요"
         />
       </div>
       <div>
         <input
-          name="description"
-          value={board.description}
-          onChange={changeDescription}
+          onChange={(event) => setDescription(event.target.value)}
           placeholder="내용을 입력하세요"
         />
       </div>

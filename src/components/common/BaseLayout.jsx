@@ -5,7 +5,7 @@ function BaseLayout({ children }) {
     <div>
       <Nav />
       {children}
-      <h2 style={{ textAlign: "center" }}>foot</h2>
+      <h2>foot</h2>
     </div>
   );
 }

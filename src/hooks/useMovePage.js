@@ -14,6 +14,27 @@ const useMovePage = () => {
   const goBoardDetailPage = (id) => {
     navigate(`/boards/${id}`);
   };
-  return { goLoginPage, goBoardPage, goBoardEditPage, goBoardDetailPage };
+  const goWorkbookMockPage = () => {
+    navigate("/workbooks/mock");
+  };
+  const goWorkbookRangePage = () => {
+    navigate("/workbooks/range");
+  };
+  const goWorkbookCustomPage = () => {
+    navigate("/workbooks/custom");
+  };
+  const goStoragePage = () => {
+    navigate("/storages");
+  };
+  return {
+    goLoginPage,
+    goBoardPage,
+    goBoardEditPage,
+    goBoardDetailPage,
+    goWorkbookMockPage,
+    goWorkbookRangePage,
+    goWorkbookCustomPage,
+    goStoragePage,
+  };
 };
 export default useMovePage;

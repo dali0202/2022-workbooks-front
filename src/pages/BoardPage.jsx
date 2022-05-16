@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import SearchedBoards from "../component/board/SearchedBoards";
+import SearchedBoards from "../components/board/SearchedBoards";
 import { requestGetBoardList } from "../service";
 import useMovePage from "../hooks/useMovePage";
 import { userState } from "../recoil";
