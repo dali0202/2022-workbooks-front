@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { requestPostMockWorkbook } from "../service";
+import useMovePage from "../hooks/useMovePage";
 
 function WorkbookMockPage() {
+  const { goStoragePage } = useMovePage();
   const [grade, setGrade] = useState("");
   const [month, setMonth] = useState("");
   const createMock = async () => {
     await requestPostMockWorkbook({ grade, month });
+    goStoragePage();
   };
   return (
     <>

@@ -40,12 +40,14 @@ function BoardEditPage() {
     <div>
       <div>
         <input
+          value={title}
           onChange={(event) => setTitle(event.target.value)}
           placeholder="제목을 입력하세요"
         />
       </div>
       <div>
         <input
+          value={description}
           onChange={(event) => setDescription(event.target.value)}
           placeholder="내용을 입력하세요"
         />

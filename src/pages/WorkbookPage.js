@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import useMovePage from "../hooks/useMovePage";
 
 function WorkbookPage() {
@@ -24,6 +23,8 @@ function WorkbookPage() {
         <button type="button" onClick={onCLickRange}>
           범위 선택하여 만들기
         </button>
+      </div>
+      <div>
         <button type="button" onClick={onClickCustom}>
           직접 문제 선택하여 만들기
         </button>

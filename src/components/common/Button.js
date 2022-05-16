@@ -1,13 +1,8 @@
-function Button({ children, isSelected, selectedStyles, styles, onClick }) {
+function Button({ children, isSelected, onClick }) {
   return (
-    <Container
-      isSelected={isSelected}
-      selectedStyles={selectedStyles}
-      styles={styles}
-      onClick={onClick}
-    >
+    <button type="button" isSelected={isSelected} onClick={onClick}>
       {children}
-    </Container>
+    </button>
   );
 }
 export default Button;

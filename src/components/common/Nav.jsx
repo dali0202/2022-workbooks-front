@@ -5,9 +5,9 @@ import { userState } from "../../recoil";
 function Nav() {
   const { currentUser, authenticated } = useRecoilValue(userState);
   const [, setUser] = useRecoilState(userState);
+
   const logoutHandler = () => {
     localStorage.removeItem("accessToken");
-    console.log("remove");
     setUser({
       currentUser: undefined,
       authenticated: false,
@@ -16,19 +16,18 @@ function Nav() {
 
   return (
     <div className="nav">
-      <div className="logo-container">
-        <Link to="/">
-          <img
-            style={{ width: "10%" }}
-            className="logo"
-            src="/logo192.png"
-            alt="logo"
-          />
-        </Link>
+      <h2>
+        <Link to="/">Workbooks</Link>
+      </h2>
+      <div>
+        <NavLink to="/workbooks">문제집 만들기 </NavLink>
       </div>
-      <NavLink to="/workbooks">문제집 만들기 </NavLink>
-      <NavLink to="/boards">게시판 </NavLink>
-      <NavLink to="/storage">보관함 </NavLink>
+      <div>
+        <NavLink to="/boards">게시판 </NavLink>
+      </div>
+      <div>
+        <NavLink to="/storage">보관함 </NavLink>
+      </div>
       {authenticated ? (
         <div>
           <div>{currentUser.name}</div>
@@ -37,7 +36,9 @@ function Nav() {
           </NavLink>
         </div>
       ) : (
-        <NavLink to="/login">로그인</NavLink>
+        <div>
+          <NavLink to="/login">로그인</NavLink>
+        </div>
       )}
     </div>
   );

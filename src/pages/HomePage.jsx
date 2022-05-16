@@ -1,4 +1,2 @@
-function HomePage() {
-  return <div style={{ textAlign: "center" }}>페이지 콘텐츠</div>;
-}
+function HomePage() {}
 export default HomePage;

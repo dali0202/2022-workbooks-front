@@ -14,7 +14,7 @@ import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout";
 import WorkbookMockPage from "./pages/WorkbookMockPage";
 import WorkbookRangePage from "./pages/WorkbookRangePage";
-import WorkbookCustomPage from "./pages/WorkbookCustomPage";
+import WorkbookEditPage from "./pages/WorkbookEditPage";
 
 function App() {
   const [, setUser] = useRecoilState(userState);
@@ -46,7 +46,7 @@ function App() {
           <Route path="/workbooks" element={<WorkbookPage />} />
           <Route path="/workbooks/mock" element={<WorkbookMockPage />} />
           <Route path="/workbooks/range" element={<WorkbookRangePage />} />
-          <Route path="/workbooks/custom" element={<WorkbookCustomPage />} />
+          <Route path="/workbooks/custom" element={<WorkbookEditPage />} />
           <Route path="/storages" element={<StoragePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/oauth2/redirect" element={<Oauth2RedirectHandler />} />

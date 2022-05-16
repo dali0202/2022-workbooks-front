@@ -8,9 +8,12 @@ const useMovePage = () => {
   const goBoardPage = () => {
     navigate("/boards");
   };
-  const goBoardEditPage = () => {
+  const goBoardWritePage = () => {
     navigate("/boards/write");
   };
+  const goBoardEditPage = (id) => {
+    navigate(`/boards/edit/${id}`);
+  }
   const goBoardDetailPage = (id) => {
     navigate(`/boards/${id}`);
   };
@@ -29,6 +32,7 @@ const useMovePage = () => {
   return {
     goLoginPage,
     goBoardPage,
+    goBoardWritePage,
     goBoardEditPage,
     goBoardDetailPage,
     goWorkbookMockPage,

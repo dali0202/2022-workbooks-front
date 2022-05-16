@@ -1,6 +1,6 @@
 function LoginPage() {
   return (
-    <div style={{ textAlign: "center" }}>
+    <div>
       <GoogleLogin />
       <KakaoLogin />
       <NaverLogin />

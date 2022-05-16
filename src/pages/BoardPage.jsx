@@ -8,10 +8,10 @@ import { userState } from "../recoil";
 function BoardPage() {
   const { authenticated } = useRecoilValue(userState);
   const [boardList, setBoardList] = useState([]);
-  const { goBoardEditPage, goLoginPage } = useMovePage();
+  const { goBoardWritePage, goLoginPage } = useMovePage();
 
   const onClick = () => {
-    authenticated ? goBoardEditPage() : goLoginPage();
+    authenticated ? goBoardWritePage() : goLoginPage();
   };
 
   const getBoardList = useCallback(async () => {
