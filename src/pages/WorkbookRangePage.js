@@ -7,12 +7,13 @@ import useMovePage from "../hooks/useMovePage";
 function WorkbookRangePage() {
   const { goStoragePage } = useMovePage();
   const [questionNum, setQuestionNum] = useState(30);
-  const [answerRate, setAnswerRate] = useState({ low: 0, high: 100 });
+  const [lowerBound, setLowerBound] = useState(0);
+  const [upperBound, setUpperBound] = useState(100);
   const [selectedUnit, setSelectedUnit] = useState([]);
   const unitList = Object.values(QUESTION_UNIT);
 
-  const onSubmit = () => {
-    requestPostRangeWorkbook({ questionNum, answerRate, selectedUnit });
+  const onSubmit = async () => {
+    await requestPostRangeWorkbook({ questionNum, lowerBound, upperBound, selectedUnit });
     goStoragePage();
   };
 
@@ -28,16 +29,16 @@ function WorkbookRangePage() {
       <div>
         정답률
         <input
-          value={answerRate.low}
+          value={lowerBound}
           onChange={(event) =>
-            setAnswerRate({ low: Number(event.target.value) })
+            setLowerBound(Number(event.target.value))
           }
         />
         이상
         <input
-          value={answerRate.high}
+          value={upperBound}
           onChange={(event) =>
-            setAnswerRate({ high: Number(event.target.value) })
+            setUpperBound(Number(event.target.value))
           }
         />
         이하
