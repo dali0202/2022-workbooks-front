@@ -5,11 +5,17 @@ import {
   SORT_TYPE,
 } from "../components/constant/list";
 import QuestionSearchContainerSelect from "../components/question/QuestionSearchContainerSelect";
-import { requestGetQuestionList } from "../service";
+import {
+  requestGetQuestionList,
+  requestPostCustomWorkbook,
+  requestPostMockWorkbook,
+} from "../api";
 import SearchedQuestion from "../components/question/SearchedQuestion";
 import QuestionCart from "../components/question/QuestionCart";
+import useMovePage from "../hooks/useMovePage";
 
 function WorkbookEditPage() {
+  const { goStoragePage } = useMovePage();
   const [searchType, setSearchType] = useState({
     grade: 0,
     month: 0,
@@ -48,6 +54,11 @@ function WorkbookEditPage() {
     console.log(selectedQuestionList);
   };
 
+  const createWorkbook = async () => {
+    await requestPostCustomWorkbook({ selectedQuestionId });
+    goStoragePage();
+  };
+
   const deleteCart = (event) => {
     setSelectedQuestionId(
       selectedQuestionId.filter((cart) => cart !== event.target.id)
@@ -80,6 +91,7 @@ function WorkbookEditPage() {
       {/* /> */}
       <SearchedQuestion questionList={questionList} onClick={addCart} />
       <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} />
+      <button onClick={createWorkbook}>만들기</button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { requestDeleteBoard, requestGetBoard } from "../service";
+import { requestDeleteBoard, requestGetBoard } from "../api";
 import useMovePage from "../hooks/useMovePage";
 
 function BoardDetailPage() {

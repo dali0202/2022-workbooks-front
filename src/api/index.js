@@ -81,3 +81,11 @@ export const requestGetQuestionList = ({ grade, month, point }) => {
     },
   });
 };
+
+export const requestPostCustomWorkbook = (data) => {
+  return client.post("/api/workbooks/custom", data, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

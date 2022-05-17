@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { QUESTION_UNIT, QUESTION_POINT } from "../components/constant/list";
 import WorkbookUnitFilter from "../components/workbook/WorkbookUnitFilter";
-import { requestPostRangeWorkbook } from "../service";
+import { requestPostRangeWorkbook } from "../api";
 import useMovePage from "../hooks/useMovePage";
 
 function WorkbookRangePage() {
@@ -14,7 +14,7 @@ function WorkbookRangePage() {
   const unitList = Object.values(QUESTION_UNIT);
   const pointList = Object.values(QUESTION_POINT);
 
-  const onSubmit = async () => {
+  const createWorkbook = async () => {
     await requestPostRangeWorkbook({
       questionNum,
       lowerBound,
@@ -58,7 +58,7 @@ function WorkbookRangePage() {
         />
       </div>
       <div>
-        <button type="submit" onClick={onSubmit}>
+        <button type="submit" onClick={createWorkbook}>
           만들기
         </button>
       </div>

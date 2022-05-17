@@ -1,10 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import {
-  requestPostBoard,
-  requestGetBoard,
-  requestPatchBoard,
-} from "../service";
+import { requestPostBoard, requestGetBoard, requestPatchBoard } from "../api";
 import useMovePage from "../hooks/useMovePage";
 
 function BoardEditPage() {

@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
-import { requestGetCurrentUser } from "./service";
+import { requestGetCurrentUser } from "./api";
 import HomePage from "./pages/HomePage";
 import BoardPage from "./pages/BoardPage";
 import BoardDetailPage from "./pages/BoardDetailPage";

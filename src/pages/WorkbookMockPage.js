@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { requestPostMockWorkbook } from "../service";
+import { requestPostMockWorkbook } from "../api";
 import useMovePage from "../hooks/useMovePage";
 
 function WorkbookMockPage() {
