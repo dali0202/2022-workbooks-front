@@ -15,13 +15,14 @@ function WorkbookEditPage() {
     month: 0,
     point: 0,
   });
-  // const [selectedFilter, setSelectedFilter] = useState([]);
-  // const [selectedSort, setSelectedSort] = useState(SORT_TYPE.DESC);
+  const [selectedFilter, setSelectedFilter] = useState([]);
+  const [selectedSort, setSelectedSort] = useState(SORT_TYPE.DESC);
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
+  const [selectedQuestionId, setSelectedQuestionId] = useState([]);
   const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
-  // const filterList = Object.values(FILTER_TYPE);
-  // const sortList = Object.values(SORT_TYPE);
+  const filterList = Object.values(FILTER_TYPE);
+  const sortList = Object.values(SORT_TYPE);
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
@@ -33,6 +34,10 @@ function WorkbookEditPage() {
   };
 
   const addCart = (event) => {
+    if (selectedQuestionId.includes(event.target.name)) {
+      return;
+    }
+    setSelectedQuestionId(selectedQuestionId.concat(event.target.name));
     setSelectedQuestionList([
       ...selectedQuestionList,
       {
@@ -44,6 +49,9 @@ function WorkbookEditPage() {
   };
 
   const deleteCart = (event) => {
+    setSelectedQuestionId(
+      selectedQuestionId.filter((cart) => cart !== event.target.id)
+    );
     setSelectedQuestionList(
       selectedQuestionList.filter((cart) => cart.id !== event.target.id)
     );
@@ -60,10 +68,8 @@ function WorkbookEditPage() {
         searchTypeList={searchTypeList}
         searchType={searchType}
         setSearchType={setSearchType}
+        onClick={getQuestionList}
       />
-      <button type="button" onClick={getQuestionList}>
-        조회
-      </button>
       {/* <FilterContainer */}
       {/*  filterList={filterList} */}
       {/*  sortList={sortList} */}
@@ -72,35 +78,8 @@ function WorkbookEditPage() {
       {/*  selectedSort={selectedSort} */}
       {/*  setSelectedSort={setSelectedSort} */}
       {/* /> */}
-      {/* <SearchedQuestion questionList={questionList} onClick={addCart} /> */}
-      {questionList?.map((question) => {
-        return (
-          <div key={question.id}>
-            {question.id} {question.year}년 {question.grade}학년
-            {question.month}월 {question.num}번{" "}
-            {(question.answerRate * 100).toFixed(2)}%
-            <button
-              type="button"
-              name={question.id}
-              id={question.point}
-              onClick={addCart}
-            >
-              추가
-            </button>
-          </div>
-        );
-      })}
-      {/* <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} /> */}
-      {selectedQuestionList?.map((question) => {
-        return (
-          <div key={question.id}>
-            {question.id}번{question.point}점
-            <button type="button" id={question.id} onClick={deleteCart}>
-              삭제
-            </button>
-          </div>
-        );
-      })}
+      <SearchedQuestion questionList={questionList} onClick={addCart} />
+      <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} />
     </div>
   );
 }
