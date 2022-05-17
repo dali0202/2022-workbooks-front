@@ -72,3 +72,12 @@ export const requestPostRangeWorkbook = (data) => {
     },
   });
 };
+
+export const requestGetQuestionList = ({ grade, month, point }) => {
+  return client.get("/api/questions", {
+    params: { grade, month, point },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

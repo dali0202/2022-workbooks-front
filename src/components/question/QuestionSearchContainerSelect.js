@@ -8,8 +8,8 @@ function QuestionSearchContainerSelect({ searchType, setSearchType }) {
   const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
 
   const onChangeType = (event) => {
-    const changedType = Object.assign([], searchType);
-    changedType[event.target.name] = event.target.value;
+    const changedType = { ...searchType };
+    changedType[event.target.name] = Number(event.target.value);
     setSearchType(() => changedType);
   };
 
@@ -18,16 +18,16 @@ function QuestionSearchContainerSelect({ searchType, setSearchType }) {
       {searchTypeList.map((tab) => {
         return (
           <div key={tab} style={{ display: "inline" }}>
-            {tab}
             <select name={LANGUAGE_CONVERTER[tab]} onChange={onChangeType}>
               {SEARCH_TYPE_LIST[tab].map((value) => {
                 return (
                   <option key={value} value={value}>
-                    {value}
+                    {value || "전체"}
                   </option>
                 );
               })}
             </select>
+            {tab}
           </div>
         );
       })}
