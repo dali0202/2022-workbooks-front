@@ -15,15 +15,13 @@ function WorkbookEditPage() {
     month: 0,
     point: 0,
   });
-  const [selectedFilter, setSelectedFilter] = useState([]);
-  const [selectedSort, setSelectedSort] = useState(SORT_TYPE.DESC);
+  // const [selectedFilter, setSelectedFilter] = useState([]);
+  // const [selectedSort, setSelectedSort] = useState(SORT_TYPE.DESC);
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
-  const [selectedId, setSelectedId] = useState([]);
-
   const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
-  const filterList = Object.values(FILTER_TYPE);
-  const sortList = Object.values(SORT_TYPE);
+  // const filterList = Object.values(FILTER_TYPE);
+  // const sortList = Object.values(SORT_TYPE);
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
@@ -34,19 +32,21 @@ function WorkbookEditPage() {
     setQuestionList(response.data);
   };
 
-  const onAddCart = (event) => {
-    console.log(event.target.dataset.question);
-    if (!selectedQuestionList.includes(event.target.dataset.question)) {
-      return event.target.dataset.question;
-    }
+  const addCart = (event) => {
+    setSelectedQuestionList([
+      ...selectedQuestionList,
+      {
+        id: event.target.name,
+        point: event.target.id,
+      },
+    ]);
+    console.log(selectedQuestionList);
   };
 
-  const onDeleteCart = (event) => {
-    if (selectedQuestionList.includes(event.target.dataset.question)) {
-      setSelectedQuestionList(
-        selectedQuestionList.remove(event.target.dataset.question)
-      );
-    }
+  const deleteCart = (event) => {
+    setSelectedQuestionList(
+      selectedQuestionList.filter((cart) => cart.id !== event.target.id)
+    );
   };
 
   return (
@@ -72,11 +72,35 @@ function WorkbookEditPage() {
       {/*  selectedSort={selectedSort} */}
       {/*  setSelectedSort={setSelectedSort} */}
       {/* /> */}
-      <SearchedQuestion questionList={questionList} onClick={onAddCart} />
-      <QuestionCart
-        questionList={selectedQuestionList}
-        onClick={onDeleteCart}
-      />
+      {/* <SearchedQuestion questionList={questionList} onClick={addCart} /> */}
+      {questionList?.map((question) => {
+        return (
+          <div key={question.id}>
+            {question.id} {question.year}년 {question.grade}학년
+            {question.month}월 {question.num}번{" "}
+            {(question.answerRate * 100).toFixed(2)}%
+            <button
+              type="button"
+              name={question.id}
+              id={question.point}
+              onClick={addCart}
+            >
+              추가
+            </button>
+          </div>
+        );
+      })}
+      {/* <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} /> */}
+      {selectedQuestionList?.map((question) => {
+        return (
+          <div key={question.id}>
+            {question.id}번{question.point}점
+            <button type="button" id={question.id} onClick={deleteCart}>
+              삭제
+            </button>
+          </div>
+        );
+      })}
     </div>
   );
 }
