@@ -27,7 +27,7 @@ function BoardPage() {
   return (
     <>
       <button type="button" onClick={onClick}>
-        글쓰기
+        문제집 올리기
       </button>
       <SearchedBoards boards={boardList} />
     </>

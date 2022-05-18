@@ -5,7 +5,8 @@ import { requestPostRangeWorkbook } from "../api";
 import useMovePage from "../hooks/useMovePage";
 
 function WorkbookRangePage() {
-  const { goStoragePage } = useMovePage();
+  const { goBoardPage } = useMovePage();
+  const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
   const [upperBound, setUpperBound] = useState(100);
@@ -16,18 +17,21 @@ function WorkbookRangePage() {
 
   const createWorkbook = async () => {
     await requestPostRangeWorkbook({
+      title,
       questionNum,
       lowerBound,
       upperBound,
       selectedUnit,
       selectedPoint,
     });
-    goStoragePage();
+    goBoardPage();
   };
 
   return (
     <>
       <div>
+        <h5>제목</h5>
+        <input onChange={(event) => setTitle(event.target.value)} />
         <h5>문항 수</h5>
         <input
           value={questionNum}

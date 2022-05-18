@@ -15,7 +15,8 @@ import QuestionCart from "../components/question/QuestionCart";
 import useMovePage from "../hooks/useMovePage";
 
 function WorkbookEditPage() {
-  const { goStoragePage } = useMovePage();
+  const { goBoardPage } = useMovePage();
+  const [title, setTitle] = useState("");
   const [searchType, setSearchType] = useState({
     grade: 0,
     month: 0,
@@ -55,8 +56,8 @@ function WorkbookEditPage() {
   };
 
   const createWorkbook = async () => {
-    await requestPostCustomWorkbook({ selectedQuestionId });
-    goStoragePage();
+    await requestPostCustomWorkbook({ title, selectedQuestionId });
+    goBoardPage();
   };
 
   const deleteCart = (event) => {
@@ -70,11 +71,17 @@ function WorkbookEditPage() {
 
   return (
     <div>
+      <h5>제목</h5>
+      <input
+        onChange={(event) => setTitle(event.target.value)}
+        placeholder="제목"
+      />
       {/* <QuestionSearchContainerInput */}
       {/*  searchTypeList={searchTypeList} */}
       {/*  searchType={searchType} */}
       {/*  setSearchType={setSearchType} */}
       {/* /> */}
+      <h5>문제 검색</h5>
       <QuestionSearchContainerSelect
         searchTypeList={searchTypeList}
         searchType={searchType}
@@ -91,7 +98,9 @@ function WorkbookEditPage() {
       {/* /> */}
       <SearchedQuestion questionList={questionList} onClick={addCart} />
       <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} />
-      <button onClick={createWorkbook}>만들기</button>
+      <div>
+        <button onClick={createWorkbook}>만들기</button>
+      </div>
     </div>
   );
 }

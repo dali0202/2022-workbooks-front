@@ -19,8 +19,8 @@ function StoragePage() {
       {workbookList.map((workbook) => {
         return (
           <div key={workbook.id}>
-            문제집 번호: {workbook.id}
-            작성자: {workbook.writer}
+            제목: {workbook.title}
+            만든사람: {workbook.writer}
           </div>
         );
       })}

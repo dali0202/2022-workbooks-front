@@ -1,31 +1,26 @@
-import useMovePage from "../hooks/useMovePage";
+import { useEffect, useState } from "react";
+import { requestGetWorkbookList } from "../api";
 
 function WorkbookPage() {
-  const { goWorkbookMockPage, goWorkbookRangePage, goWorkbookCustomPage } =
-    useMovePage();
-  const onClickMock = () => {
-    goWorkbookMockPage();
+  const [workbookList, setWorkbookList] = useState([]);
+  const getWorkbookList = async () => {
+    const response = await requestGetWorkbookList();
+    setWorkbookList(response.data);
   };
-  const onCLickRange = () => {
-    goWorkbookRangePage();
-  };
-  const onClickCustom = () => {
-    goWorkbookCustomPage();
-  };
+  useEffect(() => {
+    getWorkbookList();
+  }, []);
   return (
-    <>
-      <button type="button" onClick={onClickMock}>
-        모의고사 만들기
-      </button>
-
-      <button type="button" onClick={onCLickRange}>
-        범위 선택하여 만들기
-      </button>
-
-      <button type="button" onClick={onClickCustom}>
-        직접 문제 선택하여 만들기
-      </button>
-    </>
+    <div>
+      {workbookList.map((workbook) => {
+        return (
+          <div key={workbook.id}>
+            제목: {workbook.title}
+            만든사람: {workbook.userName}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 export default WorkbookPage;
