@@ -1,33 +1,29 @@
-import { useState } from "react";
-
 function SearchedQuestion({
   question,
-  selectedQuestionId,
-  setSelectedQuestionId,
   selectedQuestionList,
   setSelectedQuestionList,
+  selectedQuestionId,
 }) {
-  const [isAdd, setIsAdd] = useState(false);
   const addCart = () => {
-    if (selectedQuestionList.includes(question)) {
+    if (selectedQuestionId.includes(question.id)) {
       return;
     }
-    // if (selectedQuestionId.includes(question.id)) {
-    //   return;
-    // }
-    // setSelectedQuestionId(selectedQuestionId.concat(question.id));
     setSelectedQuestionList([...selectedQuestionList, question]);
-    setIsAdd(true);
   };
   return (
-    <div key={question.id}>
-      {question.id} {question.year}년 {question.grade}학년
-      {question.month}월 {question.num}번{" "}
-      {(question.answerRate * 100).toFixed(2)}%
-      <button type="button" onClick={addCart}>
-        {isAdd ? "삭제" : "추가"}
-      </button>
-    </div>
+    <tr>
+      <td>{question.id}</td>
+      <td>{question.year}년</td>
+      <td>{question.grade}학년</td>
+      <td>{question.month}월</td>
+      <td>{question.num}번</td>
+      <td>{(question.answerRate * 100).toFixed(2)}%</td>
+      <td>
+        <button type="button" onClick={addCart}>
+          {selectedQuestionId.includes(question.id) ? "추가됨" : "추가"}
+        </button>
+      </td>
+    </tr>
   );
 }
 export default SearchedQuestion;

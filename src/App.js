@@ -16,6 +16,7 @@ import WorkbookMockPage from "./pages/WorkbookMockPage";
 import WorkbookRangePage from "./pages/WorkbookRangePage";
 import WorkbookEditPage from "./pages/WorkbookEditPage";
 import HomePage from "./pages/HomePage";
+import WorkbookDetailPage from "./pages/WorkbookDetailPage";
 
 function App() {
   const [, setUser] = useRecoilState(userState);
@@ -41,6 +42,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/workbooks" element={<WorkbookPage />} />
+          <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
           <Route path="/boards/:id" element={<BoardDetailPage />} />
           <Route path="/boards/write" element={<BoardEditPage />} />
           <Route path="/boards/edit/:id" element={<BoardEditPage />} />

@@ -4,12 +4,8 @@ import {
   QUESTION_SEARCH_TYPE,
   SORT_TYPE,
 } from "../components/constant/list";
-import QuestionSearchContainerSelect from "../components/question/QuestionSearchContainerSelect";
-import {
-  requestGetQuestionList,
-  requestPostCustomWorkbook,
-  requestPostMockWorkbook,
-} from "../api";
+import QuestionSearchContainer from "../components/question/QuestionSearchContainer";
+import { requestGetQuestionList, requestPostCustomWorkbook } from "../api";
 import SearchedQuestion from "../components/question/SearchedQuestion";
 import QuestionCart from "../components/question/QuestionCart";
 import useMovePage from "../hooks/useMovePage";
@@ -44,21 +40,20 @@ function WorkbookEditPage() {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
     goBoardPage();
   };
-
+  useEffect(() => {
+    const selectedQuestions = [];
+    selectedQuestionList.map((question) => selectedQuestions.push(question.id));
+    setSelectedQuestionId(selectedQuestions);
+  }, [selectedQuestionList]);
   return (
     <div>
-      <h5>제목</h5>
+      <h5>문제집 이름</h5>
       <input
         onChange={(event) => setTitle(event.target.value)}
-        placeholder="제목"
+        placeholder="문제집 이름을 입력하세요."
       />
-      {/* <QuestionSearchContainerInput */}
-      {/*  searchTypeList={searchTypeList} */}
-      {/*  searchType={searchType} */}
-      {/*  setSearchType={setSearchType} */}
-      {/* /> */}
       <h5>문제 검색</h5>
-      <QuestionSearchContainerSelect
+      <QuestionSearchContainer
         searchTypeList={searchTypeList}
         searchType={searchType}
         setSearchType={setSearchType}
@@ -72,33 +67,38 @@ function WorkbookEditPage() {
       {/*  selectedSort={selectedSort} */}
       {/*  setSelectedSort={setSelectedSort} */}
       {/* /> */}
-      {questionList.map((question) => {
-        return (
-          <SearchedQuestion
-            key={question.id}
-            question={question}
-            selectedQuestionId={selectedQuestionId}
-            setSelectedQuestionId={setSelectedQuestionId}
-            selectedQuestionList={selectedQuestionList}
-            setSelectedQuestionList={setSelectedQuestionList}
-          />
-        );
-      })}
-      {selectedQuestionList.map((question) => {
-        return (
-          <QuestionCart
-            key={question.id}
-            question={question}
-            selectedQuestionId={selectedQuestionId}
-            setSelectedQuestionId={setSelectedQuestionId}
-            selectedQuestionList={selectedQuestionList}
-            setSelectedQuestionList={setSelectedQuestionList}
-          />
-        );
-      })}
+      <table>
+        <tbody>
+          {questionList.map((question) => {
+            return (
+              <SearchedQuestion
+                key={question.id}
+                question={question}
+                selectedQuestionList={selectedQuestionList}
+                setSelectedQuestionList={setSelectedQuestionList}
+                selectedQuestionId={selectedQuestionId}
+              />
+            );
+          })}
+        </tbody>
+      </table>
+      <table>
+        <tbody>
+          {selectedQuestionList.map((question) => {
+            return (
+              <QuestionCart
+                key={question.id}
+                question={question}
+                selectedQuestionList={selectedQuestionList}
+                setSelectedQuestionList={setSelectedQuestionList}
+              />
+            );
+          })}
+        </tbody>
+      </table>
       <div>
         <button type="button" onClick={createWorkbook}>
-          만들기
+          문제집 만들기
         </button>
       </div>
     </div>

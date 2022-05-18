@@ -57,6 +57,14 @@ export const requestDeleteBoard = (id) => {
   });
 };
 
+export const requestGetWorkbook = (id) => {
+  return client.get(`/api/workbooks/${id}`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};
+
 export const requestGetWorkbookList = () => {
   return client.get("/api/workbooks", {
     headers: {
