@@ -40,33 +40,9 @@ function WorkbookEditPage() {
     setQuestionList(response.data);
   };
 
-  const addCart = (event) => {
-    if (selectedQuestionId.includes(event.target.name)) {
-      return;
-    }
-    setSelectedQuestionId(selectedQuestionId.concat(event.target.name));
-    setSelectedQuestionList([
-      ...selectedQuestionList,
-      {
-        id: event.target.name,
-        point: event.target.id,
-      },
-    ]);
-    console.log(selectedQuestionList);
-  };
-
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
     goBoardPage();
-  };
-
-  const deleteCart = (event) => {
-    setSelectedQuestionId(
-      selectedQuestionId.filter((cart) => cart !== event.target.id)
-    );
-    setSelectedQuestionList(
-      selectedQuestionList.filter((cart) => cart.id !== event.target.id)
-    );
   };
 
   return (
@@ -96,10 +72,34 @@ function WorkbookEditPage() {
       {/*  selectedSort={selectedSort} */}
       {/*  setSelectedSort={setSelectedSort} */}
       {/* /> */}
-      <SearchedQuestion questionList={questionList} onClick={addCart} />
-      <QuestionCart questionList={selectedQuestionList} onClick={deleteCart} />
+      {questionList.map((question) => {
+        return (
+          <SearchedQuestion
+            key={question.id}
+            question={question}
+            selectedQuestionId={selectedQuestionId}
+            setSelectedQuestionId={setSelectedQuestionId}
+            selectedQuestionList={selectedQuestionList}
+            setSelectedQuestionList={setSelectedQuestionList}
+          />
+        );
+      })}
+      {selectedQuestionList.map((question) => {
+        return (
+          <QuestionCart
+            key={question.id}
+            question={question}
+            selectedQuestionId={selectedQuestionId}
+            setSelectedQuestionId={setSelectedQuestionId}
+            selectedQuestionList={selectedQuestionList}
+            setSelectedQuestionList={setSelectedQuestionList}
+          />
+        );
+      })}
       <div>
-        <button onClick={createWorkbook}>만들기</button>
+        <button type="button" onClick={createWorkbook}>
+          만들기
+        </button>
       </div>
     </div>
   );
