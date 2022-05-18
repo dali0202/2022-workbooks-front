@@ -20,17 +20,17 @@ function Nav() {
         <Link to="/">Workbooks</Link>
       </h2>
       <NavLink to="/workbooks">문제집 만들기 </NavLink>
-      <NavLink to="/boards">게시판 </NavLink>
-      <NavLink to="/storage">보관함 </NavLink>
+      <NavLink to="/boards">문제집 게시판 </NavLink>
+      <NavLink to="/storage">문제집 보관함 </NavLink>
       {authenticated ? (
-        <div>
+        <div style={{ display: "inline" }}>
           {currentUser.name}
           <NavLink to="/" onClick={logoutHandler}>
             로그아웃
           </NavLink>
         </div>
       ) : (
-        <div>
+        <div style={{ display: "inline" }}>
           <NavLink to="/login">로그인</NavLink>
         </div>
       )}

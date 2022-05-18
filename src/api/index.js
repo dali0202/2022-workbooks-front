@@ -89,3 +89,11 @@ export const requestPostCustomWorkbook = (data) => {
     },
   });
 };
+
+export const requestGetStorage = () => {
+  return client.get("/api/storage", {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};

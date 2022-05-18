@@ -47,7 +47,7 @@ function App() {
           <Route path="/workbooks/mock" element={<WorkbookMockPage />} />
           <Route path="/workbooks/range" element={<WorkbookRangePage />} />
           <Route path="/workbooks/custom" element={<WorkbookEditPage />} />
-          <Route path="/storages" element={<StoragePage />} />
+          <Route path="/storage" element={<StoragePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/oauth2/redirect" element={<Oauth2RedirectHandler />} />
         </Routes>

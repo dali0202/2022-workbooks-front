@@ -5,7 +5,6 @@ function BaseLayout({ children }) {
     <div>
       <Nav />
       {children}
-      <h2>foot</h2>
     </div>
   );
 }

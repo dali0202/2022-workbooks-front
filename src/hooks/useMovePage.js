@@ -13,7 +13,7 @@ const useMovePage = () => {
   };
   const goBoardEditPage = (id) => {
     navigate(`/boards/edit/${id}`);
-  }
+  };
   const goBoardDetailPage = (id) => {
     navigate(`/boards/${id}`);
   };
@@ -27,7 +27,7 @@ const useMovePage = () => {
     navigate("/workbooks/custom");
   };
   const goStoragePage = () => {
-    navigate("/storages");
+    navigate("/storage");
   };
   return {
     goLoginPage,
