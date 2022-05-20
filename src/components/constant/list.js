@@ -40,18 +40,18 @@ const SEARCH_TYPE_LIST = {
   점수: [0, 2, 3, 4],
 };
 
-const FILTER_TYPE = {
-  LATEST: "최신순",
-  OLDEST: "오래된순",
-  HARDEST: "정답률 낮은순",
-  EASIEST: "정답률 높은순",
+const SORT_TYPE = {
+  최신순: "CREATED_DESC",
+  오래된순: "CREATED_ASC",
+  "정답률 낮은순": "ANSWER_RATE_ASC",
+  "정답률 높은순": "ANSWER_RATE_DESC",
 };
 
 export {
   QUESTION_UNIT,
   QUESTION_POINT,
   QUESTION_SEARCH_TYPE,
-  FILTER_TYPE,
   LANGUAGE_CONVERTER,
   SEARCH_TYPE_LIST,
+  SORT_TYPE,
 };

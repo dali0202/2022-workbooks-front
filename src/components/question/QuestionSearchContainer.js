@@ -4,7 +4,7 @@ import {
   SEARCH_TYPE_LIST,
 } from "../constant/list";
 
-function QuestionSearchContainer({ searchType, setSearchType, onClick }) {
+function QuestionSearchContainer({ searchType, setSearchType }) {
   const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
 
   const onChangeType = (event) => {
@@ -31,10 +31,6 @@ function QuestionSearchContainer({ searchType, setSearchType, onClick }) {
           </div>
         );
       })}
-
-      <button type="button" onClick={onClick}>
-        검색
-      </button>
     </div>
   );
 }

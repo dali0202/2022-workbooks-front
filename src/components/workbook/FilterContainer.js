@@ -1,14 +1,14 @@
-function FilterContainer({ filterList, setSelectedFilter }) {
+function FilterContainer({ sortList, setSelectedFilter }) {
   const onChange = (e) => {
     setSelectedFilter(e.target.value);
   };
 
   return (
     <select onChange={onChange}>
-      {filterList.map((filter) => {
+      {sortList.map((sort) => {
         return (
-          <option key={filter} value={filter}>
-            {filter}
+          <option key={sort} value={sort}>
+            {sort}
           </option>
         );
       })}

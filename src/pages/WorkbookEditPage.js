@@ -1,40 +1,54 @@
-import { useEffect, useState } from "react";
-import {
-  FILTER_TYPE,
-  QUESTION_SEARCH_TYPE,
-  SORT_TYPE,
-} from "../components/constant/list";
-import QuestionSearchContainer from "../components/question/QuestionSearchContainer";
+import { useCallback, useEffect, useState } from "react";
+import { SORT_TYPE } from "../components/constant/list";
 import { requestGetQuestionList, requestPostCustomWorkbook } from "../api";
 import SearchedQuestion from "../components/question/SearchedQuestion";
 import QuestionCart from "../components/question/QuestionCart";
 import useMovePage from "../hooks/useMovePage";
 import FilterContainer from "../components/workbook/FilterContainer";
+import Select from "../components/common/Select/Select";
 
 function WorkbookEditPage() {
   const { goBoardPage } = useMovePage();
+
   const [title, setTitle] = useState("");
-  const [searchType, setSearchType] = useState({
-    grade: 0,
-    month: 0,
-    point: 0,
-  });
-  const [selectedFilter, setSelectedFilter] = useState(FILTER_TYPE.LATEST);
+  const sortList = Object.keys(SORT_TYPE);
+  const [selectedSort, setSelectedSort] = useState(sortList[0]);
+  // const filterList = Object.values(FILTER_TYPE);
+
+  const [page, setPage] = useState(0);
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState([]);
-  const [offset, setOffset] = useState(0);
-  const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
-  const filterList = Object.values(FILTER_TYPE);
 
+  const [grade, setGrade] = useState(0);
+  const [month, setMonth] = useState(0);
+  const [point, setPoint] = useState(0);
+  const gradeList = [0, 1, 2, 3];
+  const pointList = [0, 2, 3, 4];
+  const [monthList, setMonthList] = useState([0, 3, 6, 9, 11]);
+
+  const setGradeAndMonth = (_grade) => {
+    setGrade(_grade);
+    if (Number(_grade) === 3) {
+      setMonthList([0, 3, 6, 9, 11]);
+      return;
+    }
+    setMonthList([0, 3, 6, 9]);
+  };
   const getQuestionList = useCallback(async () => {
     const response = await requestGetQuestionList({
-      grade: searchType.grade,
-      month: searchType.month,
-      point: searchType.point,
+      grade,
+      month,
+      point,
+      page,
+      sort: SORT_TYPE[selectedSort],
     });
     setQuestionList(response.data);
-  }, [selectedFilter, offset]);
+  }, [grade, month, point, selectedSort, page]);
+
+  useEffect(() => {
+    getQuestionList();
+  }, [getQuestionList]);
 
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
@@ -46,25 +60,20 @@ function WorkbookEditPage() {
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
   useEffect(() => {
-    console.log(selectedFilter);
-  }, [selectedFilter]);
+    console.log(selectedSort);
+  }, [selectedSort]);
+
   return (
     <div>
       <h5>문제집 이름</h5>
-      <input
-        onChange={(event) => setTitle(event.target.value)}
-        placeholder="문제집 이름을 입력하세요."
-      />
+      <input onChange={(event) => setTitle(event.target.value)} />
       <h5>문제 검색</h5>
-      <QuestionSearchContainer
-        searchTypeList={searchTypeList}
-        searchType={searchType}
-        setSearchType={setSearchType}
-        onClick={getQuestionList}
-      />
+      <Select name="학년" optionList={gradeList} setOption={setGradeAndMonth} />
+      <Select name="월" optionList={monthList} setOption={setMonth} />
+      <Select name="점수" optionList={pointList} setOption={setPoint} />
       <FilterContainer
-        filterList={filterList}
-        setSelectedFilter={setSelectedFilter}
+        sortList={sortList}
+        setSelectedFilter={setSelectedSort}
       />
       <table>
         <tbody>

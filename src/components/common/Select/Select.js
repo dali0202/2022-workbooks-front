@@ -12,7 +12,7 @@ function Select({ name, optionList, setOption }) {
         {optionList.map((option) => {
           return (
             <option key={option} value={option}>
-              {option}
+              {option !== 0 ? option : "전체"}
             </option>
           );
         })}
