@@ -7,7 +7,7 @@ import WorkbookPage from "./pages/WorkbookPage";
 import BoardPage from "./pages/BoardPage";
 import BoardDetailPage from "./pages/BoardDetailPage";
 import BoardEditPage from "./pages/BoardEditPage";
-import WorkbookCreatePage from "./pages/WorkbookCreatePage";
+import WorkbookCreatePage from "./pages/WorkbookCreatePage/WorkbookCreatePage";
 import StoragePage from "./pages/StoragePage";
 import LoginPage from "./pages/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";

@@ -1,18 +1,22 @@
 import { useState } from "react";
-import { QUESTION_UNIT, QUESTION_POINT } from "../components/constant/list";
-import WorkbookUnitFilter from "../components/workbook/WorkbookUnitFilter";
+import { QUESTION_POINT } from "../components/constant/list";
 import { requestPostRangeWorkbook } from "../api";
 import useMovePage from "../hooks/useMovePage";
+import Button from "../components/common/Button/Button";
+import { BUTTON_COLOR } from "../components/constant/theme";
+import Tags from "../components/workbook/Tags";
+import Frame from "../components/common/Frame/Frame";
+import RangeSlider from "../components/common/Range/RangeSlider";
 
 function WorkbookRangePage() {
-  const { goBoardPage } = useMovePage();
+  const { goWorkbookPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
   const [upperBound, setUpperBound] = useState(100);
   const [selectedUnit, setSelectedUnit] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState([]);
-  const unitList = Object.values(QUESTION_UNIT);
+  const unitList = [...Array(15).keys()];
   const pointList = Object.values(QUESTION_POINT);
 
   const createWorkbook = async () => {
@@ -24,13 +28,13 @@ function WorkbookRangePage() {
       selectedUnit,
       selectedPoint,
     });
-    goBoardPage();
+    goWorkbookPage();
   };
 
   return (
     <>
       <div>
-        <h5>제목</h5>
+        <h5>문제집 이름</h5>
         <input onChange={(event) => setTitle(event.target.value)} />
         <h5>문항 수</h5>
         <input
@@ -40,31 +44,46 @@ function WorkbookRangePage() {
       </div>
       <div>
         <h5>정답률</h5>
-        <input
-          value={lowerBound}
-          onChange={(event) => setLowerBound(Number(event.target.value))}
-        />
-        이상
-        <input
-          value={upperBound}
-          onChange={(event) => setUpperBound(Number(event.target.value))}
-        />
-        이하
-      </div>
-      <div>
-        <WorkbookUnitFilter
-          unitList={unitList}
-          pointList={pointList}
-          selectedUnit={selectedUnit}
-          selectedPoint={selectedPoint}
-          setSelectedUnit={setSelectedUnit}
-          setSelectedPoint={setSelectedPoint}
+        <RangeSlider
+          min={lowerBound}
+          max={upperBound}
+          minDif={10}
+          setMin={setLowerBound}
+          setMax={setUpperBound}
         />
       </div>
+      <h5>단원 선택</h5>
+      {unitList.map((item) => {
+        return (
+          <Tags
+            name="unit"
+            key={item}
+            item={item}
+            selectedItem={selectedUnit}
+            setSelectedItem={setSelectedUnit}
+          />
+        );
+      })}
+      <h5>점수 선택</h5>
+      {pointList.map((item) => {
+        return (
+          <Tags
+            name="point"
+            key={item}
+            item={item}
+            selectedItem={selectedPoint}
+            setSelectedItem={setSelectedPoint}
+          />
+        );
+      })}
       <div>
-        <button type="submit" onClick={createWorkbook}>
+        <Button
+          sizeType="WIDE"
+          color={BUTTON_COLOR.BASIC}
+          onClick={createWorkbook}
+        >
           만들기
-        </button>
+        </Button>
       </div>
     </>
   );

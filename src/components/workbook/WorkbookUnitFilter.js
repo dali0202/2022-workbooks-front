@@ -1,4 +1,6 @@
 import "../../css/workbook/workbookFilter.css";
+import Button from "../common/Button/Button";
+import { BUTTON_COLOR } from "../constant/theme";
 
 function WorkbookUnitFilter({
   unitList,
@@ -17,13 +19,14 @@ function WorkbookUnitFilter({
     setSelectedUnit(selectedUnit.concat([unitId]));
   };
 
-  const onClickPoint = (event) => {
-    const pointId = Number(event.target.dataset.id);
-    if (selectedPoint.includes(pointId)) {
-      setSelectedPoint(selectedPoint.filter((id) => id !== pointId));
+  const clickPoint = (event) => {
+    console.log(selectedPoint);
+    const point = Number(event.target.value);
+    if (selectedPoint.includes(point)) {
+      setSelectedPoint(selectedPoint.filter((_point) => _point !== point));
       return;
     }
-    setSelectedPoint(selectedPoint.concat([pointId]));
+    setSelectedPoint(selectedPoint.concat([point]));
   };
 
   return (
@@ -32,7 +35,7 @@ function WorkbookUnitFilter({
         <h5>단원 선택</h5>
         {unitList.map((unit, index) => {
           return (
-            <button
+            <Button
               className={
                 selectedUnit.includes(index)
                   ? "selected-button"
@@ -44,7 +47,7 @@ function WorkbookUnitFilter({
               onClick={onClickUnit}
             >
               {unit}
-            </button>
+            </Button>
           );
         })}
       </div>
@@ -52,19 +55,17 @@ function WorkbookUnitFilter({
         <h5>점수 선택</h5>
         {pointList.map((point) => {
           return (
-            <button
-              className={
+            <Button
+              color={
                 selectedPoint.includes(point)
-                  ? "selected-button"
-                  : "default-button"
+                  ? BUTTON_COLOR.SELECTED
+                  : BUTTON_COLOR.BASIC
               }
               key={point}
-              type="button"
-              data-id={point}
-              onClick={onClickPoint}
+              onClick={clickPoint}
             >
               {point}점
-            </button>
+            </Button>
           );
         })}
       </div>

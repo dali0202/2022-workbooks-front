@@ -41,13 +41,10 @@ const SEARCH_TYPE_LIST = {
 };
 
 const FILTER_TYPE = {
-  CREATED_AT: "출제 연도",
-  ANSWER_RATE: "정답률",
-};
-
-const SORT_TYPE = {
-  DESC: "내림차순",
-  ASC: "오름차순",
+  LATEST: "최신순",
+  OLDEST: "오래된순",
+  HARDEST: "정답률 낮은순",
+  EASIEST: "정답률 높은순",
 };
 
 export {
@@ -55,7 +52,6 @@ export {
   QUESTION_POINT,
   QUESTION_SEARCH_TYPE,
   FILTER_TYPE,
-  SORT_TYPE,
   LANGUAGE_CONVERTER,
   SEARCH_TYPE_LIST,
 };

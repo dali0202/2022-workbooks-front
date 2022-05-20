@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { requestGetWorkbookList } from "../api";
+import SearchedWorkbook from "../components/workbook/SearchedWorkbook";
 
 function WorkbookPage() {
   const [workbookList, setWorkbookList] = useState([]);
@@ -12,14 +13,19 @@ function WorkbookPage() {
   }, []);
   return (
     <div>
-      {workbookList.map((workbook) => {
-        return (
-          <div key={workbook.id}>
-            제목: {workbook.title}
-            만든사람: {workbook.userName}
-          </div>
-        );
-      })}
+      <table>
+        <thead>
+          <tr>
+            <th>제목</th>
+            <th>작성자</th>
+          </tr>
+        </thead>
+        <tbody>
+          {workbookList.map((workbook) => {
+            return <SearchedWorkbook key={workbook.id} workbook={workbook} />;
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }

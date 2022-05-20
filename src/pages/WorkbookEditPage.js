@@ -9,6 +9,7 @@ import { requestGetQuestionList, requestPostCustomWorkbook } from "../api";
 import SearchedQuestion from "../components/question/SearchedQuestion";
 import QuestionCart from "../components/question/QuestionCart";
 import useMovePage from "../hooks/useMovePage";
+import FilterContainer from "../components/workbook/FilterContainer";
 
 function WorkbookEditPage() {
   const { goBoardPage } = useMovePage();
@@ -18,23 +19,22 @@ function WorkbookEditPage() {
     month: 0,
     point: 0,
   });
-  const [selectedFilter, setSelectedFilter] = useState([]);
-  const [selectedSort, setSelectedSort] = useState(SORT_TYPE.DESC);
+  const [selectedFilter, setSelectedFilter] = useState(FILTER_TYPE.LATEST);
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState([]);
+  const [offset, setOffset] = useState(0);
   const searchTypeList = Object.values(QUESTION_SEARCH_TYPE);
   const filterList = Object.values(FILTER_TYPE);
-  const sortList = Object.values(SORT_TYPE);
 
-  const getQuestionList = async () => {
+  const getQuestionList = useCallback(async () => {
     const response = await requestGetQuestionList({
       grade: searchType.grade,
       month: searchType.month,
       point: searchType.point,
     });
     setQuestionList(response.data);
-  };
+  }, [selectedFilter, offset]);
 
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
@@ -45,6 +45,9 @@ function WorkbookEditPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
+  useEffect(() => {
+    console.log(selectedFilter);
+  }, [selectedFilter]);
   return (
     <div>
       <h5>문제집 이름</h5>
@@ -59,14 +62,10 @@ function WorkbookEditPage() {
         setSearchType={setSearchType}
         onClick={getQuestionList}
       />
-      {/* <FilterContainer */}
-      {/*  filterList={filterList} */}
-      {/*  sortList={sortList} */}
-      {/*  selectedFilter={selectedFilter} */}
-      {/*  setSelectedFilter={setSelectedFilter} */}
-      {/*  selectedSort={selectedSort} */}
-      {/*  setSelectedSort={setSelectedSort} */}
-      {/* /> */}
+      <FilterContainer
+        filterList={filterList}
+        setSelectedFilter={setSelectedFilter}
+      />
       <table>
         <tbody>
           {questionList.map((question) => {

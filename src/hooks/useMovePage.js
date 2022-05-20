@@ -2,6 +2,9 @@ import { useNavigate } from "react-router-dom";
 
 const useMovePage = () => {
   const navigate = useNavigate();
+  const goHomePage = () => {
+    navigate("/");
+  };
   const goLoginPage = () => {
     navigate("/login");
   };
@@ -17,6 +20,12 @@ const useMovePage = () => {
   const goBoardDetailPage = (id) => {
     navigate(`/boards/${id}`);
   };
+  const goWorkbookDetailPage = (id) => {
+    navigate(`/workbooks/${id}`);
+  };
+  const goWorkbookCreatePage = () => {
+    navigate("/create");
+  };
   const goWorkbookMockPage = () => {
     navigate("/mock");
   };
@@ -30,8 +39,11 @@ const useMovePage = () => {
     navigate("/storage");
   };
   return {
+    goHomePage,
     goLoginPage,
-    goBoardPage: goWorkbookPage,
+    goWorkbookPage,
+    goWorkbookDetailPage,
+    goWorkbookCreatePage,
     goBoardWritePage,
     goBoardEditPage,
     goBoardDetailPage,
