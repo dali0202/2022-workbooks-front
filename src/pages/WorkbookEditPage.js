@@ -6,6 +6,8 @@ import QuestionCart from "../components/question/QuestionCart";
 import useMovePage from "../hooks/useMovePage";
 import FilterContainer from "../components/workbook/FilterContainer";
 import Select from "../components/common/Select/Select";
+import { BUTTON_COLOR } from "../components/constant/theme";
+import Button from "../components/common/Button/Button";
 
 function WorkbookEditPage() {
   const { goBoardPage } = useMovePage();
@@ -104,10 +106,22 @@ function WorkbookEditPage() {
           })}
         </tbody>
       </table>
+      <button
+        type="button"
+        onClick={() => {
+          setPage(page + 1);
+        }}
+      >
+        더보기
+      </button>
       <div>
-        <button type="button" onClick={createWorkbook}>
-          문제집 만들기
-        </button>
+        <Button
+          sizeType="WIDE"
+          color={BUTTON_COLOR.BASIC}
+          onClick={createWorkbook}
+        >
+          만들기
+        </Button>
       </div>
     </div>
   );

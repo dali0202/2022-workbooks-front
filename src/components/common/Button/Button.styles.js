@@ -16,7 +16,7 @@ const Container = styled.button`
   cursor: pointer;
   display: inline-block;
   font-family: "Amazon Ember", sans-serif;
-  font-size: 13px;
+  font-size: 0.8125rem;
   line-height: 29px;
   padding: 0 10px 0 11px;
   position: relative;

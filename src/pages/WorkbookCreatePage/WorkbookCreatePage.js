@@ -1,5 +1,6 @@
 import useMovePage from "../../hooks/useMovePage";
 import { Button, Container } from "./WorkbookCreatePage.styles";
+import CreateWorkbook from "../../components/workbook/CreateWorkbook";
 
 function WorkbookCreatePage() {
   const { goWorkbookMockPage, goWorkbookRangePage, goWorkbookCustomPage } =
@@ -7,9 +8,15 @@ function WorkbookCreatePage() {
 
   return (
     <Container>
-      <Button onClick={goWorkbookMockPage}>모의고사 만들기</Button>
-      <Button onClick={goWorkbookRangePage}>범위 선택으로 만들기</Button>
-      <Button onClick={goWorkbookCustomPage}>직접 만들기</Button>
+      <CreateWorkbook>
+        <Button onClick={goWorkbookMockPage()}>Go</Button>
+      </CreateWorkbook>
+      <CreateWorkbook>
+        <Button onClick={goWorkbookRangePage()}>Go</Button>
+      </CreateWorkbook>
+      <CreateWorkbook>
+        <Button onClick={goWorkbookCustomPage()}>Go</Button>
+      </CreateWorkbook>
     </Container>
   );
 }

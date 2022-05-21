@@ -1,5 +1,3 @@
-import { Container } from "./Select.styles";
-
 function Select({ name, optionList, setOption }) {
   return (
     <>
