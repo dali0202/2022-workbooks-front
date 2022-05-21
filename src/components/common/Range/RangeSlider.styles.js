@@ -23,9 +23,9 @@ const RangeLabel = styled.input`
   ${({ direction }) => LabelDirection[direction]}
 `;
 const Input = styled.input`
-  width: calc(100% - 2rem);
-  top: 1rem;
-  left: 1rem;
+  width: 110%;
+  left: -1rem;
+  top: -1rem;
   position: absolute;
   border: none;
   pointer-events: none;
@@ -46,7 +46,7 @@ const Track = styled.div`
   position: relative;
   width: 100%;
   height: 0.3rem;
-  background-color: #e1ecf4;
+  background-color: #99987c;
   border-radius: 0.3rem;
 `;
 
@@ -57,14 +57,11 @@ const Range = styled.div`
   ${({ position }) =>
     `left: ${position[0]}%;
     right: ${position[1]}%;`}
-  background-color: #AFC6C9;
+  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border-radius: 0.5rem;
 `;
 
 const Slider = styled.div`
-  width: 100%;
-  height: 100%;
-  padding: 1.5rem;
   display: flex;
   flex-direction: row;
   position: relative;
@@ -76,7 +73,7 @@ const Thumb = styled.div`
   transform: translateY(-0.35rem);
   width: 1rem;
   height: 1rem;
-  background-color: #afc6c9;
+  background-color: #ff9a5a;
   border-radius: 50%;
   ${({ position }) => `${position[0]}:${position[1]}%`}
 `;

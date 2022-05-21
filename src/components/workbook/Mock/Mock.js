@@ -2,14 +2,8 @@ import { useEffect, useState } from "react";
 import { requestPostMockWorkbook } from "../../../api";
 import useMovePage from "../../../hooks/useMovePage";
 import { BUTTON_COLOR } from "../../constant/theme";
-import {
-  Button,
-  Container,
-  CustomSelect,
-  Desc,
-  Input,
-  Option,
-} from "./Mock.styles";
+import { Button, Container, CustomSelect, Desc, Input } from "./Mock.styles";
+import { Label, Option } from "../Range/Range.styles";
 
 function Mock() {
   const { goWorkbookPage } = useMovePage();
@@ -59,26 +53,21 @@ function Mock() {
 
   const pageDesc =
     "학년과 월 선택만으로 모의고사를 만들어보세요.\n" +
-    " 모의고사는 실제와 동일한 유형의 문제들로 구성됩니다.";
+    "모의고사는 실제와 동일한 유형의 문제들로 구성됩니다.";
 
   return (
     <Container>
       <Desc>{pageDesc}</Desc>
-      <Input
-        onChange={(event) => setTitle(event.target.value)}
-        placeholder="익명의 문제집"
-      />
-      {/* <Select */}
-      {/*  name="학년" */}
-      {/*  optionList={gradeList} */}
-      {/*  setOption={setGradeAndMonth} */}
-      {/* /> */}
-      {/* <Select name="월" optionList={monthList} setOption={setMonth} /> */}
+      <Option>
+        <Label>문제집 이름</Label>
+        <Input
+          onChange={(event) => setTitle(event.target.value)}
+          placeholder="익명의 문제집"
+        />
+      </Option>
       <div
         style={{
           display: "flex",
-          position: "relative",
-          top: "4rem",
         }}
       >
         <CustomSelect
@@ -94,9 +83,7 @@ function Mock() {
           onChange={onSetMonth}
         />
       </div>
-      <Button sizeType="WIDE" color={BUTTON_COLOR.BASIC} onClick={createMock}>
-        만들기
-      </Button>
+      <Button onClick={createMock}>만들기</Button>
     </Container>
   );
 }

@@ -13,7 +13,7 @@ import LoginPage from "./pages/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout/BaseLayout";
 import Mock from "./components/workbook/Mock/Mock";
-import WorkbookRangePage from "./pages/WorkbookRangePage";
+import Range from "./components/workbook/Range/Range";
 import WorkbookEditPage from "./pages/WorkbookEditPage";
 import HomePage from "./pages/HomePage";
 import WorkbookDetailPage from "./pages/WorkbookDetailPage";
@@ -48,7 +48,7 @@ function App() {
           <Route path="/boards/edit/:id" element={<BoardEditPage />} />
           <Route path="/create" element={<WorkbookCreatePage />} />
           <Route path="/mock" element={<Mock />} />
-          <Route path="/range" element={<WorkbookRangePage />} />
+          <Route path="/range" element={<Range />} />
           <Route path="/custom" element={<WorkbookEditPage />} />
           <Route path="/storage" element={<StoragePage />} />
           <Route path="/login" element={<LoginPage />} />

@@ -8,15 +8,9 @@ function WorkbookCreatePage() {
 
   return (
     <Container>
-      <CreateWorkbook>
-        <Button onClick={goWorkbookMockPage()}>Go</Button>
-      </CreateWorkbook>
-      <CreateWorkbook>
-        <Button onClick={goWorkbookRangePage()}>Go</Button>
-      </CreateWorkbook>
-      <CreateWorkbook>
-        <Button onClick={goWorkbookCustomPage()}>Go</Button>
-      </CreateWorkbook>
+      <Button onClick={goWorkbookMockPage}>Go</Button>
+      <Button onClick={goWorkbookRangePage}>Go</Button>
+      <Button onClick={goWorkbookCustomPage}>Go</Button>
     </Container>
   );
 }

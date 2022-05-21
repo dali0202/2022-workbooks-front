@@ -1,8 +1,8 @@
-import { BUTTON_COLOR } from "../constant/theme";
-import Button from "../common/Button/Button";
-import { QUESTION_UNIT } from "../constant/list";
+import { BUTTON_COLOR } from "../../constant/theme";
+import { QUESTION_UNIT } from "../../constant/list";
+import Button from "../Button/Button";
 
-function Tags({ name, item, selectedItem, setSelectedItem }) {
+function Tag({ name, item, selectedItem, setSelectedItem }) {
   const onClick = () => {
     if (selectedItem.includes(item)) {
       setSelectedItem(selectedItem.filter((id) => id !== item));
@@ -14,6 +14,7 @@ function Tags({ name, item, selectedItem, setSelectedItem }) {
     <Button
       key={item}
       onClick={onClick}
+      width="3rem"
       color={
         selectedItem.includes(item) ? BUTTON_COLOR.SELECTED : BUTTON_COLOR.BASIC
       }
@@ -22,4 +23,4 @@ function Tags({ name, item, selectedItem, setSelectedItem }) {
     </Button>
   );
 }
-export default Tags;
+export default Tag;

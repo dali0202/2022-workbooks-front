@@ -1,20 +1,15 @@
 import styled from "styled-components";
-import Select from "react-select";
-
-const CustomSelect = styled(Select)`
-  width: 12rem;
-  font-size: 0.8rem;
-`;
 
 const Container = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
+  font-size: 0.8rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   width: 35rem;
-  height: 50vh;
+  height: 170vh;
   padding: 1rem;
   position: relative;
   top: 8rem;
@@ -27,9 +22,30 @@ const Desc = styled.div`
   line-height: 2rem;
 `;
 
-const Button = styled.button`
+const Input = styled.input`
+  width: ${({ width }) => width};
+  appearance: none;
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 0.375em;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #363636;
+  display: inline-flex;
+
+  font-size: 0.8rem;
+  height: 2.4rem;
+  justify-content: center;
+  line-height: 1.5;
+  padding: calc(0.5em - 1px) 1em;
   position: relative;
-  top: 4.5rem;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: top;
+  white-space: nowrap;
+`;
+const Button = styled.button`
   width: 6rem;
   background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
   border: 0;
@@ -37,6 +53,7 @@ const Button = styled.button`
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
+
   font-size: 0.8rem;
   font-weight: 500;
   line-height: 2.5;
@@ -62,27 +79,20 @@ const Button = styled.button`
   }
 `;
 
-const Input = styled.input`
-  width: 24rem;
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 0.375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  display: inline-flex;
-  font-size: 0.8rem;
-  height: 2.4rem;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(0.5em - 1px) 1em;
+const Label = styled.div`
+  font-size: 0.6rem;
+  align-self: end;
   position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
+  bottom: 0.2rem;
+  font-size: 0.6rem;
+`;
+const Option = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const TagWrap = styled.div`
+  display: flex;
+  flex-wrap: wrap;
 `;
 
-export { Container, Button, Desc, CustomSelect, Input };
+export { Container, Desc, Input, Option, Button, Label, TagWrap };
