@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
-import WorkbookPage from "./pages/WorkbookPage";
+import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
 import BoardPage from "./temp/BoardPage";
 import BoardDetailPage from "./temp/BoardDetailPage";
 import BoardEditPage from "./temp/BoardEditPage";

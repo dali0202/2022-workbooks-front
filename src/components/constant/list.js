@@ -49,16 +49,16 @@ const SORT_TYPE = {
 
 const WORKBOOK_TYPE = {
   0: {
-    name: "모의고사",
-    color: "red",
+    name: "모의",
+    color: "#F2A7C3",
   },
   1: {
     name: "범위",
-    color: "blue",
+    color: "#6FBFB1",
   },
   2: {
     name: "커스텀",
-    color: "green",
+    color: "#F2CD5C",
   },
 };
 
