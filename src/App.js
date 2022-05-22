@@ -4,17 +4,17 @@ import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
 import WorkbookPage from "./pages/WorkbookPage";
-import BoardPage from "./pages/BoardPage";
-import BoardDetailPage from "./pages/BoardDetailPage";
-import BoardEditPage from "./pages/BoardEditPage";
+import BoardPage from "./temp/BoardPage";
+import BoardDetailPage from "./temp/BoardDetailPage";
+import BoardEditPage from "./temp/BoardEditPage";
 import WorkbookCreatePage from "./pages/WorkbookCreatePage/WorkbookCreatePage";
 import StoragePage from "./pages/StoragePage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout/BaseLayout";
 import Mock from "./components/workbook/Mock/Mock";
 import Range from "./components/workbook/Range/Range";
-import WorkbookEditPage from "./pages/WorkbookEditPage";
+import Custom from "./components/workbook/Custom/Custom";
 import HomePage from "./pages/HomePage";
 import WorkbookDetailPage from "./pages/WorkbookDetailPage";
 
@@ -49,7 +49,7 @@ function App() {
           <Route path="/create" element={<WorkbookCreatePage />} />
           <Route path="/mock" element={<Mock />} />
           <Route path="/range" element={<Range />} />
-          <Route path="/custom" element={<WorkbookEditPage />} />
+          <Route path="/custom" element={<Custom />} />
           <Route path="/storage" element={<StoragePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/oauth2/redirect" element={<Oauth2RedirectHandler />} />

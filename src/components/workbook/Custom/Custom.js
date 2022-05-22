@@ -1,15 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
-import { SORT_TYPE } from "../components/constant/list";
-import { requestGetQuestionList, requestPostCustomWorkbook } from "../api";
-import SearchedQuestion from "../components/question/SearchedQuestion";
-import QuestionCart from "../components/question/QuestionCart";
-import useMovePage from "../hooks/useMovePage";
-import FilterContainer from "../components/workbook/FilterContainer";
-import Select from "../components/common/Select/Select";
-import { BUTTON_COLOR } from "../components/constant/theme";
-import Button from "../components/common/Button/Button";
+import { SORT_TYPE } from "../../constant/list";
+import {
+  requestGetQuestionList,
+  requestPostCustomWorkbook,
+} from "../../../api";
+import SearchedQuestion from "../../question/SearchedQuestion";
+import QuestionCart from "../../question/QuestionCart";
+import useMovePage from "../../../hooks/useMovePage";
+import FilterContainer from "../FilterContainer";
+import Select from "../../common/Select/Select";
+import { BUTTON_COLOR } from "../../constant/theme";
+import Button from "../../common/Button/Button";
 
-function WorkbookEditPage() {
+function Custom() {
   const { goBoardPage } = useMovePage();
 
   const [title, setTitle] = useState("");
@@ -126,4 +129,4 @@ function WorkbookEditPage() {
     </div>
   );
 }
-export default WorkbookEditPage;
+export default Custom;
