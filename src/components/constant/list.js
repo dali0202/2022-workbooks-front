@@ -47,6 +47,21 @@ const SORT_TYPE = {
   "정답률 높은순": "ANSWER_RATE_DESC",
 };
 
+const WORKBOOK_TYPE = {
+  0: {
+    name: "모의고사",
+    color: "red",
+  },
+  1: {
+    name: "범위",
+    color: "blue",
+  },
+  2: {
+    name: "커스텀",
+    color: "green",
+  },
+};
+
 export {
   QUESTION_UNIT,
   QUESTION_POINT,
@@ -54,4 +69,5 @@ export {
   LANGUAGE_CONVERTER,
   SEARCH_TYPE_LIST,
   SORT_TYPE,
+  WORKBOOK_TYPE,
 };

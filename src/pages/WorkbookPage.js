@@ -16,8 +16,11 @@ function WorkbookPage() {
       <table>
         <thead>
           <tr>
+            <th>분류</th>
+            <th>번호</th>
             <th>제목</th>
             <th>작성자</th>
+            <th>작성일</th>
           </tr>
         </thead>
         <tbody>
