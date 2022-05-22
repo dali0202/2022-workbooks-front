@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { requestGetWorkbookList } from "../api";
-import SearchedWorkbook from "../components/workbook/SearchedWorkbook";
+import WorkbookItem from "../components/workbook/WorkbookItem";
 
 function WorkbookPage() {
   const [workbookList, setWorkbookList] = useState([]);
@@ -22,7 +22,7 @@ function WorkbookPage() {
         </thead>
         <tbody>
           {workbookList.map((workbook) => {
-            return <SearchedWorkbook key={workbook.id} workbook={workbook} />;
+            return <WorkbookItem key={workbook.id} workbook={workbook} />;
           })}
         </tbody>
       </table>

@@ -1,6 +1,6 @@
 import useMovePage from "../../hooks/useMovePage";
 
-function SearchedWorkbook({ workbook }) {
+function WorkbookItem({ workbook }) {
   const { goWorkbookDetailPage } = useMovePage();
   const onClick = () => {
     goWorkbookDetailPage(workbook.id);
@@ -14,4 +14,4 @@ function SearchedWorkbook({ workbook }) {
     </tr>
   );
 }
-export default SearchedWorkbook;
+export default WorkbookItem;

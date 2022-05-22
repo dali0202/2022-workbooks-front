@@ -4,7 +4,7 @@ import {
   requestGetQuestionList,
   requestPostCustomWorkbook,
 } from "../../../api";
-import SearchedQuestion from "../../question/SearchedQuestion";
+import QuestionItem from "../../question/QuestionItem";
 import QuestionCart from "../../question/QuestionCart";
 import useMovePage from "../../../hooks/useMovePage";
 import FilterContainer from "../FilterContainer";
@@ -84,7 +84,7 @@ function Custom() {
         <tbody>
           {questionList.map((question) => {
             return (
-              <SearchedQuestion
+              <QuestionItem
                 key={question.id}
                 question={question}
                 selectedQuestionList={selectedQuestionList}

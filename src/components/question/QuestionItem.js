@@ -1,4 +1,4 @@
-function SearchedQuestion({
+function QuestionItem({
   question,
   selectedQuestionList,
   setSelectedQuestionList,
@@ -27,4 +27,4 @@ function SearchedQuestion({
     </tr>
   );
 }
-export default SearchedQuestion;
+export default QuestionItem;
