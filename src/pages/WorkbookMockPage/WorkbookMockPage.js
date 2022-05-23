@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { requestPostMockWorkbook } from "../../../api";
-import useMovePage from "../../../hooks/useMovePage";
-import { BUTTON_COLOR } from "../../constant/theme";
+import { requestPostMockWorkbook } from "../../api";
+import useMovePage from "../../hooks/useMovePage";
+import { BUTTON_COLOR } from "../../components/constant/theme";
 import {
   Button,
   Container,
@@ -11,10 +11,10 @@ import {
   Form,
   Input,
   SelectWrap,
-} from "./Mock.styles";
-import { Label, Option } from "../Range/Range.styles";
+} from "./WorkbookMockPage.styles";
+import { Label, Option } from "../WorkbookRangePage/WorkbookRangePage.styles";
 
-function Mock() {
+function WorkbookMockPage() {
   const { goWorkbookPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
@@ -88,4 +88,4 @@ function Mock() {
     </Container>
   );
 }
-export default Mock;
+export default WorkbookMockPage;

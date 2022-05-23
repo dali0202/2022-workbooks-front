@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { requestGetWorkbook } from "../api";
+import { requestGetWorkbook } from "../../api";
 
 function WorkbookDetailPage() {
   const { id } = useParams();

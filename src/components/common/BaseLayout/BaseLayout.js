@@ -1,7 +1,6 @@
 import Auth from "../Auth/Auth";
-import { Container, Div, Path, Svg } from "./BaseLayout.styles";
+import { Container } from "./BaseLayout.styles";
 import Nav from "../Nav/Nav";
-import { ReactComponent as BookDivider } from "../../../assets/book.svg";
 
 function BaseLayout({ children }) {
   return (

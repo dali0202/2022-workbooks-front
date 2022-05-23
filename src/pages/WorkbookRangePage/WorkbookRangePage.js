@@ -1,11 +1,9 @@
 import { useState } from "react";
-import { QUESTION_POINT } from "../../constant/list";
-import { requestPostRangeWorkbook } from "../../../api";
-import useMovePage from "../../../hooks/useMovePage";
-import { BUTTON_COLOR } from "../../constant/theme";
-import Tag from "../../common/Tag/Tag";
-import Frame from "../../common/Frame/Frame";
-import RangeSlider from "../../common/Range/RangeSlider";
+import { QUESTION_POINT } from "../../components/constant/list";
+import { requestPostRangeWorkbook } from "../../api";
+import useMovePage from "../../hooks/useMovePage";
+import Tag from "../../components/common/Tag/Tag";
+import RangeSlider from "../../components/common/Range/RangeSlider";
 import {
   Container,
   Desc,
@@ -14,10 +12,10 @@ import {
   Label,
   Option,
   TagWrap,
-} from "./Range.styles";
-import { Button } from "../Mock/Mock.styles";
+} from "./WorkbookRangePage.styles";
+import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 
-function Range() {
+function WorkbookRangePage() {
   const { goWorkbookPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
@@ -110,4 +108,4 @@ function Range() {
     </Container>
   );
 }
-export default Range;
+export default WorkbookRangePage;

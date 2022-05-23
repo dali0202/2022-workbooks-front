@@ -1,12 +1,9 @@
 import { useCallback, useEffect, useState } from "react";
 import Select from "react-select";
-import useMovePage from "../../../hooks/useMovePage";
-import {
-  requestGetQuestionList,
-  requestPostCustomWorkbook,
-} from "../../../api";
-import QuestionCart from "../../question/QuestionCart";
-import QuestionItem from "../../question/QuestionItem";
+import useMovePage from "../../hooks/useMovePage";
+import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
+import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
+import QuestionItem from "../../components/question/QuestionItem";
 import {
   CartInfo,
   Container,
@@ -17,10 +14,10 @@ import {
   QuestionSearchContainer,
   SearchedContainer,
   SelectWrap,
-} from "./Custom.styles";
-import { Button } from "../Mock/Mock.styles";
+} from "./WorkbookCustomPage.styles";
+import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 
-function Custom() {
+function WorkbookCustomPage() {
   const { goWorkbookPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [sort, setSort] = useState("CREATED_DESC");
@@ -193,4 +190,4 @@ function Custom() {
     </Container>
   );
 }
-export default Custom;
+export default WorkbookCustomPage;

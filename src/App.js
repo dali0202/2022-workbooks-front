@@ -4,19 +4,14 @@ import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
 import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
-import BoardPage from "./temp/BoardPage";
-import BoardDetailPage from "./temp/BoardDetailPage";
-import BoardEditPage from "./temp/BoardEditPage";
-import WorkbookCreatePage from "./pages/WorkbookCreatePage/WorkbookCreatePage";
-import StoragePage from "./pages/StoragePage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout/BaseLayout";
-import Mock from "./components/workbook/Mock/Mock";
-import Range from "./components/workbook/Range/Range";
-import Custom from "./components/workbook/Custom/Custom";
-import HomePage from "./pages/HomePage";
-import WorkbookDetailPage from "./pages/WorkbookDetailPage";
+import WorkbookMockPage from "./pages/WorkbookMockPage/WorkbookMockPage";
+import WorkbookRangePage from "./pages/WorkbookRangePage/WorkbookRangePage";
+import WorkbookCustomPage from "./pages/WorkbookCustomPage/WorkbookCustomPage";
+import HomePage from "./pages/HomePage/HomePage";
+import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
 
 function App() {
   const [, setUser] = useRecoilState(userState);
@@ -43,14 +38,9 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/workbooks" element={<WorkbookPage />} />
           <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
-          <Route path="/boards/:id" element={<BoardDetailPage />} />
-          <Route path="/boards/write" element={<BoardEditPage />} />
-          <Route path="/boards/edit/:id" element={<BoardEditPage />} />
-          <Route path="/create" element={<WorkbookCreatePage />} />
-          <Route path="/mock" element={<Mock />} />
-          <Route path="/range" element={<Range />} />
-          <Route path="/custom" element={<Custom />} />
-          <Route path="/storage" element={<StoragePage />} />
+          <Route path="/mock" element={<WorkbookMockPage />} />
+          <Route path="/range" element={<WorkbookRangePage />} />
+          <Route path="/custom" element={<WorkbookCustomPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/oauth2/redirect" element={<Oauth2RedirectHandler />} />
         </Routes>
