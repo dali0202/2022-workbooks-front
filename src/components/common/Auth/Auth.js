@@ -22,7 +22,7 @@ function Auth() {
 
   return (
     <Container>
-      {authenticated ? <UserName>{currentUser.name}님</UserName> : undefined}
+      {authenticated ? <UserName>{currentUser.name}</UserName> : undefined}
       <Button onClick={authHandler}>
         {authenticated ? "로그아웃" : "로그인"}
       </Button>

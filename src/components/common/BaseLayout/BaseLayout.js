@@ -1,24 +1,22 @@
 import Auth from "../Auth/Auth";
-import { Container } from "./BaseLayout.styles";
+import { Container, Div, Path, Svg } from "./BaseLayout.styles";
 import Nav from "../Nav/Nav";
-import imgSrc from "./whietebook.jpg";
+import { ReactComponent as BookDivider } from "../../../assets/book.svg";
 
 function BaseLayout({ children }) {
   return (
-    <>
+    <Container
+    // style={{
+    //   backgroundImage: `url(${BookDivider})`,
+    //   backgroundSize: "cover",
+    //   width: "100vw",
+    //   height: "100vh",
+    // }}
+    >
       <Auth />
       <Nav />
-      <Container
-      // style={{
-      //   backgroundImage: `url(${imgSrc})`,
-      //   backgroundSize: "cover",
-      //   width: "100vw",
-      //   height: "100vh",
-      // }}
-      >
-        {children}
-      </Container>
-    </>
+      {children}
+    </Container>
   );
 }
 export default BaseLayout;

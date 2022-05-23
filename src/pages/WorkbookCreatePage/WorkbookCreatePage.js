@@ -8,9 +8,9 @@ function WorkbookCreatePage() {
 
   return (
     <Container>
-      <Button onClick={goWorkbookMockPage}>Go</Button>
-      <Button onClick={goWorkbookRangePage}>Go</Button>
-      <Button onClick={goWorkbookCustomPage}>Go</Button>
+      <Button onClick={goWorkbookMockPage}>모의고사</Button>
+      <Button onClick={goWorkbookRangePage}>조건선택</Button>
+      <Button onClick={goWorkbookCustomPage}>문제선택</Button>
     </Container>
   );
 }

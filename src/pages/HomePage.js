@@ -1,12 +1,6 @@
-import WorkbookCreatePage from "./WorkbookCreatePage/WorkbookCreatePage";
-import WorkbookPage from "./WorkbookPage/WorkbookPage";
+import Mock from "../components/workbook/Mock/Mock";
 
 function HomePage() {
-  return (
-    <>
-      <WorkbookCreatePage />
-      <WorkbookPage />
-    </>
-  );
+  return <Mock />;
 }
 export default HomePage;

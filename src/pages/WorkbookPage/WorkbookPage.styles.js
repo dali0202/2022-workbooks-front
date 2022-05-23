@@ -3,7 +3,6 @@ import { HEAD } from "../../components/constant/tableSetting";
 
 const Container = styled.div`
   position: relative;
-  top: 8rem;
   width: 42rem;
   display: flex;
   flex-direction: column;
@@ -15,9 +14,12 @@ const Thead = styled.div`
   align-items: center;
 `;
 const Column = styled.div`
-  font-size: ${HEAD.fontSize};
+  font-size: 0.8rem;
   text-align: center;
   color: gray;
 `;
-const Tbody = styled.div``;
+const Tbody = styled.div`
+  position: relative;
+  top: 3rem;
+`;
 export { Container, Table, Thead, Column, Tbody };

@@ -57,7 +57,7 @@ const WORKBOOK_TYPE = {
     color: "#6FBFB1",
   },
   2: {
-    name: "커스텀",
+    name: "문제",
     color: "#F2CD5C",
   },
 };

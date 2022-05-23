@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Label = styled.div`
-width: 3.2rem;
+width: 2.6rem;
 height: 1.4rem;
   font-size: 0.7rem;
   text-align: center;
@@ -16,11 +16,10 @@ height: 1.4rem;
 `;
 
 const Tr = styled.div`
-  height: 3rem;
+  height: 2.4rem;
   display: flex;
   align-items: center;
   position: relative;
-  top: 3rem;
 `;
 const Td = styled.div`
   font-size: 0.8rem;
