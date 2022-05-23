@@ -1,4 +1,4 @@
-import { Input, SearchWrap } from "./SearchContainer.styles";
+import { Button, Input, SearchWrap } from "./SearchContainer.styles";
 
 function SearchContainer({ keyword, setKeyword }) {
   const change = (e) => {
@@ -11,9 +11,7 @@ function SearchContainer({ keyword, setKeyword }) {
   return (
     <SearchWrap>
       <Input value={keyword} onChange={change} />
-      <button type="button" onClick={search}>
-        <i className="fas fa-search" />
-      </button>
+      <Button src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" />
     </SearchWrap>
   );
 }

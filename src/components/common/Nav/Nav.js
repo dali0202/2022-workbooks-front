@@ -1,5 +1,6 @@
 import { Container, Tab, Tabs, Title } from "./Nav.styles";
 import useMovePage from "../../../hooks/useMovePage";
+import books from "../../../assets/icons/books.png";
 
 function Nav() {
   const {

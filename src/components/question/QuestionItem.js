@@ -11,20 +11,20 @@ function QuestionItem({
     setSelectedQuestionList([...selectedQuestionList, question]);
   };
   return (
-    <tr>
-      <td>{question.id}</td>
-      <td>{question.year}년</td>
-      <td>{question.grade}학년</td>
-      <td>{question.month}월</td>
-      <td>{question.num}번</td>
-      <td>{question.point}점</td>
-      <td>{(question.answerRate * 100).toFixed(2)}%</td>
-      <td>
+    <div>
+      <div>{question.id}</div>
+      <div>{question.year}년</div>
+      <div>{question.grade}학년</div>
+      <div>{question.month}월</div>
+      <div>{question.num}번</div>
+      <div>{question.point}점</div>
+      <div>{(question.answerRate * 100).toFixed(2)}%</div>
+      <div>
         <button type="button" onClick={addCart}>
           {selectedQuestionId.includes(question.id) ? "추가됨" : "추가"}
         </button>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }
 export default QuestionItem;

@@ -29,10 +29,7 @@ function Mock() {
     { value: 2, label: "2" },
     { value: 3, label: "3" },
   ];
-  useEffect(() => {
-    console.log(grade);
-    console.log(month);
-  }, [grade, month]);
+
   const createMock = async () => {
     await requestPostMockWorkbook({ title, grade, month });
     goWorkbookPage();

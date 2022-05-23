@@ -50,15 +50,15 @@ const SORT_TYPE = {
 const WORKBOOK_TYPE = {
   0: {
     name: "모의",
-    color: "#F2A7C3",
+    color: "#F55151",
   },
   1: {
     name: "범위",
-    color: "#6FBFB1",
+    color: "#00A53B",
   },
   2: {
     name: "문제",
-    color: "#F2CD5C",
+    color: "#0095FF",
   },
 };
 

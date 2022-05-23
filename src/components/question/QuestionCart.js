@@ -1,3 +1,5 @@
+import { Button, Item } from "./QuestionCart.styles";
+
 function QuestionCart({
   question,
   selectedQuestionList,
@@ -9,15 +11,16 @@ function QuestionCart({
     );
   };
   return (
-    <tr>
-      <td>{question.id}</td>
-      <td>번{question.point}점</td>
-      <td>
-        <button type="button" id={question.id} onClick={deleteCart}>
-          삭제
-        </button>
-      </td>
-    </tr>
+    <Item>
+      <div style={{ width: "20%" }}>{question.id}</div>
+      <div style={{ width: "30%" }}>
+        {(question.answerRate * 100).toFixed(2)}%
+      </div>
+      <div>[{question.point}점]</div>
+      <Button type="button" id={question.id} onClick={deleteCart}>
+        -
+      </Button>
+    </Item>
   );
 }
 

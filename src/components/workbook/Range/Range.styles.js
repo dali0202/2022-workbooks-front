@@ -3,6 +3,13 @@ import styled from "styled-components";
 const Container = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const Form = styled.div`
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-size: 0.8rem;
   display: flex;
   flex-direction: column;
@@ -95,4 +102,4 @@ const TagWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export { Container, Desc, Input, Option, Button, Label, TagWrap };
+export { Container, Form, Desc, Input, Option, Button, Label, TagWrap };

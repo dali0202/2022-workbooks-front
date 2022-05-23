@@ -46,7 +46,7 @@ const Track = styled.div`
   position: relative;
   width: 100%;
   height: 0.3rem;
-  background-color: #99987c;
+  background-color: #e1ecf4;
   border-radius: 0.3rem;
 `;
 
@@ -57,7 +57,7 @@ const Range = styled.div`
   ${({ position }) =>
     `left: ${position[0]}%;
     right: ${position[1]}%;`}
-  background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
+  background: #0366d6;
   border-radius: 0.5rem;
 `;
 
@@ -73,7 +73,7 @@ const Thumb = styled.div`
   transform: translateY(-0.35rem);
   width: 1rem;
   height: 1rem;
-  background-color: #ff9a5a;
+  background-color: #0366d6;
   border-radius: 50%;
   ${({ position }) => `${position[0]}:${position[1]}%`}
 `;
