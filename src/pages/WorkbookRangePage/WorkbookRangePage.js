@@ -14,6 +14,7 @@ import {
   TagWrap,
 } from "./WorkbookRangePage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
+import { RANGE_DESC } from "../../components/constant/message";
 
 function WorkbookRangePage() {
   const { goWorkbookPage } = useMovePage();
@@ -37,9 +38,7 @@ function WorkbookRangePage() {
     });
     goWorkbookPage();
   };
-  const pageDesc =
-    "원하는 문제의 조건을 선택해 보세요.\n" +
-    "조건을 만족하는 문제들로 문제집을 구성합니다.";
+  const pageDesc = RANGE_DESC;
   return (
     <Container>
       <Form>

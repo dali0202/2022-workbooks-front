@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Select from "react-select";
 
 const Container = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
@@ -29,40 +28,9 @@ const Desc = styled.div`
   line-height: 2rem;
 `;
 
-const Input = styled.input`
-  position: relative;
-  bottom: 2rem;
-  width: 18rem;
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 0.375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  display: inline-flex;
-  font-size: 0.8rem;
-  height: 2.4rem;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(0.5em - 1px) 1em;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-`;
-
 const SelectWrap = styled.div`
   display: flex;
   position: relative;
-  bottom: 5rem;
-`;
-
-const CustomSelect = styled(Select)`
-  width: 9rem;
-  font-size: 0.8rem;
 `;
 
 const Button = styled.button`
@@ -96,4 +64,4 @@ const Button = styled.button`
   }
 `;
 
-export { Form, Container, Button, Desc, CustomSelect, Input, SelectWrap };
+export { Form, Container, Button, Desc, SelectWrap };

@@ -33,7 +33,7 @@ const Tab = styled.div`
   cursor: pointer;
   text-align: center;
   &: hover {
-    border-bottom: 0.2rem solid #0366d6;
+    color: #0366d6;
     transition: 0.3s;
   }
   &:after {

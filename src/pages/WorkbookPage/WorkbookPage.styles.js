@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { HEAD } from "../../components/constant/tableSetting";
 
 const Container = styled.div`
   display: flex;

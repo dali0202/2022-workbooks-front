@@ -15,36 +15,41 @@ const QUESTION_UNIT = {
   13: "평면벡터",
   14: "공간도형과 공간좌표",
 };
-
+const GRADE_LIST = [
+  { value: 0, label: "전체" },
+  { value: 1, label: "1" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+];
+const POINT_LIST = [
+  { value: 0, label: "전체" },
+  { value: 2, label: "2" },
+  { value: 3, label: "3" },
+  { value: 4, label: "4" },
+];
+const SORT_LIST = [
+  { value: "CREATED_DESC", label: "최신순" },
+  { value: "CREATED_ASC", label: "오래된순" },
+  { value: "ANSWER_RATE_ASC", label: "정답률 낮은순" },
+  { value: "ANSWER_RATE_DESC", label: "정답률 높은순" },
+];
+const MONTH_LIST = [
+  { value: 0, label: "전체" },
+  { value: 3, label: "3" },
+  { value: 6, label: "6" },
+  { value: 9, label: "9" },
+];
+const EXTENDED_MONTH_LIST = [
+  { value: 0, label: "전체" },
+  { value: 3, label: "3" },
+  { value: 6, label: "6" },
+  { value: 9, label: "9" },
+  { value: 11, label: "11" },
+];
 const QUESTION_POINT = {
   TWO: 2,
   THREE: 3,
   FOUR: 4,
-};
-
-const QUESTION_SEARCH_TYPE = {
-  GRADE: "학년",
-  MONTH: "월",
-  POINT: "점수",
-};
-
-const LANGUAGE_CONVERTER = {
-  학년: "grade",
-  월: "month",
-  점수: "point",
-};
-
-const SEARCH_TYPE_LIST = {
-  학년: [0, 1, 2, 3],
-  월: [0, 3, 6, 9, 11],
-  점수: [0, 2, 3, 4],
-};
-
-const SORT_TYPE = {
-  최신순: "CREATED_DESC",
-  오래된순: "CREATED_ASC",
-  "정답률 낮은순": "ANSWER_RATE_ASC",
-  "정답률 높은순": "ANSWER_RATE_DESC",
 };
 
 const WORKBOOK_TYPE = {
@@ -63,11 +68,12 @@ const WORKBOOK_TYPE = {
 };
 
 export {
+  GRADE_LIST,
+  POINT_LIST,
+  SORT_LIST,
+  MONTH_LIST,
+  EXTENDED_MONTH_LIST,
   QUESTION_UNIT,
   QUESTION_POINT,
-  QUESTION_SEARCH_TYPE,
-  LANGUAGE_CONVERTER,
-  SEARCH_TYPE_LIST,
-  SORT_TYPE,
   WORKBOOK_TYPE,
 };

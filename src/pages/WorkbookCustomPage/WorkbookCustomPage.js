@@ -16,6 +16,14 @@ import {
 } from "./WorkbookCustomPage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 import CustomSelect from "../../components/common/Select/CustomSelect";
+import {
+  EXTENDED_MONTH_LIST,
+  GRADE_LIST,
+  MONTH_LIST,
+  POINT_LIST,
+  SORT_LIST,
+} from "../../components/constant/list";
+import { SELECT_SIZE } from "../../components/constant/theme";
 
 function WorkbookCustomPage() {
   const { goWorkbookPage } = useMovePage();
@@ -28,48 +36,17 @@ function WorkbookCustomPage() {
   const [grade, setGrade] = useState(0);
   const [month, setMonth] = useState(0);
   const [point, setPoint] = useState(0);
-  const gradeList = [
-    { value: 0, label: "전체" },
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-  ];
-  const [monthList, setMonthList] = useState([
-    { value: 0, label: "전체" },
-    { value: 3, label: "3" },
-    { value: 6, label: "6" },
-    { value: 9, label: "9" },
-  ]);
-  const pointList = [
-    { value: 0, label: "전체" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-    { value: 4, label: "4" },
-  ];
-  const sortList = [
-    { value: "CREATED_DESC", label: "최신순" },
-    { value: "CREATED_ASC", label: "오래된순" },
-    { value: "ANSWER_RATE_ASC", label: "정답률 낮은순" },
-    { value: "ANSWER_RATE_DESC", label: "정답률 높은순" },
-  ];
+  const [monthList, setMonthList] = useState(MONTH_LIST);
+  const gradeList = GRADE_LIST;
+  const pointList = POINT_LIST;
+  const sortList = SORT_LIST;
   const onSetGradeAndMonth = (event) => {
     setGrade(event.target.value);
     if (Number(event.target.value) === 3) {
-      setMonthList([
-        { value: 0, label: "전체" },
-        { value: 3, label: "3" },
-        { value: 6, label: "6" },
-        { value: 9, label: "9" },
-        { value: 11, label: "11" },
-      ]);
+      setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
-    setMonthList([
-      { value: 0, label: "전체" },
-      { value: 3, label: "3" },
-      { value: 6, label: "6" },
-      { value: 9, label: "9" },
-    ]);
+    setMonthList(MONTH_LIST);
   };
 
   const onSetMonth = (event) => {
@@ -106,46 +83,46 @@ function WorkbookCustomPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
-  useEffect(() => {
-    console.log(grade);
-    console.log(month);
-    console.log(point);
-  }, [grade, month, point]);
+
   return (
     <Container>
       <QuestionSearchContainer>
         <SelectWrap>
           <CustomSelect
-            labelId="custom-grade-select-label"
-            id="custom-grade-select"
+            width={SELECT_SIZE.SMALL.width}
+            height={SELECT_SIZE.SMALL.height}
+            fontSize="0.8rem"
             label="학년"
             value={grade}
             onChange={onSetGradeAndMonth}
             options={gradeList}
           />
           <CustomSelect
-            labelId="custom-month-select-label"
-            id="custom-month-select"
+            width={SELECT_SIZE.SMALL.width}
+            height={SELECT_SIZE.SMALL.height}
+            fontSize="0.8rem"
             label="월"
             value={month}
             onChange={onSetMonth}
             options={monthList}
           />
           <CustomSelect
-            labelId="custom-point-select-label"
-            id="custom-point-select"
+            width={SELECT_SIZE.SMALL.width}
+            height={SELECT_SIZE.SMALL.height}
+            fontSize="0.8rem"
             label="점수"
             value={point}
             onChange={onSetPoint}
             options={pointList}
           />
-          {/* <CustomSelect */}
-          {/*  style={{ marginRight: "auto" }} */}
-          {/*  placeholder="최신순" */}
-          {/*  options={sortList} */}
-          {/*  value={sort.value} */}
-          {/*  onChange={onSetSort} */}
-          {/* /> */}
+          <CustomSelect
+            width={SELECT_SIZE.SMALL.width}
+            height={SELECT_SIZE.SMALL.height}
+            fontSize="0.8rem"
+            value={sort}
+            onChange={onSetSort}
+            options={sortList}
+          />
         </SelectWrap>
         <SearchedContainer>
           {questionList.map((question) => {

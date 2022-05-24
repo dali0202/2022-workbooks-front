@@ -1,85 +1,82 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { requestPostMockWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
-import { BUTTON_COLOR } from "../../components/constant/theme";
 import {
   Button,
   Container,
-  Content,
-  CustomSelect,
   Desc,
   Form,
-  Input,
   SelectWrap,
 } from "./WorkbookMockPage.styles";
-import { Label, Option } from "../WorkbookRangePage/WorkbookRangePage.styles";
+import {
+  EXTENDED_MONTH_LIST,
+  GRADE_LIST,
+  MONTH_LIST,
+} from "../../components/constant/list";
+import { MOCK_DESC } from "../../components/constant/message";
+import {
+  INPUT_LABEL_STYLE,
+  INPUT_STYLE,
+  SELECT_SIZE,
+} from "../../components/constant/theme";
+import CustomInput from "../../components/common/Input/CustomInput";
+import CustomSelect from "../../components/common/Select/CustomSelect";
 
 function WorkbookMockPage() {
   const { goWorkbookPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
   const [month, setMonth] = useState(3);
-  const [monthList, setMonthList] = useState([
-    { value: 3, label: "3" },
-    { value: 6, label: "6" },
-    { value: 9, label: "9" },
-  ]);
-  const gradeList = [
-    { value: 1, label: "1" },
-    { value: 2, label: "2" },
-    { value: 3, label: "3" },
-  ];
+  const [monthList, setMonthList] = useState(MONTH_LIST);
+  const gradeList = GRADE_LIST;
 
   const createMock = async () => {
     await requestPostMockWorkbook({ title, grade, month });
     goWorkbookPage();
   };
 
-  const setGradeAndMonth = (_grade) => {
-    setGrade(_grade.value);
-    if (Number(_grade.value) === 3) {
-      setMonthList([
-        { value: 3, label: "3" },
-        { value: 6, label: "6" },
-        { value: 9, label: "9" },
-        { value: 11, label: "11" },
-      ]);
+  const setGradeAndMonth = (event) => {
+    setGrade(event.target.value);
+    if (Number(event.target.value) === 3) {
+      setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
-    setMonthList([
-      { value: 3, label: "3" },
-      { value: 6, label: "6" },
-      { value: 9, label: "9" },
-    ]);
+    setMonthList(MONTH_LIST);
   };
 
-  const onSetMonth = (_month) => {
-    setMonth(_month.value);
+  const onSetMonth = (event) => {
+    setMonth(event.target.value);
   };
 
-  const pageDesc =
-    "학년과 월을 선택해보세요\n" +
-    "실제 모의고사와 동일한 구성의 문제들을 만날 수 있습니다";
+  const pageDesc = MOCK_DESC;
 
   return (
     <Container>
       <Form>
         <Desc>{pageDesc}</Desc>
-        <Input
+        <CustomInput
+          label="모의고사 이름"
+          inputStyle={INPUT_STYLE.BASIC}
+          labelStyle={INPUT_LABEL_STYLE}
           onChange={(event) => setTitle(event.target.value)}
-          placeholder="익명의 모의고사"
         />
         <SelectWrap>
           <CustomSelect
+            width={SELECT_SIZE.BASIC.width}
+            height={SELECT_SIZE.BASIC.height}
+            fontSize="0.8rem"
             options={gradeList}
-            value={grade.value}
-            placeholder="학년"
+            value={grade}
+            label="학년"
             onChange={setGradeAndMonth}
           />
           <CustomSelect
+            width={SELECT_SIZE.BASIC.width}
+            height={SELECT_SIZE.BASIC.height}
+            fontSize="0.8rem"
             options={monthList}
-            value={month.value}
-            placeholder="월"
+            value={month}
+            label="월"
             onChange={onSetMonth}
           />
         </SelectWrap>

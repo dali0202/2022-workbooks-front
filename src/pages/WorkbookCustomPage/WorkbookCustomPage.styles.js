@@ -26,7 +26,7 @@ const QuestionCartContainer = styled.div`
   border-radius: 0.5rem;
   padding: 1.5rem;
   position: fixed;
-  top: 9.5rem;
+  top: 10rem;
   right: 5rem;
 `;
 const SearchedContainer = styled.div`
