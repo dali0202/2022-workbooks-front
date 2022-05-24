@@ -1,10 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
-import Select from "react-select";
 import useMovePage from "../../hooks/useMovePage";
 import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
 import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
-import QuestionItem from "../../components/question/QuestionItem";
+import QuestionItem from "../../components/question/QuestionItem/QuestionItem";
 import {
+  CartFrame,
   CartInfo,
   Container,
   CustomSelect,
@@ -159,34 +159,36 @@ function WorkbookCustomPage() {
           })}
         </SearchedContainer>
       </QuestionSearchContainer>
-      <QuestionCartContainer>
-        <Input
-          onChange={(event) => setTitle(event.target.value)}
-          placeholder="익명의 문제집"
-        />
-        <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
-        <Questions>
-          {selectedQuestionList.map((question) => {
-            return (
-              <QuestionCart
-                key={question.id}
-                question={question}
-                selectedQuestionList={selectedQuestionList}
-                setSelectedQuestionList={setSelectedQuestionList}
-              />
-            );
-          })}
-        </Questions>
-        <Button
-          style={{
-            marginTop: "auto",
-            alignSelf: "center",
-          }}
-          onClick={createWorkbook}
-        >
-          만들기
-        </Button>
-      </QuestionCartContainer>
+      <CartFrame>
+        <QuestionCartContainer>
+          <Input
+            onChange={(event) => setTitle(event.target.value)}
+            placeholder="익명의 문제집"
+          />
+          <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
+          <Questions>
+            {selectedQuestionList.map((question) => {
+              return (
+                <QuestionCart
+                  key={question.id}
+                  question={question}
+                  selectedQuestionList={selectedQuestionList}
+                  setSelectedQuestionList={setSelectedQuestionList}
+                />
+              );
+            })}
+          </Questions>
+          <Button
+            style={{
+              marginTop: "auto",
+              alignSelf: "center",
+            }}
+            onClick={createWorkbook}
+          >
+            만들기
+          </Button>
+        </QuestionCartContainer>
+      </CartFrame>
     </Container>
   );
 }

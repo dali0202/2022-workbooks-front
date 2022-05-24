@@ -1,0 +1,56 @@
+import { Tooltip } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import AddIcon from "@mui/icons-material/Add";
+import {
+  BottomBar,
+  Button,
+  Container,
+  QuestionImg,
+  TopBar,
+} from "./QuestionItem.styles";
+
+function QuestionItem({
+  question,
+  selectedQuestionList,
+  setSelectedQuestionList,
+  selectedQuestionId,
+}) {
+  const [isHovering, setIsHovering] = useState(0);
+
+  const addCart = () => {
+    if (selectedQuestionId.includes(question.id)) {
+      return;
+    }
+    setSelectedQuestionList([...selectedQuestionList, question]);
+  };
+  const source = `${question.year}년 ${question.month}월 ${question.grade}학년 ${question.num}번`;
+  const point = `${(question.answerRate * 100).toFixed(2)}% ${
+    question.point
+  }점`;
+  return (
+    <Container>
+      <TopBar>
+        <div>{question.id}</div>
+        {!selectedQuestionId.includes(question.id) ? (
+          <Tooltip title="추가">
+            <IconButton style={{ marginLeft: "auto" }} onClick={addCart}>
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
+        ) : (
+          <Tooltip title="이미 추가된 문제입니다.">
+            <IconButton style={{ marginLeft: "auto" }}>
+              <AddIcon />
+            </IconButton>
+          </Tooltip>
+        )}
+      </TopBar>
+      <QuestionImg />
+      <BottomBar>
+        <div>{source}</div>
+        <div style={{ marginLeft: "auto" }}>{point}</div>
+      </BottomBar>
+    </Container>
+  );
+}
+export default QuestionItem;

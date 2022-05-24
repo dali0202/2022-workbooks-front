@@ -6,26 +6,34 @@ const Container = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
   padding: 0 5rem 0;
-  justify-content: center;
-`;
-const QuestionSearchContainer = styled.div`
   position: relative;
   top: 2rem;
+`;
+const QuestionSearchContainer = styled.div`
   flex-grow: 1;
+`;
+const CartFrame = styled.div`
+  width: 18rem;
+  flex-shrink: 0;
 `;
 const QuestionCartContainer = styled.div`
   display: flex;
   flex-direction: column;
-  position: fixed;
-  top: 10rem;
-  right: 5rem;
+  flex-shrink:0
   width: 14rem;
-  height: 66vh;
+  height: 68vh;
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
   border-radius: 0.5rem;
   padding: 1.5rem;
+  position: fixed;
+  top: 9.5rem;
+  right: 5rem;
 `;
 const SearchedContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
   position: relative;
   top: 1.5rem;
 `;
@@ -78,4 +86,5 @@ export {
   Input,
   CartInfo,
   Questions,
+  CartFrame,
 };
