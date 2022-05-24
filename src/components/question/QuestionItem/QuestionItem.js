@@ -1,9 +1,9 @@
 import { Tooltip } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import { useState } from "react";
 import {
   BottomBar,
-  Button,
   Container,
   QuestionImg,
   TopBar,
@@ -28,21 +28,31 @@ function QuestionItem({
     question.point
   }점`;
   return (
-    <Container>
+    <Container
+      onMouseOver={() => setIsHovering(1)}
+      onMouseOut={() => setIsHovering(0)}
+    >
       <TopBar>
         <div>{question.id}</div>
-        {!selectedQuestionId.includes(question.id) ? (
-          <Tooltip title="추가">
-            <IconButton style={{ marginLeft: "auto" }} onClick={addCart}>
-              <AddIcon />
+        {isHovering === 1 ? (
+          !selectedQuestionId.includes(question.id) ? (
+            <IconButton
+              color="primary"
+              size="small"
+              style={{ marginLeft: "auto" }}
+              onClick={addCart}
+            >
+              <AddIcon fontSize="inherit" />
             </IconButton>
-          </Tooltip>
+          ) : (
+            <Tooltip title="이미 추가된 문제입니다">
+              <IconButton size="small" disabled style={{ marginLeft: "auto" }}>
+                <AddIcon fontSize="inherit" />
+              </IconButton>
+            </Tooltip>
+          )
         ) : (
-          <Tooltip title="이미 추가된 문제입니다.">
-            <IconButton style={{ marginLeft: "auto" }}>
-              <AddIcon />
-            </IconButton>
-          </Tooltip>
+          ""
         )}
       </TopBar>
       <QuestionImg />

@@ -5,8 +5,10 @@ const Container = styled.div`
   flex-direction: column;
   padding: 0.5rem;
   font-size: 0.7rem;
-  &:hover : {
+  &:hover {
+    background: #fcfcfc;
   }
+  border-radius: 0.5rem;
 `;
 const QuestionImg = styled.div`
   background: beige;
@@ -22,9 +24,11 @@ const Button = styled.div`
 const TopBar = styled.div`
   display: flex;
   align-items: center;
+  height: 1.5rem;
 `;
 const BottomBar = styled.div`
   padding: 0.5rem 0 0.5rem;
   display: flex;
+  letter-spacing: 0.02rem;
 `;
 export { Container, QuestionImg, Button, TopBar, BottomBar };

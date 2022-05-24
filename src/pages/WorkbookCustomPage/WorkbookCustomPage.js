@@ -7,7 +7,6 @@ import {
   CartFrame,
   CartInfo,
   Container,
-  CustomSelect,
   Input,
   QuestionCartContainer,
   Questions,
@@ -16,6 +15,7 @@ import {
   SelectWrap,
 } from "./WorkbookCustomPage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
+import CustomSelect from "../../components/common/Select/CustomSelect";
 
 function WorkbookCustomPage() {
   const { goWorkbookPage } = useMovePage();
@@ -52,9 +52,9 @@ function WorkbookCustomPage() {
     { value: "ANSWER_RATE_ASC", label: "정답률 낮은순" },
     { value: "ANSWER_RATE_DESC", label: "정답률 높은순" },
   ];
-  const onSetGradeAndMonth = (_grade) => {
-    setGrade(_grade.value);
-    if (Number(_grade.value) === 3) {
+  const onSetGradeAndMonth = (event) => {
+    setGrade(event.target.value);
+    if (Number(event.target.value) === 3) {
       setMonthList([
         { value: 0, label: "전체" },
         { value: 3, label: "3" },
@@ -72,16 +72,14 @@ function WorkbookCustomPage() {
     ]);
   };
 
-  const onSetMonth = (_month) => {
-    setMonth(_month.value);
+  const onSetMonth = (event) => {
+    setMonth(event.target.value);
   };
-  const onSetPoint = (_point) => {
-    console.log(_point.value);
-    console.log("hi");
-    setPoint(_point.value);
+  const onSetPoint = (event) => {
+    setPoint(event.target.value);
   };
-  const onSetSort = (_sort) => {
-    setSort(_sort.value);
+  const onSetSort = (event) => {
+    setSort(event.target.value);
   };
   const getQuestionList = useCallback(async () => {
     const response = await requestGetQuestionList({
@@ -108,42 +106,46 @@ function WorkbookCustomPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
-
+  useEffect(() => {
+    console.log(grade);
+    console.log(month);
+    console.log(point);
+  }, [grade, month, point]);
   return (
     <Container>
       <QuestionSearchContainer>
         <SelectWrap>
           <CustomSelect
-            name="학년"
-            placeholder="전체"
-            options={gradeList}
-            value={grade.value}
+            labelId="custom-grade-select-label"
+            id="custom-grade-select"
+            label="학년"
+            value={grade}
             onChange={onSetGradeAndMonth}
+            options={gradeList}
           />
-          <div>학년</div>
           <CustomSelect
-            name="월"
-            placeholder="전체"
-            options={monthList}
-            value={month.value}
+            labelId="custom-month-select-label"
+            id="custom-month-select"
+            label="월"
+            value={month}
             onChange={onSetMonth}
+            options={monthList}
           />
-          <div>월</div>
           <CustomSelect
-            name="점수"
-            placeholder="전체"
-            options={pointList}
-            value={point.value}
+            labelId="custom-point-select-label"
+            id="custom-point-select"
+            label="점수"
+            value={point}
             onChange={onSetPoint}
+            options={pointList}
           />
-          <div>점수</div>
-          <CustomSelect
-            style={{ marginRight: "auto" }}
-            placeholder="최신순"
-            options={sortList}
-            value={sort.value}
-            onChange={onSetSort}
-          />
+          {/* <CustomSelect */}
+          {/*  style={{ marginRight: "auto" }} */}
+          {/*  placeholder="최신순" */}
+          {/*  options={sortList} */}
+          {/*  value={sort.value} */}
+          {/*  onChange={onSetSort} */}
+          {/* /> */}
         </SelectWrap>
         <SearchedContainer>
           {questionList.map((question) => {

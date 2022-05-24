@@ -89,7 +89,7 @@ export const requestPostRangeWorkbook = (data) => {
   });
 };
 
-const PAGING_SIZE = 10;
+const PAGING_SIZE = 12;
 export const requestGetQuestionList = ({ grade, month, point, page, sort }) => {
   return client.get("/api/questions", {
     params: { grade, month, point, page, size: PAGING_SIZE, sort },
