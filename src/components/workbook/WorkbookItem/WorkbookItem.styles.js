@@ -16,13 +16,13 @@ height: 1.4rem;
 
 const Tr = styled.div`
   border-bottom: 0.1px dotted #bbb;
-  height: 2.05rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   position: relative;
 `;
 const Td = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   text-align: center;
 `;
 

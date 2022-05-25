@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  position: relative;
+  top: 3rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 const Table = styled.div`
-  position: relative;
-  top: 1.5rem;
-  width: 42rem;
+  width: 50em;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -16,17 +18,12 @@ const Thead = styled.div`
   height: 1.5rem;
   display: flex;
   align-items: center;
-  top: 1rem;
-  position: relative;
 `;
 const Column = styled.div`
-  font-size: 0.75rem;
+  font-size: 0.85rem;
+
   text-align: center;
-  color: #b7b3bc;
 `;
-const Tbody = styled.div`
-  top: 2.5rem;
-  position: relative;
-`;
+const Tbody = styled.div``;
 const Side = styled.div``;
 export { Container, Table, Thead, Column, Tbody, Side };

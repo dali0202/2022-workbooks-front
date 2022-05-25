@@ -23,7 +23,12 @@ import {
   POINT_LIST,
   SORT_LIST,
 } from "../../components/constant/list";
-import { SELECT_SIZE } from "../../components/constant/theme";
+import {
+  INPUT_LABEL_STYLE,
+  INPUT_STYLE,
+  SELECT_SIZE,
+} from "../../components/constant/theme";
+import CustomInput from "../../components/common/Input/CustomInput";
 
 function WorkbookCustomPage() {
   const { goWorkbookPage } = useMovePage();
@@ -140,9 +145,11 @@ function WorkbookCustomPage() {
       </QuestionSearchContainer>
       <CartFrame>
         <QuestionCartContainer>
-          <Input
+          <CustomInput
+            label="문제집 이름"
+            inputStyle={INPUT_STYLE.BASIC}
+            labelStyle={INPUT_LABEL_STYLE}
             onChange={(event) => setTitle(event.target.value)}
-            placeholder="익명의 문제집"
           />
           <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
           <Questions>

@@ -8,13 +8,17 @@ import {
   Container,
   Desc,
   Form,
-  Input,
   Label,
   Option,
   TagWrap,
 } from "./WorkbookRangePage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 import { RANGE_DESC } from "../../components/constant/message";
+import {
+  INPUT_LABEL_STYLE,
+  INPUT_STYLE,
+} from "../../components/constant/theme";
+import CustomInput from "../../components/common/Input/CustomInput";
 
 function WorkbookRangePage() {
   const { goWorkbookPage } = useMovePage();
@@ -43,22 +47,18 @@ function WorkbookRangePage() {
     <Container>
       <Form>
         <Desc>{pageDesc}</Desc>
-        <Option>
-          <Label>문제집 이름</Label>
-          <Input
-            width="24rem"
-            onChange={(event) => setTitle(event.target.value)}
-            placeholder="익명의 문제집"
-          />
-        </Option>
-        <Option>
-          <Label>문항 수</Label>
-          <Input
-            width="12rem"
-            value={questionNum}
-            onChange={(event) => setQuestionNum(Number(event.target.value))}
-          />
-        </Option>
+        <CustomInput
+          label="문제집 이름"
+          inputStyle={INPUT_STYLE.BASIC}
+          labelStyle={INPUT_LABEL_STYLE}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <CustomInput
+          label="문항 수"
+          inputStyle={INPUT_STYLE.BASIC}
+          labelStyle={INPUT_LABEL_STYLE}
+          onChange={(event) => setQuestionNum(Number(event.target.value))}
+        />
         <Option>
           <Label style={{ position: "relative", bottom: "1rem" }}>정답률</Label>
           <RangeSlider

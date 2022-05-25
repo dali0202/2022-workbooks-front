@@ -12,15 +12,14 @@ function WorkbookItem({ workbook }) {
   };
   return (
     <Tr>
-      <Td style={{ width: "5rem" }}>
+      <Td style={{ width: "10%" }}>
         <Label color={WORKBOOK_TYPE[workbook.type].color}>
           {WORKBOOK_TYPE[workbook.type].name}
         </Label>
       </Td>
-      <Td style={{ width: "2.5rem" }}>{workbook.id}</Td>
       <Td
         style={{
-          width: "22rem",
+          width: "50%",
           display: "flex",
           position: "relative",
           left: "1rem",
@@ -30,8 +29,8 @@ function WorkbookItem({ workbook }) {
       >
         {workbook.title}
       </Td>
-      <Td style={{ width: "7.5rem" }}>{workbook.userName}</Td>
-      <Td style={{ width: "5rem" }}>{toDate(workbook.createdDate)}</Td>
+      <Td style={{ width: "20%" }}>{workbook.userName}</Td>
+      <Td style={{ width: "20%" }}>{toDate(workbook.createdDate)}</Td>
     </Tr>
   );
 }

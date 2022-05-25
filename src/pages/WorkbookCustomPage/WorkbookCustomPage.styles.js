@@ -13,7 +13,7 @@ const QuestionSearchContainer = styled.div`
   flex-grow: 1;
 `;
 const CartFrame = styled.div`
-  width: 18rem;
+  width: 19rem;
   flex-shrink: 0;
 `;
 const QuestionCartContainer = styled.div`
