@@ -65,10 +65,14 @@ export const requestGetWorkbook = (id) => {
   });
 };
 
-const WORKBOOK_PAGING_SIZE = 5;
+const WORKBOOK_PAGING_SIZE = 12;
 export const requestGetWorkbookList = ({ keyword, page }) => {
   return client.get("/api/workbooks", {
-    params: { keyword, page, size: WORKBOOK_PAGING_SIZE },
+    params: {
+      keyword,
+      page: page * WORKBOOK_PAGING_SIZE,
+      size: WORKBOOK_PAGING_SIZE,
+    },
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },

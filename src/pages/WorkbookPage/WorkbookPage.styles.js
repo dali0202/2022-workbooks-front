@@ -13,15 +13,18 @@ const Table = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border: 1px solid rgb(224, 224, 224);
+  border-radius: 4px;
 `;
 const Thead = styled.div`
-  height: 1.5rem;
+  border-bottom: 1px solid rgb(224, 224, 224);
+  font-weight: 550;
+  height: 3.2rem;
   display: flex;
   align-items: center;
 `;
 const Column = styled.div`
   font-size: 0.85rem;
-
   text-align: center;
 `;
 const Tbody = styled.div``;

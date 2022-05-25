@@ -1,29 +1,34 @@
 import styled from "styled-components";
 
 const Label = styled.div`
-width: 2.6rem;
-height: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.6rem;
+  height: 1.2rem;
+  border: 1px solid ${({ color }) => color};
+  border-radius: 1rem;
   font-size: 0.75rem;
-  text-align: center;
-  appearance: none;
   color: ${({ color }) => color};
-  border-radius: 0.4rem;
-  box-sizing: border-box;
-  display: inline-block;
-  padding: 0.2rem 0.6rem;
-  }
 `;
 
 const Tr = styled.div`
-  border-bottom: 0.1px dotted #bbb;
+  border-bottom: 1px solid #e0e0e0;
   height: 2.2rem;
+  overflow: hidden;
   display: flex;
   align-items: center;
   position: relative;
+  &:hover {
+    background: #f0f0f1;
+  }
 `;
 const Td = styled.div`
-  font-size: 0.85rem;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.01071em;
 `;
 const Hover = styled.div`
   &: hover {

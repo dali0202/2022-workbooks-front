@@ -14,7 +14,7 @@ import SearchContainer from "../../components/workbook/SearchContainer/SearchCon
 
 function WorkbookPage() {
   const [keyword, setKeyword] = useState("");
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState(1);
   const [workbookList, setWorkbookList] = useState([]);
 
   const getWorkbookList = useCallback(async () => {
@@ -31,23 +31,23 @@ function WorkbookPage() {
       <Side />
       <Table>
         <Thead>
-          <Column style={{ width: "10%" }}>구분</Column>
-          <Column style={{ flexBasis: "50%" }}>문제집 이름</Column>
-          <Column style={{ flexBasis: "20%" }}>생성자</Column>
-          <Column style={{ flexBasis: "20%" }}>생성일</Column>
+          <Column style={{ width: "12%" }}>구분</Column>
+          <Column style={{ width: "64%" }}>문제집 이름</Column>
+          <Column style={{ width: "14%" }}>생성자</Column>
+          <Column style={{ width: "14%" }}>생성일</Column>
         </Thead>
         <Tbody>
           {workbookList.map((workbook) => {
             return <WorkbookItem key={workbook.id} workbook={workbook} />;
           })}
         </Tbody>
-        <SearchContainer keyword={keyword} setKeyword={setKeyword} />
       </Table>
-      {/* <Pagination */}
-      {/*  count={10} */}
-      {/*  color="primary" */}
-      {/*  onChange={(event, page) => setPage(page)} */}
-      {/* /> */}
+      <Pagination
+        count={10}
+        color="primary"
+        onChange={(event, page) => setPage(page)}
+      />
+      <SearchContainer keyword={keyword} setKeyword={setKeyword} />
     </Container>
   );
 }

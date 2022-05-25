@@ -55,15 +55,15 @@ const QUESTION_POINT = {
 const WORKBOOK_TYPE = {
   0: {
     name: "모의",
-    color: "#F55151",
+    color: "#e65100",
   },
   1: {
     name: "범위",
-    color: "#00A53B",
+    color: "#1b5e20",
   },
   2: {
     name: "문제",
-    color: "#0095FF",
+    color: "#01579b",
   },
 };
 
