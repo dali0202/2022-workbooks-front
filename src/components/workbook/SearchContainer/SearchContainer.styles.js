@@ -1,25 +1,32 @@
 import styled from "styled-components";
+import { Button } from "@mui/material";
 
 const SearchWrap = styled.div`
-  margin-left: auto;
   display: flex;
+  justify-content: center;
   align-items: center;
-  width: 10.5rem;
-  position: relative;
+  font-size: 0.8rem;
+  height: 1.8rem;
 `;
 const Input = styled.input`
-  width: 100%;
   border: 1px solid #bbb;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  height: 1.35rem;
-  padding: 0 1rem 0;
+  border-radius: 0.2rem;
+  width: 14rem;
+  height: 100%;
+  padding: 0 0.8rem 0;
 `;
-const Button = styled.img`
+const CustomButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #bbb;
+  border-radius: 0.2rem;
+  width: 3.6rem;
+  height: 100%;
   cursor: pointer;
-  position: absolute;
-  right: 0.5rem;
-  height: 1rem;
+  &:hover {
+    background-color: tomato;
+  }
 `;
 
-export { SearchWrap, Input, Button };
+export { SearchWrap, Input, Button, CustomButton };

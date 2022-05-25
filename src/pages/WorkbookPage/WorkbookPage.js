@@ -30,18 +30,18 @@ function WorkbookPage() {
     <Container>
       <Side />
       <Table>
-        <SearchContainer keyword={keyword} setKeyword={setKeyword} />
         <Thead>
-          <Column style={{ width: "10%" }}>분류</Column>
-          <Column style={{ flexBasis: "50%" }}>제목</Column>
-          <Column style={{ flexBasis: "20%" }}>작성자</Column>
-          <Column style={{ flexBasis: "20%" }}>작성일</Column>
+          <Column style={{ width: "10%" }}>구분</Column>
+          <Column style={{ flexBasis: "50%" }}>문제집 이름</Column>
+          <Column style={{ flexBasis: "20%" }}>생성자</Column>
+          <Column style={{ flexBasis: "20%" }}>생성일</Column>
         </Thead>
         <Tbody>
           {workbookList.map((workbook) => {
             return <WorkbookItem key={workbook.id} workbook={workbook} />;
           })}
         </Tbody>
+        <SearchContainer keyword={keyword} setKeyword={setKeyword} />
       </Table>
       {/* <Pagination */}
       {/*  count={10} */}

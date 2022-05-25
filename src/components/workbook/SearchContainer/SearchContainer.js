@@ -1,5 +1,7 @@
 import { useState } from "react";
-import { Button, Input, SearchWrap } from "./SearchContainer.styles";
+import SearchIcon from "@mui/icons-material/Search";
+import { Button, IconButton } from "@mui/material";
+import { CustomButton, Input, SearchWrap } from "./SearchContainer.styles";
 
 function SearchContainer({ keyword, setKeyword }) {
   const [_keyword, _setKeyword] = useState(keyword);
@@ -12,11 +14,12 @@ function SearchContainer({ keyword, setKeyword }) {
 
   return (
     <SearchWrap>
-      <Input value={_keyword} onChange={change} />
-      <Button
-        onClick={search}
-        src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+      <Input
+        value={_keyword}
+        onChange={change}
+        placeholder="문제집 이름으로 검색하기"
       />
+      <CustomButton onClick={search}>검색</CustomButton>
     </SearchWrap>
   );
 }
