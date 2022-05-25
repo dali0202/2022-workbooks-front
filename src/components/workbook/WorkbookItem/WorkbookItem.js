@@ -1,6 +1,6 @@
 import useMovePage from "../../../hooks/useMovePage";
 import { WORKBOOK_TYPE } from "../../constant/list";
-import { Label, Td, Tr } from "./WorkbookItem.styles";
+import { Hover, Label, Td, Tr } from "./WorkbookItem.styles";
 
 function WorkbookItem({ workbook }) {
   const toDate = (createdDate) => {
@@ -32,7 +32,7 @@ function WorkbookItem({ workbook }) {
         }}
         onClick={onClick}
       >
-        {workbook.title}
+        <Hover>{workbook.title}</Hover>
       </Td>
       <Td style={{ width: "20%" }}>{workbook.userName}</Td>
       <Td style={{ width: "20%" }}>{toDate(workbook.createdDate)}</Td>

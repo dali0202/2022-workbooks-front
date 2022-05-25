@@ -25,5 +25,10 @@ const Td = styled.div`
   font-size: 0.85rem;
   text-align: center;
 `;
+const Hover = styled.div`
+  &: hover {
+    text-decoration: underline;
+  }
+`;
 
-export { Tr, Td, Label };
+export { Tr, Td, Label, Hover };
