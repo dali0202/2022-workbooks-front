@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Pagination } from "@mui/material";
-import { useCallback } from "@types/react";
-import { requestGetQuestionList, requestGetWorkbookList } from "../../api";
+import { requestGetWorkbookList } from "../../api";
 import WorkbookItem from "../../components/workbook/WorkbookItem/WorkbookItem";
 import {
   Column,
@@ -11,6 +10,7 @@ import {
   Tbody,
   Thead,
 } from "./WorkbookPage.styles";
+import SearchContainer from "../../components/workbook/SearchContainer/SearchContainer";
 
 function WorkbookPage() {
   const [keyword, setKeyword] = useState("");
@@ -24,13 +24,13 @@ function WorkbookPage() {
 
   useEffect(() => {
     getWorkbookList();
-  }, [getWorkbookList()]);
+  }, [getWorkbookList]);
 
   return (
     <Container>
       <Side />
       <Table>
-        {/* <SearchContainer keyword={keyword} setKeyword={setKeyword} /> */}
+        <SearchContainer keyword={keyword} setKeyword={setKeyword} />
         <Thead>
           <Column style={{ width: "10%" }}>분류</Column>
           <Column style={{ flexBasis: "50%" }}>제목</Column>
@@ -43,11 +43,11 @@ function WorkbookPage() {
           })}
         </Tbody>
       </Table>
-      <Pagination
-        count={10}
-        color="primary"
-        onChange={(event, page) => setPage(page)}
-      />
+      {/* <Pagination */}
+      {/*  count={10} */}
+      {/*  color="primary" */}
+      {/*  onChange={(event, page) => setPage(page)} */}
+      {/* /> */}
     </Container>
   );
 }

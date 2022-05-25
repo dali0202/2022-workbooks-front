@@ -1,17 +1,22 @@
+import { useState } from "react";
 import { Button, Input, SearchWrap } from "./SearchContainer.styles";
 
 function SearchContainer({ keyword, setKeyword }) {
+  const [_keyword, _setKeyword] = useState(keyword);
   const change = (e) => {
-    setKeyword(e.target.value);
+    _setKeyword(e.target.value);
   };
   const search = () => {
-    console.log(keyword);
+    setKeyword(_keyword);
   };
 
   return (
     <SearchWrap>
-      <Input value={keyword} onChange={change} />
-      <Button src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png" />
+      <Input value={_keyword} onChange={change} />
+      <Button
+        onClick={search}
+        src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+      />
     </SearchWrap>
   );
 }
