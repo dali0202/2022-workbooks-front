@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Pagination } from "@mui/material";
-import { requestGetWorkbookList } from "../../api";
+import { useCallback } from "@types/react";
+import { requestGetQuestionList, requestGetWorkbookList } from "../../api";
 import WorkbookItem from "../../components/workbook/WorkbookItem/WorkbookItem";
 import {
   Column,
@@ -10,22 +11,21 @@ import {
   Tbody,
   Thead,
 } from "./WorkbookPage.styles";
-import SearchContainer from "../../components/workbook/SearchContainer/SearchContainer";
 
 function WorkbookPage() {
   const [keyword, setKeyword] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [workbookList, setWorkbookList] = useState([]);
-  const getWorkbookList = async () => {
-    const response = await requestGetWorkbookList();
+
+  const getWorkbookList = useCallback(async () => {
+    const response = await requestGetWorkbookList({ page, keyword });
     setWorkbookList(response.data);
-  };
+  }, [page, keyword]);
+
   useEffect(() => {
     getWorkbookList();
-  }, []);
-  useEffect(() => {
-    console.log(page);
-  }, [page]);
+  }, [getWorkbookList()]);
+
   return (
     <Container>
       <Side />
