@@ -4,6 +4,11 @@ import { Label, Td, Tr } from "./WorkbookItem.styles";
 
 function WorkbookItem({ workbook }) {
   const toDate = (createdDate) => {
+    if (
+      createdDate.substring(0, 10) === new Date().toISOString().substring(0, 10)
+    ) {
+      return createdDate.substring(11, 16);
+    }
     return createdDate.substring(0, 10).replaceAll("-", ".");
   };
   const { goWorkbookDetailPage } = useMovePage();
