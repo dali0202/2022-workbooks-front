@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useMovePage from "../../../hooks/useMovePage";
 import { WORKBOOK_TYPE } from "../../constant/list";
 import { Hover, Label, Td, Tr } from "./WorkbookItem.styles";

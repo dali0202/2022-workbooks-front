@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useMovePage from "../../hooks/useMovePage";
 import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
 import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
@@ -44,6 +44,8 @@ function WorkbookCustomPage() {
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
+  const [bottom, setBottom] = useState(null);
+  const bottomObserver = useRef(null);
 
   const setGradeAndMonth = (event) => {
     setGrade(event.target.value);
@@ -75,6 +77,30 @@ function WorkbookCustomPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setPage((prevState) => prevState + 1);
+        }
+      },
+      { threshold: 0.25 }
+    );
+    bottomObserver.current = observer;
+  }, []);
+
+  useEffect(() => {
+    const observer = bottomObserver.current;
+    if (bottom) {
+      observer.observe(bottom);
+    }
+    return () => {
+      if (bottom) {
+        observer.unobserve(bottom);
+      }
+    };
+  }, [bottom]);
 
   useEffect(() => {
     getQuestionList();
@@ -138,9 +164,7 @@ function WorkbookCustomPage() {
             );
           })}
         </SearchedContainer>
-        <button style={{ margin: "5rem" }} onClick={() => setPage(page + 1)}>
-          더보기
-        </button>
+        <div ref={setBottom} />
       </QuestionSearchContainer>
       <CartFrame>
         <QuestionCartContainer>
