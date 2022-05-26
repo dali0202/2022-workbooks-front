@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import useMovePage from "../../hooks/useMovePage";
 import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
 import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
@@ -45,7 +45,6 @@ function WorkbookCustomPage() {
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
-  const mounted = useRef(false);
 
   const onSetGradeAndMonth = (event) => {
     setGrade(event.target.value);
@@ -65,25 +64,6 @@ function WorkbookCustomPage() {
   const onSetSort = (event) => {
     setSort(event.target.value);
   };
-
-  // const getQuestionList = useCallback(async () => {
-  //   const response = await requestGetQuestionList({
-  //     grade,
-  //     month,
-  //     point,
-  //     page,
-  //     sort,
-  //   });
-  //   setQuestionList((prevState) => [...prevState, ...response.data]);
-  // }, [grade, month, point, sort, page]);
-  //
-  // useEffect(() => {
-  //   if (!mounted.current) {
-  //     mounted.current = true;
-  //     return;
-  //   }
-  //   getQuestionList();
-  // }, [getQuestionList]);
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
