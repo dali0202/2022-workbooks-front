@@ -46,6 +46,7 @@ function WorkbookCustomPage() {
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
   const mounted = useRef(false);
+
   const onSetGradeAndMonth = (event) => {
     setGrade(event.target.value);
     if (Number(event.target.value) === 3) {
@@ -64,7 +65,27 @@ function WorkbookCustomPage() {
   const onSetSort = (event) => {
     setSort(event.target.value);
   };
-  const getQuestionList = useCallback(async () => {
+
+  // const getQuestionList = useCallback(async () => {
+  //   const response = await requestGetQuestionList({
+  //     grade,
+  //     month,
+  //     point,
+  //     page,
+  //     sort,
+  //   });
+  //   setQuestionList((prevState) => [...prevState, ...response.data]);
+  // }, [grade, month, point, sort, page]);
+  //
+  // useEffect(() => {
+  //   if (!mounted.current) {
+  //     mounted.current = true;
+  //     return;
+  //   }
+  //   getQuestionList();
+  // }, [getQuestionList]);
+
+  const getQuestionList = async () => {
     const response = await requestGetQuestionList({
       grade,
       month,
@@ -73,15 +94,10 @@ function WorkbookCustomPage() {
       sort,
     });
     setQuestionList((prevState) => [...prevState, ...response.data]);
-  }, [grade, month, point, sort, page]);
-
+  };
   useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true;
-      return;
-    }
     getQuestionList();
-  }, [getQuestionList]);
+  }, [grade, month, point, sort, page]);
 
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
