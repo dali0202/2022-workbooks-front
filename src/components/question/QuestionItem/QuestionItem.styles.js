@@ -6,7 +6,7 @@ const Container = styled.div`
   padding: 0.5rem;
   font-size: 0.7rem;
   &:hover {
-    background: #fcfcfc;
+    background: #f0f0f1;
   }
   border-radius: 0.5rem;
 `;

@@ -9,7 +9,7 @@ const Item = styled.div`
   position: relative;
   top: 1rem;
   &:hover {
-    background: #fcfcfc;
+    background: #f0f0f1;
   }
   border-radius: 0.5rem;
 `;
