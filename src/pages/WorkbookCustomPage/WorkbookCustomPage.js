@@ -7,7 +7,6 @@ import {
   CartFrame,
   CartInfo,
   Container,
-  Input,
   QuestionCartContainer,
   Questions,
   QuestionSearchContainer,
@@ -46,23 +45,13 @@ function WorkbookCustomPage() {
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
 
-  const onSetGradeAndMonth = (event) => {
+  const setGradeAndMonth = (event) => {
     setGrade(event.target.value);
     if (Number(event.target.value) === 3) {
       setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
     setMonthList(MONTH_LIST);
-  };
-
-  const onSetMonth = (event) => {
-    setMonth(event.target.value);
-  };
-  const onSetPoint = (event) => {
-    setPoint(event.target.value);
-  };
-  const onSetSort = (event) => {
-    setSort(event.target.value);
   };
 
   const getQuestionList = async () => {
@@ -75,9 +64,6 @@ function WorkbookCustomPage() {
     });
     setQuestionList((prevState) => [...prevState, ...response.data]);
   };
-  useEffect(() => {
-    getQuestionList();
-  }, [grade, month, point, sort, page]);
 
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
@@ -89,6 +75,10 @@ function WorkbookCustomPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
+
+  useEffect(() => {
+    getQuestionList();
+  }, [grade, month, point, sort, page]);
 
   useEffect(() => {
     setPage(0);
@@ -105,7 +95,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="학년"
             value={grade}
-            onChange={onSetGradeAndMonth}
+            onChange={setGradeAndMonth}
             options={gradeList}
           />
           <CustomSelect
@@ -114,7 +104,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="월"
             value={month}
-            onChange={onSetMonth}
+            onChange={(e) => setMonth(e.target.value)}
             options={monthList}
           />
           <CustomSelect
@@ -123,7 +113,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="점수"
             value={point}
-            onChange={onSetPoint}
+            onChange={(e) => setPoint(e.target.value)}
             options={pointList}
           />
           <CustomSelect
@@ -131,7 +121,7 @@ function WorkbookCustomPage() {
             height={SELECT_SIZE.SMALL.height}
             fontSize="0.8rem"
             value={sort}
-            onChange={onSetSort}
+            onChange={(e) => setSort(e.target.value)}
             options={sortList}
           />
         </SelectWrap>

@@ -45,11 +45,9 @@ function QuestionItem({
               <AddIcon fontSize="inherit" />
             </IconButton>
           ) : (
-            <Tooltip title="이미 추가된 문제입니다">
-              <IconButton size="small" disabled style={{ marginLeft: "auto" }}>
-                <AddIcon fontSize="inherit" />
-              </IconButton>
-            </Tooltip>
+            <IconButton size="small" disabled style={{ marginLeft: "auto" }}>
+              <AddIcon fontSize="inherit" />
+            </IconButton>
           )
         ) : (
           ""
