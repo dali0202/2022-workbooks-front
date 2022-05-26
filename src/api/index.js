@@ -1,4 +1,8 @@
 import axios from "axios";
+import {
+  QUESTION_PAGING_SIZE,
+  WORKBOOK_PAGING_SIZE,
+} from "../components/constant/list";
 
 const client = axios.create({
   baseUrl: "http://127.0.0.1:8080",
@@ -65,7 +69,6 @@ export const requestGetWorkbook = (id) => {
   });
 };
 
-const WORKBOOK_PAGING_SIZE = 12;
 export const requestGetWorkbookList = ({ keyword, page }) => {
   return client.get("/api/workbooks", {
     params: {
@@ -95,10 +98,9 @@ export const requestPostRangeWorkbook = (data) => {
   });
 };
 
-const PAGING_SIZE = 6;
 export const requestGetQuestionList = ({ grade, month, point, page, sort }) => {
   return client.get("/api/questions", {
-    params: { grade, month, point, page, size: PAGING_SIZE, sort },
+    params: { grade, month, point, page, size: QUESTION_PAGING_SIZE, sort },
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },

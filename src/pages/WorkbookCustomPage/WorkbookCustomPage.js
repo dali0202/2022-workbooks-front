@@ -44,10 +44,11 @@ function WorkbookCustomPage() {
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
-  const [bottom, setBottom] = useState(null);
-  const bottomObserver = useRef(null);
+  const obsRef = useRef(null);
 
   const setGradeAndMonth = (event) => {
+    setPage(0);
+    setQuestionList([]);
     setGrade(event.target.value);
     if (Number(event.target.value) === 3) {
       setMonthList(EXTENDED_MONTH_LIST);
@@ -55,6 +56,22 @@ function WorkbookCustomPage() {
     }
     setMonthList(MONTH_LIST);
   };
+  const onSetMonth = (e) => {
+    setPage(0);
+    setQuestionList([]);
+    setMonth(e.target.value);
+  };
+  const onSetPoint = (e) => {
+    setPage(0);
+    setQuestionList([]);
+    setPoint(e.target.value);
+  };
+  const onSetSort = (e) => {
+    setPage(0);
+    setQuestionList([]);
+    setSort(e.target.value);
+  };
+  // 페이지와 리스트 초기화는 useEffect로 한번에 처리가 가능하지만 useEffect간에 연쇄작용으로 인해 따로 처리
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
@@ -79,37 +96,36 @@ function WorkbookCustomPage() {
   }, [selectedQuestionList]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setPage((prevState) => prevState + 1);
-        }
-      },
-      { threshold: 0.25 }
-    );
-    bottomObserver.current = observer;
-  }, []);
-
-  useEffect(() => {
-    const observer = bottomObserver.current;
-    if (bottom) {
-      observer.observe(bottom);
-    }
-    return () => {
-      if (bottom) {
-        observer.unobserve(bottom);
-      }
-    };
-  }, [bottom]);
-
-  useEffect(() => {
     getQuestionList();
   }, [grade, month, point, sort, page]);
 
+  // const obsHandler = (entries) => {
+  //   const target = entries[0];
+  //   if (target.isIntersecting) {
+  //     setPage((prevState) => prevState + 1);
+  //   }
+  // };
+
   useEffect(() => {
-    setPage(0);
-    setQuestionList([]);
-  }, [grade, month, point, sort]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const target = entries[0];
+        if (target.isIntersecting) {
+          setPage((prevState) => prevState + 1);
+        }
+      },
+      { threshold: 0.5 }
+    );
+    if (obsRef.current) observer.observe(obsRef.current);
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   setPage(0);
+  //   setQuestionList([]);
+  // }, [grade, month, point, sort]);
 
   return (
     <Container>
@@ -130,7 +146,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="월"
             value={month}
-            onChange={(e) => setMonth(e.target.value)}
+            onChange={onSetMonth}
             options={monthList}
           />
           <CustomSelect
@@ -139,7 +155,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="점수"
             value={point}
-            onChange={(e) => setPoint(e.target.value)}
+            onChange={onSetPoint}
             options={pointList}
           />
           <CustomSelect
@@ -147,7 +163,7 @@ function WorkbookCustomPage() {
             height={SELECT_SIZE.SMALL.height}
             fontSize="0.8rem"
             value={sort}
-            onChange={(e) => setSort(e.target.value)}
+            onChange={onSetSort}
             options={sortList}
           />
         </SelectWrap>
@@ -164,7 +180,7 @@ function WorkbookCustomPage() {
             );
           })}
         </SearchedContainer>
-        <div ref={setBottom} />
+        <div ref={obsRef} />
       </QuestionSearchContainer>
       <CartFrame>
         <QuestionCartContainer>

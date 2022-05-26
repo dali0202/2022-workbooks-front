@@ -42,7 +42,10 @@ function App() {
           <Route path="/range" element={<WorkbookRangePage />} />
           <Route path="/custom" element={<WorkbookCustomPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/oauth2/redirect" element={<Oauth2RedirectHandler />} />
+          <Route
+            path="/oauth2/redirect/*"
+            element={<Oauth2RedirectHandler />}
+          />
         </Routes>
       </BaseLayout>
     </div>
