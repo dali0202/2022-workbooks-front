@@ -68,7 +68,7 @@ const WORKBOOK_TYPE = {
 };
 
 const QUESTION_PAGING_SIZE = 6;
-const WORKBOOK_PAGING_SIZE = 12;
+const WORKBOOK_PAGING_SIZE = 20;
 
 export {
   GRADE_LIST,

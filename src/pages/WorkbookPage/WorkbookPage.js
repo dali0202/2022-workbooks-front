@@ -14,7 +14,7 @@ import SearchContainer from "../../components/workbook/SearchContainer/SearchCon
 
 function WorkbookPage() {
   const [keyword, setKeyword] = useState("");
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [workbookList, setWorkbookList] = useState([]);
 
   const getWorkbookList = useCallback(async () => {

@@ -82,6 +82,19 @@ export const requestGetWorkbookList = ({ keyword, page }) => {
   });
 };
 
+export const requestGetWorkbookList2 = ({ lastWorkbookId, keyword }) => {
+  return client.get("/api/workbooks/v1", {
+    params: {
+      lastWorkbookId,
+      keyword,
+      size: WORKBOOK_PAGING_SIZE,
+    },
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    },
+  });
+};
+
 export const requestPostMockWorkbook = (data) => {
   return client.post("/api/workbooks/mock", data, {
     headers: {
