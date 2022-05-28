@@ -10,7 +10,6 @@ import BaseLayout from "./components/common/BaseLayout/BaseLayout";
 import WorkbookMockPage from "./pages/WorkbookMockPage/WorkbookMockPage";
 import WorkbookRangePage from "./pages/WorkbookRangePage/WorkbookRangePage";
 import WorkbookCustomPage from "./pages/WorkbookCustomPage/WorkbookCustomPage";
-import HomePage from "./pages/HomePage/HomePage";
 import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
 import WorkbookPageVer2 from "./pages/WorkbookPage/WorkbookPageVer2";
 
@@ -36,7 +35,7 @@ function App() {
     <div className="App">
       <BaseLayout>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<WorkbookPageVer2 />} />
           <Route path="/workbooks" element={<WorkbookPageVer2 />} />
           <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
           <Route path="/mock" element={<WorkbookMockPage />} />

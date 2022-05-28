@@ -4,15 +4,14 @@ const Container = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
   display: flex;
-
   justify-content: center;
-  height: 90vh;
+  height: 82.5vh;
 `;
 
 const Form = styled.div`
-  position: absolute;
-  top: 15rem;
-  height: 50vh;
+  position: relative;
+  top: 6rem;
+  height: 55vh;
   display: flex;
   width: 100vw;
   flex-wrap: wrap;
@@ -31,10 +30,10 @@ const Desc = styled.div`
 const SelectWrap = styled.div`
   display: flex;
   position: relative;
+  bottom: 4rem;
 `;
 
 const Button = styled.button`
-  position: relative;
   width: 6rem;
   display: inline-block;
   outline: 0;

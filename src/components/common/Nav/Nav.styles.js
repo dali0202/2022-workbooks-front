@@ -1,25 +1,32 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  background: white;
+  z-index: 2;
+  height: 12.5vh;
+  position: fixed;
+  top: 5vh;
   width: 100vw;
-  height: 4vh;
   display: flex;
-  align-items: baseline;
-  padding: 1.5rem 0 1.5rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Title = styled.div`
-  position: absolute;
-  left: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  height: 7.5vh;
   font-size: 1.4rem;
   font-family: "Amazon Ember", sans-serif;
   cursor: pointer;
-  text-align: center;
 `;
 const Tabs = styled.div`
+  background: white;
+  height: 5vh;
   display: flex;
-  position: absolute;
-  right: 5rem;
   width: 45vw;
   justify-content: space-between;
 `;
@@ -27,7 +34,6 @@ const Tab = styled.div`
   letter-spacing: 0.3rem;
   display: flex;
   align-items: center;
-  height: 2.5rem;
   font-size: 0.8rem;
   font-family: "Amazon Ember", sans-serif;
   cursor: pointer;
@@ -35,10 +41,6 @@ const Tab = styled.div`
   &: hover {
     color: #0366d6;
     transition: 0.3s;
-  }
-  &:after {
-    content: " ";
-    margin-left: -0.3em;
   }
 `;
 

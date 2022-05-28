@@ -1,7 +1,7 @@
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userState } from "../../../recoil";
 import useMovePage from "../../../hooks/useMovePage";
-import { Button, ButtonWrap, Container, UserName } from "./Auth.styles";
+import { Button, Container, UserName } from "./Auth.styles";
 
 function Auth() {
   const { currentUser, authenticated } = useRecoilValue(userState);

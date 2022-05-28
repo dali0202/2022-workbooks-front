@@ -102,7 +102,6 @@ function WorkbookRangePage() {
           </TagWrap>
         </Option>
         <Button onClick={createRange}>만들기</Button>
-        <div />
       </Form>
     </Container>
   );

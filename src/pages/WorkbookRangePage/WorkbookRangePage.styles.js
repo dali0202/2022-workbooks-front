@@ -5,7 +5,7 @@ const Container = styled.div`
     sans-serif;
   display: flex;
   justify-content: center;
-  align-items: center;
+  height: 197.5vh;
 `;
 const Form = styled.div`
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
@@ -17,9 +17,8 @@ const Form = styled.div`
   align-items: center;
   width: 35rem;
   height: 170vh;
-  padding: 1rem;
   position: relative;
-  top: 8rem;
+  top: 6rem;
 `;
 
 const Desc = styled.div`
@@ -29,29 +28,6 @@ const Desc = styled.div`
   line-height: 2rem;
 `;
 
-const Input = styled.input`
-  width: ${({ width }) => width};
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 0.375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  display: inline-flex;
-
-  font-size: 0.8rem;
-  height: 2.4rem;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(0.5em - 1px) 1em;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-`;
 const Button = styled.button`
   width: 6rem;
   background: linear-gradient(to bottom right, #ef4765, #ff9a5a);
@@ -102,4 +78,4 @@ const TagWrap = styled.div`
   flex-wrap: wrap;
 `;
 
-export { Container, Form, Desc, Input, Option, Button, Label, TagWrap };
+export { Container, Form, Desc, Option, Button, Label, TagWrap };

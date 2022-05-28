@@ -1,5 +1,5 @@
 import Auth from "../Auth/Auth";
-import { Container } from "./BaseLayout.styles";
+import { Container, Content } from "./BaseLayout.styles";
 import Nav from "../Nav/Nav";
 
 function BaseLayout({ children }) {
@@ -7,7 +7,7 @@ function BaseLayout({ children }) {
     <Container>
       <Auth />
       <Nav />
-      {children}
+      <Content>{children}</Content>
     </Container>
   );
 }

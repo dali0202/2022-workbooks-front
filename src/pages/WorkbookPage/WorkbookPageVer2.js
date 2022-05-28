@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { requestGetWorkbookList2 } from "../../api";
 import WorkbookItem from "../../components/workbook/WorkbookItem/WorkbookItem";
 import { Column, Container, Table, Tbody, Thead } from "./WorkbookPage.styles";

@@ -1,24 +1,23 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  padding: 1.3rem 0 0;
-  height: 2vh;
+  z-index: 2;
+  position: fixed;
+  background: white;
+  width: 100vw;
+  height: 5vh;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  align-self: end;
 `;
 
 const UserName = styled.div`
   cursor: Default;
-  position: relative;
-  right: 5.5rem;
   font-size: 0.7rem;
   font-family: "Amazon Ember", sans-serif;
 `;
 const Button = styled.div`
-  position: relative;
-  right: 5rem;
+  padding: 0 1.5rem 0 1rem;
   cursor: pointer;
   font-size: 0.7rem;
   font-family: "Amazon Ember", sans-serif;
