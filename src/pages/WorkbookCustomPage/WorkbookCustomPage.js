@@ -75,9 +75,9 @@ function WorkbookCustomPage() {
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
-      grade,
-      month,
-      point,
+      grade: grade === 0 ? null : grade,
+      month: month === 0 ? null : month,
+      point: point === 0 ? null : point,
       page,
       sort,
     });
