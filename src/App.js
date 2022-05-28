@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
-import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
+import WorkbookPageVer2 from "./temp/WorkbookPageVer2";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout/BaseLayout";
@@ -11,7 +11,7 @@ import WorkbookMockPage from "./pages/WorkbookMockPage/WorkbookMockPage";
 import WorkbookRangePage from "./pages/WorkbookRangePage/WorkbookRangePage";
 import WorkbookCustomPage from "./pages/WorkbookCustomPage/WorkbookCustomPage";
 import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
-import WorkbookPageVer2 from "./pages/WorkbookPage/WorkbookPageVer2";
+import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
 
 function App() {
   const [, setUser] = useRecoilState(userState);
@@ -35,8 +35,8 @@ function App() {
     <div className="App">
       <BaseLayout>
         <Routes>
-          <Route path="/" element={<WorkbookPageVer2 />} />
-          <Route path="/workbooks" element={<WorkbookPageVer2 />} />
+          <Route path="/" element={<WorkbookPage />} />
+          <Route path="/workbooks" element={<WorkbookPage />} />
           <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
           <Route path="/mock" element={<WorkbookMockPage />} />
           <Route path="/range" element={<WorkbookRangePage />} />

@@ -69,21 +69,21 @@ export const requestGetWorkbook = (id) => {
   });
 };
 
-export const requestGetWorkbookList = ({ keyword, page }) => {
-  return client.get("/api/workbooks", {
-    params: {
-      keyword,
-      page: page * WORKBOOK_PAGING_SIZE,
-      size: WORKBOOK_PAGING_SIZE,
-    },
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-    },
-  });
-};
+// export const requestGetWorkbookList = ({ keyword, page }) => {
+//   return client.get("/api/workbooks", {
+//     params: {
+//       keyword,
+//       page: page * WORKBOOK_PAGING_SIZE,
+//       size: WORKBOOK_PAGING_SIZE,
+//     },
+//     headers: {
+//       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+//     },
+//   });
+// };
 
-export const requestGetWorkbookList2 = ({ lastWorkbookId, keyword }) => {
-  return client.get("/api/workbooks/v1", {
+export const requestGetWorkbookList = ({ lastWorkbookId, keyword }) => {
+  return client.get("/api/workbooks", {
     params: {
       lastWorkbookId,
       keyword,
