@@ -31,19 +31,23 @@ import CustomInput from "../../components/common/Input/CustomInput";
 
 function WorkbookCustomPage() {
   const { goWorkbookPage } = useMovePage();
+
   const [title, setTitle] = useState("");
-  const [sort, setSort] = useState("CREATED_DESC");
-  const [page, setPage] = useState(0);
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState([]);
+
   const [grade, setGrade] = useState(0);
   const [month, setMonth] = useState(0);
   const [point, setPoint] = useState(0);
+  const [sort, setSort] = useState("CREATED_DESC");
+  const [page, setPage] = useState(0);
+
   const [monthList, setMonthList] = useState(MONTH_LIST);
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
+
   const obsRef = useRef(null);
 
   const setGradeAndMonth = (event) => {
@@ -56,22 +60,6 @@ function WorkbookCustomPage() {
     }
     setMonthList(MONTH_LIST);
   };
-  const onSetMonth = (e) => {
-    setPage(0);
-    setQuestionList([]);
-    setMonth(e.target.value);
-  };
-  const onSetPoint = (e) => {
-    setPage(0);
-    setQuestionList([]);
-    setPoint(e.target.value);
-  };
-  const onSetSort = (e) => {
-    setPage(0);
-    setQuestionList([]);
-    setSort(e.target.value);
-  };
-  // 페이지와 리스트 초기화는 useEffect로 한번에 처리가 가능하지만 useEffect간에 연쇄작용으로 인해 따로 처리
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
@@ -81,6 +69,10 @@ function WorkbookCustomPage() {
       page,
       sort,
     });
+    if (response.data.length === 0) {
+      console.log("불러올 문제가 존재하지 않습니다.");
+      return;
+    }
     setQuestionList((prevState) => [...prevState, ...response.data]);
   };
 
@@ -96,15 +88,13 @@ function WorkbookCustomPage() {
   }, [selectedQuestionList]);
 
   useEffect(() => {
+    setPage(0);
+    setQuestionList([]);
+  }, [grade, month, point, sort]);
+
+  useEffect(() => {
     getQuestionList();
   }, [grade, month, point, sort, page]);
-
-  // const obsHandler = (entries) => {
-  //   const target = entries[0];
-  //   if (target.isIntersecting) {
-  //     setPage((prevState) => prevState + 1);
-  //   }
-  // };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -121,11 +111,6 @@ function WorkbookCustomPage() {
       observer.disconnect();
     };
   }, []);
-
-  // useEffect(() => {
-  //   setPage(0);
-  //   setQuestionList([]);
-  // }, [grade, month, point, sort]);
 
   return (
     <Container>
@@ -146,7 +131,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="월"
             value={month}
-            onChange={onSetMonth}
+            onChange={(e) => setMonth(e.target.value)}
             options={monthList}
           />
           <CustomSelect
@@ -155,7 +140,7 @@ function WorkbookCustomPage() {
             fontSize="0.8rem"
             label="점수"
             value={point}
-            onChange={onSetPoint}
+            onChange={(e) => setPoint(e.target.value)}
             options={pointList}
           />
           <CustomSelect
@@ -163,7 +148,7 @@ function WorkbookCustomPage() {
             height={SELECT_SIZE.SMALL.height}
             fontSize="0.8rem"
             value={sort}
-            onChange={onSetSort}
+            onChange={(e) => setSort(e.target.value)}
             options={sortList}
           />
         </SelectWrap>

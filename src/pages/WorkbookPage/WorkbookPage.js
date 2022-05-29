@@ -20,6 +20,10 @@ function WorkbookPage() {
 
   const getWorkbookList = async () => {
     const response = await requestGetWorkbookList({ lastWorkbookId, keyword });
+    if (response.data.length === 0) {
+      console.log("불러올 문제가 존재하지 않습니다.");
+      return;
+    }
     cursor.current = response.data[response.data.length - 1].id;
     setWorkbookList((prevState) => [...prevState, ...response.data]);
   };
