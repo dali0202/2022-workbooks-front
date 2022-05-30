@@ -1,4 +1,3 @@
-import { Tooltip } from "@mui/material";
 import {
   Input,
   Range,
@@ -10,7 +9,7 @@ import {
 
 function RangeSlider({ min, max, minDif, setMin, setMax }) {
   const setLeftValue = (e) => {
-    const v = Number(e.target.value);
+    const v = Number(e.target.value / 100);
     if (v === undefined || NaN) {
       setMin(min);
       return;
@@ -19,7 +18,7 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
   };
 
   const setRightValue = (e) => {
-    const v = Number(e.target.value);
+    const v = Number(e.target.value / 100);
     if (v === undefined) {
       setMax(max);
       return;
@@ -30,35 +29,23 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
   return (
     <div style={{ width: "300px" }}>
       <Slider>
-        <Input
-          type="range"
-          min="0"
-          max="100"
-          value={min}
-          onChange={setLeftValue}
-        />
-        <Input
-          type="range"
-          min="0"
-          max="100"
-          value={max}
-          onChange={setRightValue}
-        />
+        <Input type="range" value={min * 100} onChange={setLeftValue} />
+        <Input type="range" value={max * 100} onChange={setRightValue} />
         <Track>
           {/* 숫자만 입력가능하게 해주기 */}
           <RangeLabel
-            value={min}
-            position={["left", min]}
+            value={min * 100}
+            position={["left", min * 100]}
             direction="LEFT"
             onChange={setLeftValue}
           />
-          <Range position={[min, 100 - max]} />
-          <Thumb position={["left", min]} direction="LEFT" />
-          <Thumb position={["right", 100 - max]} direction="RIGHT" />
+          <Range position={[min * 100, 100 - max * 100]} />
+          <Thumb position={["left", min * 100]} direction="LEFT" />
+          <Thumb position={["right", 100 - max * 100]} direction="RIGHT" />
           <RangeLabel
-            value={max}
+            value={max * 100}
             direction="RIGHT"
-            position={["right", 100 - max]}
+            position={["right", 100 - max * 100]}
             onChange={setRightValue}
           />
         </Track>

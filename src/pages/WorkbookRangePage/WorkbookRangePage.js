@@ -25,7 +25,7 @@ function WorkbookRangePage() {
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
-  const [upperBound, setUpperBound] = useState(100);
+  const [upperBound, setUpperBound] = useState(1);
   const [selectedUnit, setSelectedUnit] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState([]);
   const unitList = [...Array(15).keys()];
@@ -64,7 +64,7 @@ function WorkbookRangePage() {
           <RangeSlider
             min={lowerBound}
             max={upperBound}
-            minDif={10}
+            minDif={0.1}
             setMin={setLowerBound}
             setMax={setUpperBound}
           />
