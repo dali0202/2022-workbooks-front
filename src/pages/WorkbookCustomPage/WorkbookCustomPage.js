@@ -20,6 +20,7 @@ import {
   GRADE_LIST,
   MONTH_LIST,
   POINT_LIST,
+  QUESTION_PAGING_SIZE,
   SORT_LIST,
 } from "../../components/constant/list";
 import {
@@ -66,7 +67,7 @@ function WorkbookCustomPage() {
       grade: grade === 0 ? null : grade,
       month: month === 0 ? null : month,
       point: point === 0 ? null : point,
-      page,
+      offset: page * QUESTION_PAGING_SIZE,
       sort,
     });
     if (response.data.length === 0) {

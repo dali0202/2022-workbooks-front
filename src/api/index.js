@@ -111,9 +111,15 @@ export const requestPostRangeWorkbook = (data) => {
   });
 };
 
-export const requestGetQuestionList = ({ grade, month, point, page, sort }) => {
+export const requestGetQuestionList = ({
+  grade,
+  month,
+  point,
+  offset,
+  sort,
+}) => {
   return client.get("/api/questions", {
-    params: { grade, month, point, page, size: QUESTION_PAGING_SIZE, sort },
+    params: { grade, month, point, offset, size: QUESTION_PAGING_SIZE, sort },
     headers: {
       Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
     },
