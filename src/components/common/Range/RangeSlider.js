@@ -27,7 +27,7 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
   };
 
   return (
-    <div style={{ width: "300px" }}>
+    <div style={{ width: "24rem" }}>
       <Slider>
         <Input type="range" value={min * 100} onChange={setLeftValue} />
         <Input type="range" value={max * 100} onChange={setRightValue} />

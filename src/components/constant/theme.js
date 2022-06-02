@@ -5,8 +5,16 @@ const BUTTON_COLOR = {
   SELECTED: PALETTE.GRAY1,
 };
 const INPUT_STYLE = {
+  LONG: {
+    width: "24rem",
+    height: "3.2rem",
+  },
   BASIC: {
-    width: "15rem",
+    width: "18rem",
+    height: "3.2rem",
+  },
+  SHORT: {
+    width: "6rem",
     height: "3.2rem",
   },
   SMALL: {
@@ -19,6 +27,10 @@ const INPUT_LABEL_STYLE = {
 };
 
 const SELECT_SIZE = {
+  LONG: {
+    width: "11.5rem",
+    height: "3.2rem",
+  },
   BASIC: {
     width: "7rem",
     height: "3.2rem",

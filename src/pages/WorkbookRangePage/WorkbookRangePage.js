@@ -13,7 +13,6 @@ import {
   Option,
   TagWrap,
 } from "./WorkbookRangePage.styles";
-import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 import {
   QUESTION_NUM_VALID,
   RANGE_DESC,
@@ -25,6 +24,7 @@ import {
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
+import Button from "../../components/common/Button/Button";
 
 function WorkbookRangePage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -56,7 +56,7 @@ function WorkbookRangePage() {
   };
 
   const onChangeNum = (e) => {
-    setTitle(e.target.value);
+    setQuestionNum(e.target.value);
     const num = Number(e.target.value);
     if (Number.isInteger(num) && num > 0 && num <= 100) {
       setQuestionNumError(false);
@@ -84,7 +84,7 @@ function WorkbookRangePage() {
         <Desc>{pageDesc}</Desc>
         <CustomInput
           label="문제집 이름"
-          inputStyle={INPUT_STYLE.BASIC}
+          inputStyle={INPUT_STYLE.LONG}
           labelStyle={INPUT_LABEL_STYLE}
           error={titleError}
           errorMessage={TITLE_VALID}
@@ -92,7 +92,7 @@ function WorkbookRangePage() {
         />
         <CustomInput
           label="문항 수"
-          inputStyle={INPUT_STYLE.BASIC}
+          inputStyle={INPUT_STYLE.LONG}
           labelStyle={INPUT_LABEL_STYLE}
           onChange={onChangeNum}
           error={questionNumError}

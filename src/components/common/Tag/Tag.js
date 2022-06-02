@@ -1,6 +1,6 @@
 import { BUTTON_COLOR } from "../../constant/theme";
 import { QUESTION_UNIT } from "../../constant/list";
-import Button from "../Button/Button";
+import { Button } from "./Tag.styles";
 
 function Tag({ name, item, selectedItem, setSelectedItem }) {
   const onClick = () => {

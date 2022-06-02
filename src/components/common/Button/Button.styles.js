@@ -1,39 +1,35 @@
 import styled from "styled-components";
-
-const buttonStyle = {
-  WIDE: {
-    width: "100px",
-  },
-};
+import PALETTE from "../../constant/palette";
 
 const Container = styled.button`
-  background-color: ${({ color }) => color};
-  border: 1px solid #d5d9d9;
-  border-radius: 8px;
-  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  width: 5rem;
+  background: ${PALETTE.BRAND_COLOR};
+  border: 1px solid ${PALETTE.BRAND_COLOR};
+  border-radius: 6px;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
-  color: #0f1111;
+  color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Amazon Ember", sans-serif;
-  font-size: 0.8125rem;
-  line-height: 29px;
-  padding: 0 10px 0 11px;
-  position: relative;
+  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 800;
+  line-height: 16px;
+  min-height: 40px;
+  outline: 0;
   text-align: center;
-  text-decoration: none;
+  text-rendering: geometricprecision;
+  text-transform: none;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
   vertical-align: middle;
-  &: hover {
-    background-color: #f7fafa;
+
+  &:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: ${PALETTE.BRAND_COLOR};
+    opacity: 0.5;
   }
-  &: focus {
-    border-color: #008296;
-    box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
-    outline: 0;
-  }
-  ${({ sizeType }) => buttonStyle[sizeType]}
 `;
 export { Container };

@@ -15,7 +15,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 35rem;
+  width: 27rem;
   height: 170vh;
   position: relative;
   top: 6rem;
@@ -76,6 +76,7 @@ const Option = styled.div`
 const TagWrap = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export { Container, Form, Desc, Option, Button, Label, TagWrap };

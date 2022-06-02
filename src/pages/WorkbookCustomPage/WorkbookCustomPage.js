@@ -14,7 +14,6 @@ import {
   SearchedContainer,
   SelectWrap,
 } from "./WorkbookCustomPage.styles";
-import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
 import CustomSelect from "../../components/common/Select/CustomSelect";
 import {
   EXTENDED_MONTH_LIST,
@@ -32,6 +31,7 @@ import {
 import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
 import { TITLE_VALID } from "../../components/constant/message";
+import Button from "../../components/common/Button/Button";
 
 function WorkbookCustomPage() {
   const { goHomePage, goLoginPage } = useMovePage();

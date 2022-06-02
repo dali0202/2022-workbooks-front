@@ -2,14 +2,7 @@ import { useState, useEffect } from "react";
 import { useRecoilValue } from "recoil";
 import { requestPostMockWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
-import {
-  Button,
-  Container,
-  Desc,
-  ErrorMessage,
-  Form,
-  SelectWrap,
-} from "./WorkbookMockPage.styles";
+import { Container, Desc, Form, SelectWrap } from "./WorkbookMockPage.styles";
 import {
   EXTENDED_MONTH_LIST,
   GRADE_LIST,
@@ -24,6 +17,7 @@ import {
 import CustomInput from "../../components/common/Input/CustomInput";
 import CustomSelect from "../../components/common/Select/CustomSelect";
 import { userState } from "../../recoil";
+import Button from "../../components/common/Button/Button";
 
 function WorkbookMockPage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -75,7 +69,7 @@ function WorkbookMockPage() {
         <Desc>{pageDesc}</Desc>
         <CustomInput
           label="모의고사 이름"
-          inputStyle={INPUT_STYLE.BASIC}
+          inputStyle={INPUT_STYLE.LONG}
           labelStyle={INPUT_LABEL_STYLE}
           onChange={onChangeTitle}
           error={titleError}
@@ -83,8 +77,8 @@ function WorkbookMockPage() {
         />
         <SelectWrap>
           <CustomSelect
-            width={SELECT_SIZE.BASIC.width}
-            height={SELECT_SIZE.BASIC.height}
+            width={SELECT_SIZE.LONG.width}
+            height={SELECT_SIZE.LONG.height}
             fontSize="0.8rem"
             options={gradeList}
             value={grade}
@@ -92,8 +86,8 @@ function WorkbookMockPage() {
             onChange={setGradeAndMonth}
           />
           <CustomSelect
-            width={SELECT_SIZE.BASIC.width}
-            height={SELECT_SIZE.BASIC.height}
+            width={SELECT_SIZE.LONG.width}
+            height={SELECT_SIZE.LONG.height}
             fontSize="0.8rem"
             options={monthList}
             value={month}

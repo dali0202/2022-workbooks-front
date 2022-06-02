@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 15rem;
-  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 24rem;
+  height: 6rem;
 `;
 const ErrorMessage = styled.div`
   color: red;

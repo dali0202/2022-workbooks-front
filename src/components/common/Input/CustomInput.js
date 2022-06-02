@@ -18,7 +18,11 @@ function CustomInput({
         InputLabelProps={{ style: labelStyle }}
         onChange={onChange}
       />
-      {error && <ErrorMessage>{errorMessage}</ErrorMessage>}
+      {error && (
+        <ErrorMessage style={{ alignSelf: "start" }}>
+          {errorMessage}
+        </ErrorMessage>
+      )}
     </Container>
   );
 }
