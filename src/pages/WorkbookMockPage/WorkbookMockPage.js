@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRecoilValue } from "recoil";
 import { requestPostMockWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
 import {
   Button,
   Container,
   Desc,
+  ErrorMessage,
   Form,
   SelectWrap,
 } from "./WorkbookMockPage.styles";
@@ -13,7 +15,7 @@ import {
   GRADE_LIST,
   MONTH_LIST,
 } from "../../components/constant/list";
-import { MOCK_DESC } from "../../components/constant/message";
+import { MOCK_DESC, TITLE_VALID } from "../../components/constant/message";
 import {
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
@@ -21,14 +23,24 @@ import {
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
 import CustomSelect from "../../components/common/Select/CustomSelect";
+import { userState } from "../../recoil";
 
 function WorkbookMockPage() {
-  const { goHomePage } = useMovePage();
+  const { goHomePage, goLoginPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
   const [month, setMonth] = useState(3);
+  const [titleError, setTitleError] = useState(false);
   const [monthList, setMonthList] = useState(MONTH_LIST);
   const gradeList = GRADE_LIST;
+  const pageDesc = MOCK_DESC;
+  const { authenticated } = useRecoilValue(userState);
+
+  useEffect(() => {
+    if (!authenticated) {
+      goLoginPage();
+    }
+  }, []);
 
   const createMock = async () => {
     await requestPostMockWorkbook({ title, grade, month });
@@ -48,7 +60,14 @@ function WorkbookMockPage() {
     setMonth(event.target.value);
   };
 
-  const pageDesc = MOCK_DESC;
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+    if (e.target.value.length > 20) {
+      setTitleError(true);
+      return;
+    }
+    setTitleError(false);
+  };
 
   return (
     <Container>
@@ -58,7 +77,9 @@ function WorkbookMockPage() {
           label="모의고사 이름"
           inputStyle={INPUT_STYLE.BASIC}
           labelStyle={INPUT_LABEL_STYLE}
-          onChange={(event) => setTitle(event.target.value)}
+          onChange={onChangeTitle}
+          error={titleError}
+          errorMessage={TITLE_VALID}
         />
         <SelectWrap>
           <CustomSelect

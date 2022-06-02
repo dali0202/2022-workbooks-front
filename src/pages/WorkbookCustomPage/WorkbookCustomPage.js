@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useRecoilValue } from "recoil";
 import useMovePage from "../../hooks/useMovePage";
 import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
 import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
@@ -29,9 +30,12 @@ import {
   SELECT_SIZE,
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
+import { userState } from "../../recoil";
+import { TITLE_VALID } from "../../components/constant/message";
 
 function WorkbookCustomPage() {
-  const { goHomePage } = useMovePage();
+  const { goHomePage, goLoginPage } = useMovePage();
+  const { authenticated } = useRecoilValue(userState);
 
   const [title, setTitle] = useState("");
   const [questionList, setQuestionList] = useState([]);
@@ -43,6 +47,7 @@ function WorkbookCustomPage() {
   const [point, setPoint] = useState(0);
   const [sort, setSort] = useState("CREATED_DESC");
   const [page, setPage] = useState(0);
+  const [titleError, setTitleError] = useState(false);
 
   const [monthList, setMonthList] = useState(MONTH_LIST);
   const gradeList = GRADE_LIST;
@@ -77,10 +82,25 @@ function WorkbookCustomPage() {
     setQuestionList((prevState) => [...prevState, ...response.data]);
   };
 
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+    if (e.target.value.length > 20) {
+      setTitleError(true);
+      return;
+    }
+    setTitleError(false);
+  };
+
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
     goHomePage();
   };
+
+  useEffect(() => {
+    if (!authenticated) {
+      goLoginPage();
+    }
+  }, []);
 
   useEffect(() => {
     const selectedQuestions = [];
@@ -174,7 +194,9 @@ function WorkbookCustomPage() {
             label="문제집 이름"
             inputStyle={INPUT_STYLE.BASIC}
             labelStyle={INPUT_LABEL_STYLE}
-            onChange={(event) => setTitle(event.target.value)}
+            error={titleError}
+            errorMessage={TITLE_VALID}
+            onChange={onChangeTitle}
           />
           <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
           <Questions>

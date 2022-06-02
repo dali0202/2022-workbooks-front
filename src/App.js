@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
-import WorkbookPageVer2 from "./temp/WorkbookPageVer2";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
 import BaseLayout from "./components/common/BaseLayout/BaseLayout";

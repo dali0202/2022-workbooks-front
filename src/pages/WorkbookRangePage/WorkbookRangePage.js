@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useRecoilValue } from "recoil";
 import { QUESTION_POINT } from "../../components/constant/list";
 import { requestPostRangeWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
@@ -13,23 +14,41 @@ import {
   TagWrap,
 } from "./WorkbookRangePage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
-import { RANGE_DESC } from "../../components/constant/message";
+import { RANGE_DESC, TITLE_VALID } from "../../components/constant/message";
 import {
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
+import { userState } from "../../recoil";
 
 function WorkbookRangePage() {
-  const { goHomePage } = useMovePage();
+  const { goHomePage, goLoginPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
   const [upperBound, setUpperBound] = useState(1);
   const [selectedUnit, setSelectedUnit] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState([]);
+  const [titleError, setTitleError] = useState(false);
   const unitList = [...Array(15).keys()];
   const pointList = Object.values(QUESTION_POINT);
+  const { authenticated } = useRecoilValue(userState);
+
+  useEffect(() => {
+    if (!authenticated) {
+      goLoginPage();
+    }
+  }, []);
+
+  const onChangeTitle = (e) => {
+    setTitle(e.target.value);
+    if (e.target.value.length > 20) {
+      setTitleError(true);
+      return;
+    }
+    setTitleError(false);
+  };
 
   const createRange = async () => {
     await requestPostRangeWorkbook({
@@ -42,6 +61,7 @@ function WorkbookRangePage() {
     });
     goHomePage();
   };
+
   const pageDesc = RANGE_DESC;
   return (
     <Container>
@@ -51,7 +71,9 @@ function WorkbookRangePage() {
           label="문제집 이름"
           inputStyle={INPUT_STYLE.BASIC}
           labelStyle={INPUT_LABEL_STYLE}
-          onChange={(event) => setTitle(event.target.value)}
+          error={titleError}
+          errorMessage={TITLE_VALID}
+          onChange={onChangeTitle}
         />
         <CustomInput
           label="문항 수"

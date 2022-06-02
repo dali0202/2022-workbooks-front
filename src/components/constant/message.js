@@ -4,4 +4,6 @@ const MOCK_DESC =
 const RANGE_DESC =
   "원하는 문제의 조건을 선택해 보세요.\n" +
   "조건을 만족하는 문제들로 문제집을 구성합니다.";
-export { MOCK_DESC, RANGE_DESC };
+const TITLE_VALID = "문제집 이름은 20자 이하입니다.";
+const MULTI_SELECT_VALID = "한가지 이상 선택해주세요.";
+export { MOCK_DESC, RANGE_DESC, TITLE_VALID, MULTI_SELECT_VALID };
