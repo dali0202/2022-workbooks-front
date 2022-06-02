@@ -8,9 +8,6 @@ const useMovePage = () => {
   const goLoginPage = () => {
     navigate("/login");
   };
-  const goWorkbookPage = () => {
-    navigate("/workbooks");
-  };
   const goBoardWritePage = () => {
     navigate("/boards/write");
   };
@@ -41,7 +38,6 @@ const useMovePage = () => {
   return {
     goHomePage,
     goLoginPage,
-    goWorkbookPage,
     goWorkbookDetailPage,
     goWorkbookCreatePage,
     goBoardWritePage,

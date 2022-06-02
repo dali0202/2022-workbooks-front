@@ -3,7 +3,7 @@ import useMovePage from "../../../hooks/useMovePage";
 
 function Nav() {
   const {
-    goWorkbookPage,
+    goHomePage,
     goWorkbookMockPage,
     goWorkbookRangePage,
     goWorkbookCustomPage,
@@ -11,7 +11,7 @@ function Nav() {
 
   return (
     <Container>
-      <Title onClick={goWorkbookPage}>Workbooks</Title>
+      <Title onClick={goHomePage}>Workbooks</Title>
       <Tabs>
         <Tab onClick={goWorkbookMockPage}>모의고사</Tab>
         <Tab onClick={goWorkbookRangePage}>범위선택</Tab>

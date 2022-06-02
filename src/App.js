@@ -36,7 +36,6 @@ function App() {
       <BaseLayout>
         <Routes>
           <Route path="/" element={<WorkbookPage />} />
-          <Route path="/workbooks" element={<WorkbookPage />} />
           <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
           <Route path="/mock" element={<WorkbookMockPage />} />
           <Route path="/range" element={<WorkbookRangePage />} />

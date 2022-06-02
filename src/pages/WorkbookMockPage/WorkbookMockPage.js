@@ -23,7 +23,7 @@ import CustomInput from "../../components/common/Input/CustomInput";
 import CustomSelect from "../../components/common/Select/CustomSelect";
 
 function WorkbookMockPage() {
-  const { goWorkbookPage } = useMovePage();
+  const { goHomePage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
   const [month, setMonth] = useState(3);
@@ -32,7 +32,7 @@ function WorkbookMockPage() {
 
   const createMock = async () => {
     await requestPostMockWorkbook({ title, grade, month });
-    goWorkbookPage();
+    goHomePage();
   };
 
   const setGradeAndMonth = (event) => {

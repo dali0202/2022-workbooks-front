@@ -21,7 +21,7 @@ import {
 import CustomInput from "../../components/common/Input/CustomInput";
 
 function WorkbookRangePage() {
-  const { goWorkbookPage } = useMovePage();
+  const { goHomePage } = useMovePage();
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
@@ -40,7 +40,7 @@ function WorkbookRangePage() {
       selectedUnit,
       selectedPoint,
     });
-    goWorkbookPage();
+    goHomePage();
   };
   const pageDesc = RANGE_DESC;
   return (

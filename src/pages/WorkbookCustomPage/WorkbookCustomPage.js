@@ -31,7 +31,7 @@ import {
 import CustomInput from "../../components/common/Input/CustomInput";
 
 function WorkbookCustomPage() {
-  const { goWorkbookPage } = useMovePage();
+  const { goHomePage } = useMovePage();
 
   const [title, setTitle] = useState("");
   const [questionList, setQuestionList] = useState([]);
@@ -79,7 +79,7 @@ function WorkbookCustomPage() {
 
   const createWorkbook = async () => {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
-    goWorkbookPage();
+    goHomePage();
   };
 
   useEffect(() => {
