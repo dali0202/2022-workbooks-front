@@ -4,6 +4,11 @@ const BUTTON_COLOR = {
   BASIC: PALETTE.WHITE,
   SELECTED: PALETTE.GRAY1,
 };
+const BUTTON_SIZE = {
+  SMALL: { width: "5rem" },
+  BASIC: { width: "20rem" },
+  LONG: { width: "24rem" },
+};
 const INPUT_STYLE = {
   LONG: {
     width: "24rem",
@@ -41,4 +46,10 @@ const SELECT_SIZE = {
   },
 };
 
-export { BUTTON_COLOR, INPUT_STYLE, SELECT_SIZE, INPUT_LABEL_STYLE };
+export {
+  BUTTON_COLOR,
+  BUTTON_SIZE,
+  INPUT_STYLE,
+  SELECT_SIZE,
+  INPUT_LABEL_STYLE,
+};

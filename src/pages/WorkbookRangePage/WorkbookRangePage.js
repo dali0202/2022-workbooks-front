@@ -19,12 +19,14 @@ import {
   TITLE_VALID,
 } from "../../components/constant/message";
 import {
+  BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
 import Button from "../../components/common/Button/Button";
+import PALETTE from "../../components/constant/palette";
 
 function WorkbookRangePage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -140,7 +142,13 @@ function WorkbookRangePage() {
             })}
           </TagWrap>
         </Option>
-        <Button onClick={createRange}>만들기</Button>
+        <Button
+          color={PALETTE.BRAND_COLOR}
+          sizeType={BUTTON_SIZE.LONG}
+          onClick={createRange}
+        >
+          만들기
+        </Button>
       </Form>
     </Container>
   );

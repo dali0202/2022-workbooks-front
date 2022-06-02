@@ -24,6 +24,7 @@ import {
   SORT_LIST,
 } from "../../components/constant/list";
 import {
+  BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
   SELECT_SIZE,
@@ -32,6 +33,7 @@ import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
 import { TITLE_VALID } from "../../components/constant/message";
 import Button from "../../components/common/Button/Button";
+import PALETTE from "../../components/constant/palette";
 
 function WorkbookCustomPage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -190,14 +192,16 @@ function WorkbookCustomPage() {
       </QuestionSearchContainer>
       <CartFrame>
         <QuestionCartContainer>
-          <CustomInput
-            label="문제집 이름"
-            inputStyle={INPUT_STYLE.BASIC}
-            labelStyle={INPUT_LABEL_STYLE}
-            error={titleError}
-            errorMessage={TITLE_VALID}
-            onChange={onChangeTitle}
-          />
+          <div style={{ position: "relative", top: "1rem" }}>
+            <CustomInput
+              label="문제집 이름"
+              inputStyle={INPUT_STYLE.BASIC}
+              labelStyle={INPUT_LABEL_STYLE}
+              error={titleError}
+              errorMessage={TITLE_VALID}
+              onChange={onChangeTitle}
+            />
+          </div>
           <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
           <Questions>
             {selectedQuestionList.map((question) => {
@@ -212,10 +216,8 @@ function WorkbookCustomPage() {
             })}
           </Questions>
           <Button
-            style={{
-              alignSelf: "end",
-              marginLeft: "auto",
-            }}
+            color={PALETTE.BRAND_COLOR}
+            sizeType={BUTTON_SIZE.BASIC}
             onClick={createWorkbook}
           >
             만들기

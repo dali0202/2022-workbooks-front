@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import PALETTE from "../../constant/palette";
 
 const Container = styled.button`
-  width: 5rem;
-  background: ${PALETTE.BRAND_COLOR};
-  border: 1px solid ${PALETTE.BRAND_COLOR};
+  width: ${({ sizeType }) => sizeType.width};
+  background: ${({ color }) => color};
+  border: 1px solid ${({ color }) => color};
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
   box-sizing: border-box;
@@ -28,7 +27,7 @@ const Container = styled.button`
   &:active {
     background-color: initial;
     background-position: 0 0;
-    color: ${PALETTE.BRAND_COLOR};
+    color: ${({ color }) => color};
     opacity: 0.5;
   }
 `;

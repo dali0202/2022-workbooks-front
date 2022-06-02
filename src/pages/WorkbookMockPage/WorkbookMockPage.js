@@ -10,6 +10,7 @@ import {
 } from "../../components/constant/list";
 import { MOCK_DESC, TITLE_VALID } from "../../components/constant/message";
 import {
+  BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
   SELECT_SIZE,
@@ -18,6 +19,7 @@ import CustomInput from "../../components/common/Input/CustomInput";
 import CustomSelect from "../../components/common/Select/CustomSelect";
 import { userState } from "../../recoil";
 import Button from "../../components/common/Button/Button";
+import PALETTE from "../../components/constant/palette";
 
 function WorkbookMockPage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -95,7 +97,13 @@ function WorkbookMockPage() {
             onChange={onSetMonth}
           />
         </SelectWrap>
-        <Button onClick={createMock}>만들기</Button>
+        <Button
+          color={PALETTE.BRAND_COLOR}
+          sizeType={BUTTON_SIZE.LONG}
+          onClick={createMock}
+        >
+          만들기
+        </Button>
       </Form>
     </Container>
   );
