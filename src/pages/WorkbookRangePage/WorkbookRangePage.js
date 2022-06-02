@@ -14,7 +14,11 @@ import {
   TagWrap,
 } from "./WorkbookRangePage.styles";
 import { Button } from "../WorkbookMockPage/WorkbookMockPage.styles";
-import { RANGE_DESC, TITLE_VALID } from "../../components/constant/message";
+import {
+  QUESTION_NUM_VALID,
+  RANGE_DESC,
+  TITLE_VALID,
+} from "../../components/constant/message";
 import {
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
@@ -31,6 +35,7 @@ function WorkbookRangePage() {
   const [selectedUnit, setSelectedUnit] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState([]);
   const [titleError, setTitleError] = useState(false);
+  const [questionNumError, setQuestionNumError] = useState(false);
   const unitList = [...Array(15).keys()];
   const pointList = Object.values(QUESTION_POINT);
   const { authenticated } = useRecoilValue(userState);
@@ -43,11 +48,21 @@ function WorkbookRangePage() {
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
-    if (e.target.value.length > 20) {
+    if (e.target.value.length > 20 || e.target.value.length === 0) {
       setTitleError(true);
       return;
     }
     setTitleError(false);
+  };
+
+  const onChangeNum = (e) => {
+    setTitle(e.target.value);
+    const num = Number(e.target.value);
+    if (Number.isInteger(num) && num > 0 && num <= 100) {
+      setQuestionNumError(false);
+      return;
+    }
+    setQuestionNumError(true);
   };
 
   const createRange = async () => {
@@ -79,7 +94,9 @@ function WorkbookRangePage() {
           label="문항 수"
           inputStyle={INPUT_STYLE.BASIC}
           labelStyle={INPUT_LABEL_STYLE}
-          onChange={(event) => setQuestionNum(Number(event.target.value))}
+          onChange={onChangeNum}
+          error={questionNumError}
+          errorMessage={QUESTION_NUM_VALID}
         />
         <Option>
           <Label style={{ position: "relative", bottom: "1rem" }}>정답률</Label>
