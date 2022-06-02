@@ -19,8 +19,8 @@ function QuestionCart({
       onMouseOver={() => setIsHovering(1)}
       onMouseOut={() => setIsHovering(0)}
     >
-      <div style={{ width: "20%" }}>{question.id}</div>
-      <div style={{ width: "30%" }}>
+      <div style={{ width: "40%" }}>{question.id}</div>
+      <div style={{ width: "40%" }}>
         {(question.answerRate * 100).toFixed(2)}%
       </div>
       <div>{question.point}점</div>

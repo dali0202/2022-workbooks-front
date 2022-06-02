@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.div`
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #a7aaad;
   background: white;
   z-index: 2;
   height: 12.5vh;
@@ -19,14 +19,14 @@ const Title = styled.div`
   justify-content: center;
   align-items: center;
   background: white;
-  height: 7.5vh;
+  height: 5vh;
   font-size: 1.4rem;
   font-family: "Amazon Ember", sans-serif;
   cursor: pointer;
 `;
 const Tabs = styled.div`
   background: white;
-  height: 5vh;
+  height: 7.5vh;
   display: flex;
   width: 45vw;
   justify-content: space-between;

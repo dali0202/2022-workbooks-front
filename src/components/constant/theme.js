@@ -10,11 +10,11 @@ const INPUT_STYLE = {
     height: "3.2rem",
   },
   BASIC: {
-    width: "18rem",
+    width: "20rem",
     height: "3.2rem",
   },
   SHORT: {
-    width: "6rem",
+    width: "12rem",
     height: "3.2rem",
   },
   SMALL: {

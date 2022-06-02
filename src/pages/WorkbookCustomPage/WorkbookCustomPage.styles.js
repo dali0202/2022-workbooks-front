@@ -1,33 +1,32 @@
 import styled from "styled-components";
-import Select from "react-select";
 
 const Container = styled.div`
   display: flex;
   font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
     sans-serif;
   padding: 0 5rem 0;
-  position: relative;
-  top: 2rem;
 `;
 const QuestionSearchContainer = styled.div`
+  position: relative;
+  top: 2rem;
   flex-grow: 1;
 `;
 const CartFrame = styled.div`
-  width: 19rem;
+  width: 18rem;
   flex-shrink: 0;
 `;
 const QuestionCartContainer = styled.div`
+  padding: 1rem;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  border-left: 1px solid #a7aaad;
   flex-shrink:0
-  width: 14rem;
-  height: 68vh;
-  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px;
-  border-radius: 0.5rem;
-  padding: 1.5rem;
+  height: 82.5vh;
   position: fixed;
-  top: 10rem;
-  right: 5rem;
+  top: 17.5vh;
+  right: 0;
 `;
 const SearchedContainer = styled.div`
   width: 100%;
@@ -37,43 +36,20 @@ const SearchedContainer = styled.div`
   position: relative;
   top: 1.5rem;
 `;
-const CustomSelect = styled(Select)`
-  font-size: 0.7rem;
-`;
 const SelectWrap = styled.div`
   display: flex;
   align-items: center;
   font-size: 0.8rem;
 `;
-
-const Input = styled.input`
-  position: relative;
-  width: 14rem;
-  appearance: none;
-  background-color: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 0.375em;
-  box-shadow: none;
-  box-sizing: border-box;
-  color: #363636;
-  display: inline-flex;
-  font-size: 0.8rem;
-  height: 2.4rem;
-  justify-content: center;
-  line-height: 1.5;
-  padding: calc(0.5em - 1px) 1em;
-  position: relative;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: top;
-  white-space: nowrap;
-`;
 const CartInfo = styled.div`
   font-size: 0.8rem;
 `;
 const Questions = styled.div`
-  height: 50vh;
+  border: 1px solid #c3c4c7;
+  border-radius: 0.3rem;
+  width: 20rem;
+  height: 56vh;
+  margin: 1rem 0 1rem;
   overflow: scroll;
 `;
 export {
@@ -81,9 +57,7 @@ export {
   QuestionCartContainer,
   QuestionSearchContainer,
   SearchedContainer,
-  CustomSelect,
   SelectWrap,
-  Input,
   CartInfo,
   Questions,
   CartFrame,

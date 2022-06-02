@@ -56,7 +56,7 @@ function WorkbookMockPage() {
 
   const onChangeTitle = (e) => {
     setTitle(e.target.value);
-    if (e.target.value.length > 20) {
+    if (e.target.value.length > 20 || e.target.value.length === 0) {
       setTitleError(true);
       return;
     }

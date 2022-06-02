@@ -4,7 +4,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 24rem;
+
   height: 6rem;
 `;
 const ErrorMessage = styled.div`
