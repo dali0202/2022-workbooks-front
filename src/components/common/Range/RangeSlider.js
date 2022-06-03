@@ -9,7 +9,7 @@ import {
 
 function RangeSlider({ min, max, minDif, setMin, setMax }) {
   const setLeftValue = (e) => {
-    const v = Number(e.target.value / 100);
+    const v = Number(e.target.value) / 100;
     if (v === undefined || NaN) {
       setMin(min);
       return;
@@ -18,7 +18,7 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
   };
 
   const setRightValue = (e) => {
-    const v = Number(e.target.value / 100);
+    const v = Number(e.target.value) / 100;
     if (v === undefined) {
       setMax(max);
       return;
@@ -37,13 +37,13 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
           <Thumb position={["left", min * 100]} direction="LEFT" />
           <Thumb position={["right", 100 - max * 100]} direction="RIGHT" />
           <RangeLabel
-            value={min * 100}
+            value={Math.floor(min * 100)}
             position={["left", min * 100]}
             direction="RIGHT"
             onChange={setLeftValue}
           />
           <RangeLabel
-            value={max * 100}
+            value={Math.floor(max * 100)}
             direction="LEFT"
             position={["right", 100 - max * 100]}
             onChange={setRightValue}
