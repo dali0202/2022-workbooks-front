@@ -33,18 +33,18 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
         <Input type="range" value={max * 100} onChange={setRightValue} />
         <Track>
           {/* 숫자만 입력가능하게 해주기 */}
-          <RangeLabel
-            value={min * 100}
-            position={["left", min * 100]}
-            direction="LEFT"
-            onChange={setLeftValue}
-          />
           <Range position={[min * 100, 100 - max * 100]} />
           <Thumb position={["left", min * 100]} direction="LEFT" />
           <Thumb position={["right", 100 - max * 100]} direction="RIGHT" />
           <RangeLabel
-            value={max * 100}
+            value={min * 100}
+            position={["left", min * 100]}
             direction="RIGHT"
+            onChange={setLeftValue}
+          />
+          <RangeLabel
+            value={max * 100}
+            direction="LEFT"
             position={["right", 100 - max * 100]}
             onChange={setRightValue}
           />

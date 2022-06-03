@@ -14,6 +14,7 @@ import {
   TagWrap,
 } from "./WorkbookRangePage.styles";
 import {
+  MULTI_SELECT_VALID,
   QUESTION_NUM_VALID,
   RANGE_DESC,
   TITLE_VALID,
@@ -27,6 +28,7 @@ import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
+import { ErrorMessage } from "../../components/common/Input/CustomInput.styles";
 
 function WorkbookRangePage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -37,6 +39,8 @@ function WorkbookRangePage() {
   const [selectedUnit, setSelectedUnit] = useState([]);
   const [selectedPoint, setSelectedPoint] = useState([]);
   const [titleError, setTitleError] = useState(false);
+  const [unitError, setUnitError] = useState(false);
+  const [pointError, setPointError] = useState(false);
   const [questionNumError, setQuestionNumError] = useState(false);
   const unitList = [...Array(15).keys()];
   const pointList = Object.values(QUESTION_POINT);
@@ -79,6 +83,16 @@ function WorkbookRangePage() {
     goHomePage();
   };
 
+  useEffect(() => {
+    if (selectedUnit.length === 0) setUnitError(true);
+    else setUnitError(false);
+  }, [selectedUnit]);
+
+  useEffect(() => {
+    if (selectedPoint.length === 0) setPointError(true);
+    else setPointError(false);
+  }, [selectedPoint]);
+
   const pageDesc = RANGE_DESC;
   return (
     <Container>
@@ -111,7 +125,10 @@ function WorkbookRangePage() {
           />
         </Option>
         <Option>
-          <Label>단원 선택</Label>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Label>단원 선택</Label>
+            {unitError && <ErrorMessage>{MULTI_SELECT_VALID}</ErrorMessage>}
+          </div>
           <TagWrap>
             {unitList.map((item) => {
               return (
@@ -127,7 +144,10 @@ function WorkbookRangePage() {
           </TagWrap>
         </Option>
         <Option>
-          <Label>점수 선택</Label>
+          <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <Label>점수 선택</Label>
+            {pointError && <ErrorMessage>{MULTI_SELECT_VALID}</ErrorMessage>}
+          </div>
           <TagWrap>
             {pointList.map((item) => {
               return (

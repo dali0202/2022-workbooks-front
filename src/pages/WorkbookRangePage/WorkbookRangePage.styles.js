@@ -15,7 +15,7 @@ const Form = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 27rem;
+  width: 24rem;
   height: 170vh;
   position: relative;
   top: 6rem;
@@ -63,11 +63,7 @@ const Button = styled.button`
 `;
 
 const Label = styled.div`
-  font-size: 0.6rem;
-  align-self: end;
-  position: relative;
-  bottom: 0.2rem;
-  font-size: 0.6rem;
+  font-size: 0.7rem;
 `;
 const Option = styled.div`
   display: flex;

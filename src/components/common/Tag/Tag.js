@@ -14,7 +14,6 @@ function Tag({ name, item, selectedItem, setSelectedItem }) {
     <Button
       key={item}
       onClick={onClick}
-      width="3rem"
       color={
         selectedItem.includes(item) ? BUTTON_COLOR.SELECTED : BUTTON_COLOR.BASIC
       }
