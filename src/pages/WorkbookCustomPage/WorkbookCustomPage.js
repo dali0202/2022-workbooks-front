@@ -117,7 +117,7 @@ function WorkbookCustomPage() {
     if (!authenticated) {
       goLoginPage();
     }
-  }, []);
+  }, [authenticated]);
 
   useEffect(() => {
     const selectedQuestions = [];

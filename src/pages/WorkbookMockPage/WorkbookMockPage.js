@@ -50,7 +50,7 @@ function WorkbookMockPage() {
     if (!authenticated) {
       goLoginPage();
     }
-  }, []);
+  }, [authenticated]);
 
   const createMock = async () => {
     if (titleError) {

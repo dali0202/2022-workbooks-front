@@ -64,7 +64,7 @@ function WorkbookRangePage() {
     if (!authenticated) {
       goLoginPage();
     }
-  }, []);
+  }, [authenticated]);
 
   const onChangeTitle = (e) => {
     titleErrorVisible.current = true;
