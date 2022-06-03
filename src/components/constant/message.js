@@ -7,10 +7,12 @@ const RANGE_DESC =
 const TITLE_VALID = "공백이 아닌 20자 이하의 이름을 입력해주세요.";
 const MULTI_SELECT_VALID = "한가지 이상 선택해주세요.";
 const QUESTION_NUM_VALID = "1이상 100이하의 수를 입력해주세요.";
+const CREATE_VALID = "입력값이 올바르지 않습니다.";
 export {
   MOCK_DESC,
   RANGE_DESC,
   TITLE_VALID,
   MULTI_SELECT_VALID,
   QUESTION_NUM_VALID,
+  CREATE_VALID,
 };

@@ -31,9 +31,10 @@ import {
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
 import { userState } from "../../recoil";
-import { TITLE_VALID } from "../../components/constant/message";
+import { CREATE_VALID, TITLE_VALID } from "../../components/constant/message";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
+import Modal from "../../components/common/Modal/Modal";
 
 function WorkbookCustomPage() {
   const { goHomePage, goLoginPage } = useMovePage();
@@ -49,7 +50,9 @@ function WorkbookCustomPage() {
   const [point, setPoint] = useState(0);
   const [sort, setSort] = useState("CREATED_DESC");
   const [page, setPage] = useState(0);
-  const [titleError, setTitleError] = useState(false);
+  const [titleError, setTitleError] = useState(true);
+  const titleErrorVisible = useRef(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const [monthList, setMonthList] = useState(MONTH_LIST);
   const gradeList = GRADE_LIST;
@@ -57,6 +60,13 @@ function WorkbookCustomPage() {
   const sortList = SORT_LIST;
 
   const obsRef = useRef(null);
+
+  const openModal = () => {
+    setModalVisible(true);
+  };
+  const closeModal = () => {
+    setModalVisible(false);
+  };
 
   const setGradeAndMonth = (event) => {
     setPage(0);
@@ -78,13 +88,13 @@ function WorkbookCustomPage() {
       sort,
     });
     if (response.data.length === 0) {
-      console.log("불러올 문제가 존재하지 않습니다.");
       return;
     }
     setQuestionList((prevState) => [...prevState, ...response.data]);
   };
 
   const onChangeTitle = (e) => {
+    titleErrorVisible.current = true;
     setTitle(e.target.value);
     if (e.target.value.length > 20 || e.target.value.length === 0) {
       setTitleError(true);
@@ -94,6 +104,11 @@ function WorkbookCustomPage() {
   };
 
   const createWorkbook = async () => {
+    if (titleError || selectedQuestionId.length === 0) {
+      openModal();
+      titleErrorVisible.current = true;
+      return;
+    }
     await requestPostCustomWorkbook({ title, selectedQuestionId });
     goHomePage();
   };
@@ -136,95 +151,108 @@ function WorkbookCustomPage() {
   }, []);
 
   return (
-    <Container>
-      <QuestionSearchContainer>
-        <SelectWrap>
-          <CustomSelect
-            width={SELECT_SIZE.SMALL.width}
-            height={SELECT_SIZE.SMALL.height}
-            fontSize="0.8rem"
-            label="학년"
-            value={grade}
-            onChange={setGradeAndMonth}
-            options={gradeList}
-          />
-          <CustomSelect
-            width={SELECT_SIZE.SMALL.width}
-            height={SELECT_SIZE.SMALL.height}
-            fontSize="0.8rem"
-            label="월"
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-            options={monthList}
-          />
-          <CustomSelect
-            width={SELECT_SIZE.SMALL.width}
-            height={SELECT_SIZE.SMALL.height}
-            fontSize="0.8rem"
-            label="점수"
-            value={point}
-            onChange={(e) => setPoint(e.target.value)}
-            options={pointList}
-          />
-          <CustomSelect
-            width={SELECT_SIZE.SMALL.width}
-            height={SELECT_SIZE.SMALL.height}
-            fontSize="0.8rem"
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            options={sortList}
-          />
-        </SelectWrap>
-        <SearchedContainer>
-          {questionList.map((question) => {
-            return (
-              <QuestionItem
-                key={question.id}
-                question={question}
-                selectedQuestionList={selectedQuestionList}
-                setSelectedQuestionList={setSelectedQuestionList}
-                selectedQuestionId={selectedQuestionId}
-              />
-            );
-          })}
-        </SearchedContainer>
-        <div ref={obsRef} />
-      </QuestionSearchContainer>
-      <CartFrame>
-        <QuestionCartContainer>
-          <div style={{ position: "relative", top: "1rem" }}>
-            <CustomInput
-              label="문제집 이름"
-              inputStyle={INPUT_STYLE.BASIC}
-              labelStyle={INPUT_LABEL_STYLE}
-              error={titleError}
-              errorMessage={TITLE_VALID}
-              onChange={onChangeTitle}
+    <>
+      {modalVisible && (
+        <Modal
+          visible={modalVisible}
+          onClose={closeModal}
+          closable={false}
+          maskClosable
+        >
+          {CREATE_VALID}
+        </Modal>
+      )}
+      <Container>
+        <QuestionSearchContainer>
+          <SelectWrap>
+            <CustomSelect
+              width={SELECT_SIZE.SMALL.width}
+              height={SELECT_SIZE.SMALL.height}
+              fontSize="0.8rem"
+              label="학년"
+              value={grade}
+              onChange={setGradeAndMonth}
+              options={gradeList}
             />
-          </div>
-          <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
-          <Questions>
-            {selectedQuestionList.map((question) => {
+            <CustomSelect
+              width={SELECT_SIZE.SMALL.width}
+              height={SELECT_SIZE.SMALL.height}
+              fontSize="0.8rem"
+              label="월"
+              value={month}
+              onChange={(e) => setMonth(e.target.value)}
+              options={monthList}
+            />
+            <CustomSelect
+              width={SELECT_SIZE.SMALL.width}
+              height={SELECT_SIZE.SMALL.height}
+              fontSize="0.8rem"
+              label="점수"
+              value={point}
+              onChange={(e) => setPoint(e.target.value)}
+              options={pointList}
+            />
+            <CustomSelect
+              width={SELECT_SIZE.SMALL.width}
+              height={SELECT_SIZE.SMALL.height}
+              fontSize="0.8rem"
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              options={sortList}
+            />
+          </SelectWrap>
+          <SearchedContainer>
+            {questionList.map((question) => {
               return (
-                <QuestionCart
+                <QuestionItem
                   key={question.id}
                   question={question}
                   selectedQuestionList={selectedQuestionList}
                   setSelectedQuestionList={setSelectedQuestionList}
+                  selectedQuestionId={selectedQuestionId}
                 />
               );
             })}
-          </Questions>
-          <Button
-            color={PALETTE.BRAND_COLOR}
-            sizeType={BUTTON_SIZE.BASIC}
-            onClick={createWorkbook}
-          >
-            만들기
-          </Button>
-        </QuestionCartContainer>
-      </CartFrame>
-    </Container>
+          </SearchedContainer>
+          <div ref={obsRef} />
+        </QuestionSearchContainer>
+        <CartFrame>
+          <QuestionCartContainer>
+            <div style={{ position: "relative", top: "1rem" }}>
+              <CustomInput
+                label="문제집 이름"
+                inputStyle={INPUT_STYLE.BASIC}
+                labelStyle={INPUT_LABEL_STYLE}
+                error={titleError}
+                errorMessage={TITLE_VALID}
+                errorVisible={titleErrorVisible}
+                onChange={onChangeTitle}
+              />
+            </div>
+            <CartInfo>문항 수 {selectedQuestionList.length}</CartInfo>
+            <Questions>
+              {selectedQuestionList.map((question) => {
+                return (
+                  <QuestionCart
+                    key={question.id}
+                    question={question}
+                    selectedQuestionList={selectedQuestionList}
+                    setSelectedQuestionList={setSelectedQuestionList}
+                  />
+                );
+              })}
+            </Questions>
+            <Button
+              color={PALETTE.BRAND_COLOR}
+              sizeType={BUTTON_SIZE.BASIC}
+              onClick={createWorkbook}
+            >
+              만들기
+            </Button>
+          </QuestionCartContainer>
+        </CartFrame>
+      </Container>
+    </>
   );
 }
 export default WorkbookCustomPage;

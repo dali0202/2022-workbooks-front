@@ -8,6 +8,7 @@ function CustomInput({
   onChange,
   error,
   errorMessage,
+  errorVisible,
 }) {
   return (
     <Container>
@@ -18,7 +19,7 @@ function CustomInput({
         InputLabelProps={{ style: labelStyle }}
         onChange={onChange}
       />
-      {error && (
+      {error && errorVisible.current && (
         <ErrorMessage style={{ alignSelf: "start" }}>
           {errorMessage}
         </ErrorMessage>
