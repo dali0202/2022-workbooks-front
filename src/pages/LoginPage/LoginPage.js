@@ -1,4 +1,4 @@
-import { Container, Login, Text } from "./LoginPage.styles";
+import { Container, Form, Login, Text } from "./LoginPage.styles";
 import { ReactComponent as GoogleIcon } from "../../assets/icons/google.svg";
 import { ReactComponent as KakaoIcon } from "../../assets/icons/kakao.svg";
 import { ReactComponent as NaverIcon } from "../../assets/icons/naver.svg";

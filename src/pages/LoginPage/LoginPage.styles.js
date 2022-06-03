@@ -2,17 +2,27 @@ import styled from "styled-components";
 
 const Container = styled.div`
   position: relative;
-  top: 30vh;
+  top: 24vh;
+  height: 13rem;
+  margin: auto;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 `;
 const Login = styled.a`
+  border: 0.1px solid #a7aaad;
+  border-radius: 0.3rem;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   text-decoration: none;
+  &:hover {
+    background: #f0f0f1;
+  }
 `;
 const Text = styled.div`
+  font-size: 0.8rem;
   color: black;
   width: 14rem;
   text-align: center;
