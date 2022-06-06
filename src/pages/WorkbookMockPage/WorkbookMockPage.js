@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from "react";
-import { useRecoilValue } from "recoil";
+import { useState, useRef } from "react";
+import { Navigate } from "react-router-dom";
 import { requestPostMockWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
 import { Container, Desc, Form, SelectWrap } from "./WorkbookMockPage.styles";
@@ -21,12 +21,11 @@ import {
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
 import CustomSelect from "../../components/common/Select/CustomSelect";
-import { userState } from "../../recoil";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
 import Modal from "../../components/common/Modal/Modal";
 
-function WorkbookMockPage() {
+function WorkbookMockPage({ user }) {
   const { goHomePage, goLoginPage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
@@ -37,7 +36,6 @@ function WorkbookMockPage() {
   const [monthList, setMonthList] = useState(MONTH_LIST);
   const gradeList = GRADE_LIST;
   const pageDesc = MOCK_DESC;
-  const { authenticated } = useRecoilValue(userState);
 
   const openModal = () => {
     setModalVisible(true);
@@ -45,12 +43,6 @@ function WorkbookMockPage() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  useEffect(() => {
-    if (!authenticated) {
-      goLoginPage();
-    }
-  }, [authenticated]);
 
   const createMock = async () => {
     if (titleError) {
@@ -85,6 +77,10 @@ function WorkbookMockPage() {
     setTitleError(false);
   };
 
+  if (!user.authenticated) {
+    console.log(user);
+    return <Navigate to="/login" replace />;
+  }
   return (
     <>
       {modalVisible && (

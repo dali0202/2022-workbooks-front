@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 const useMovePage = () => {
   const navigate = useNavigate();
+
   const goHomePage = () => {
     navigate("/");
   };

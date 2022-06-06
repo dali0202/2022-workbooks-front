@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilState } from "recoil";
 import { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
@@ -13,7 +13,7 @@ import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
 import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
 
 function App() {
-  const [, setUser] = useRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
 
   const loadCurrentUser = () => {
     requestGetCurrentUser().then((response) => {
@@ -36,7 +36,7 @@ function App() {
         <Routes>
           <Route path="/" element={<WorkbookPage />} />
           <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
-          <Route path="/mock" element={<WorkbookMockPage />} />
+          <Route path="/mock" element={<WorkbookMockPage user={user} />} />
           <Route path="/range" element={<WorkbookRangePage />} />
           <Route path="/custom" element={<WorkbookCustomPage />} />
           <Route path="/login" element={<LoginPage />} />
