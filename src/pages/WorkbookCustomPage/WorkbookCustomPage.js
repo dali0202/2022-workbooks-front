@@ -37,7 +37,6 @@ import Modal from "../../components/common/Modal/Modal";
 
 function WorkbookCustomPage() {
   const { goHomePage } = useMovePage();
-
   const [title, setTitle] = useState("");
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
@@ -51,7 +50,6 @@ function WorkbookCustomPage() {
   const [titleError, setTitleError] = useState(true);
   const titleErrorVisible = useRef(false);
   const [modalVisible, setModalVisible] = useState(false);
-
   const [monthList, setMonthList] = useState(EXTENDED_MONTH_LIST);
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
@@ -68,11 +66,29 @@ function WorkbookCustomPage() {
 
   const setGradeAndMonth = (event) => {
     setGrade(event.target.value);
+    setPage(0);
+    setQuestionList([]);
     if (Number(event.target.value) === 3 || 0) {
       setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
     setMonthList(MONTH_LIST);
+  };
+
+  const onSetMonth = (e) => {
+    setMonth(e.target.value);
+    setPage(0);
+    setQuestionList([]);
+  };
+  const onSetPoint = (e) => {
+    setPoint(e.target.value);
+    setPage(0);
+    setQuestionList([]);
+  };
+  const onSetSort = (e) => {
+    setSort(e.target.value);
+    setPage(0);
+    setQuestionList([]);
   };
 
   const getQuestionList = async () => {
@@ -114,11 +130,6 @@ function WorkbookCustomPage() {
     selectedQuestionList.map((question) => selectedQuestions.push(question.id));
     setSelectedQuestionId(selectedQuestions);
   }, [selectedQuestionList]);
-
-  useEffect(() => {
-    setPage(0);
-    setQuestionList([]);
-  }, [grade, month, point, sort]);
 
   useEffect(() => {
     getQuestionList();
@@ -170,7 +181,7 @@ function WorkbookCustomPage() {
               fontSize="0.8rem"
               label="월"
               value={month}
-              onChange={(e) => setMonth(e.target.value)}
+              onChange={onSetMonth}
               options={monthList}
             />
             <CustomSelect
@@ -179,7 +190,7 @@ function WorkbookCustomPage() {
               fontSize="0.8rem"
               label="점수"
               value={point}
-              onChange={(e) => setPoint(e.target.value)}
+              onChange={onSetPoint}
               options={pointList}
             />
             <CustomSelect
@@ -187,7 +198,7 @@ function WorkbookCustomPage() {
               height={SELECT_SIZE.SMALL.height}
               fontSize="0.8rem"
               value={sort}
-              onChange={(e) => setSort(e.target.value)}
+              onChange={onSetSort}
               options={sortList}
             />
           </SelectWrap>
@@ -204,7 +215,14 @@ function WorkbookCustomPage() {
               );
             })}
           </SearchedContainer>
-          <div ref={obsRef} />
+          <div
+            style={{
+              width: "2rem",
+              height: "2rem",
+              background: "red",
+            }}
+            ref={obsRef}
+          />
         </QuestionSearchContainer>
         <CartFrame>
           <QuestionCartContainer>
