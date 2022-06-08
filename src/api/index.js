@@ -10,8 +10,8 @@ const client = axios.create({
 
 export const requestGetCurrentUser = () => {
   if (!localStorage.getItem("accessToken")) {
-    // eslint-disable-next-line prefer-promise-reject-errors
-    return Promise.reject("엑세스 토큰이 존재하지 않습니다.");
+    console.log("no accessToken");
+    return null;
   }
   return client.get("/api/users/me", {
     headers: {

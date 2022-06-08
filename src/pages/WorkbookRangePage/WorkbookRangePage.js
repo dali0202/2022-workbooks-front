@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useRecoilValue } from "recoil";
 import { QUESTION_POINT } from "../../components/constant/list";
 import { requestPostRangeWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
@@ -26,14 +25,13 @@ import {
   INPUT_STYLE,
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
-import { userState } from "../../recoil";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
 import { ErrorMessage } from "../../components/common/Input/CustomInput.styles";
 import Modal from "../../components/common/Modal/Modal";
 
 function WorkbookRangePage() {
-  const { goHomePage, goLoginPage } = useMovePage();
+  const { goHomePage } = useMovePage();
   const [title, setTitle] = useState("");
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
@@ -51,7 +49,6 @@ function WorkbookRangePage() {
   const [modalVisible, setModalVisible] = useState(false);
   const unitList = [...Array(15).keys()];
   const pointList = Object.values(QUESTION_POINT);
-  const { authenticated } = useRecoilValue(userState);
 
   const openModal = () => {
     setModalVisible(true);
@@ -59,12 +56,6 @@ function WorkbookRangePage() {
   const closeModal = () => {
     setModalVisible(false);
   };
-
-  useEffect(() => {
-    if (!authenticated) {
-      goLoginPage();
-    }
-  }, [authenticated]);
 
   const onChangeTitle = (e) => {
     titleErrorVisible.current = true;

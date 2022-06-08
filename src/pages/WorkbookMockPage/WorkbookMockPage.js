@@ -1,5 +1,4 @@
 import { useState, useRef } from "react";
-import { Navigate } from "react-router-dom";
 import { requestPostMockWorkbook } from "../../api";
 import useMovePage from "../../hooks/useMovePage";
 import { Container, Desc, Form, SelectWrap } from "./WorkbookMockPage.styles";
@@ -24,9 +23,10 @@ import CustomSelect from "../../components/common/Select/CustomSelect";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
 import Modal from "../../components/common/Modal/Modal";
+import { userState } from "../../recoil";
 
-function WorkbookMockPage({ user }) {
-  const { goHomePage, goLoginPage } = useMovePage();
+function WorkbookMockPage() {
+  const { goHomePage } = useMovePage();
   const [title, setTitle] = useState("");
   const [grade, setGrade] = useState(1);
   const [month, setMonth] = useState(3);
@@ -77,10 +77,6 @@ function WorkbookMockPage({ user }) {
     setTitleError(false);
   };
 
-  if (!user.authenticated) {
-    console.log(user);
-    return <Navigate to="/login" replace />;
-  }
   return (
     <>
       {modalVisible && (

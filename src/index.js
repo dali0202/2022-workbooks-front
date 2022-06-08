@@ -8,11 +8,13 @@ import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BrowserRouter>
-    <RecoilRoot>
-      <App />
-    </RecoilRoot>
-  </BrowserRouter>
+  <RecoilRoot>
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </React.Suspense>
+  </RecoilRoot>
 );
 
 reportWebVitals();

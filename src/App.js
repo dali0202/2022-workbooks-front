@@ -1,33 +1,33 @@
-import { useRecoilState } from "recoil";
-import { useEffect } from "react";
+import { getCurrentUserSelector, useRecoilState, useRecoilValue } from "recoil";
+import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { userState } from "./recoil";
 import { requestGetCurrentUser } from "./api";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
-import BaseLayout from "./components/common/BaseLayout/BaseLayout";
+
 import WorkbookMockPage from "./pages/WorkbookMockPage/WorkbookMockPage";
 import WorkbookRangePage from "./pages/WorkbookRangePage/WorkbookRangePage";
 import WorkbookCustomPage from "./pages/WorkbookCustomPage/WorkbookCustomPage";
 import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
 import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
+import RequireAuth from "./routes/RequireAuth";
+import BaseLayout from "./components/common/BaseLayout/BaseLayout";
 
 function App() {
   const [user, setUser] = useRecoilState(userState);
+  const [userLoading, setUserLoading] = useState(true);
 
-  const loadCurrentUser = () => {
-    requestGetCurrentUser().then((response) => {
-      setUser({
-        currentUser: response.data,
-        authenticated: true,
-      });
-    });
+  const loadCurrentUser = async () => {
+    const response = await requestGetCurrentUser();
+    if (response !== null) {
+      setUser({ currentUser: response.data, authenticated: true });
+    }
+    setUserLoading(false);
   };
 
   useEffect(() => {
-    if (localStorage.getItem("accessToken")) {
-      loadCurrentUser();
-    }
+    loadCurrentUser();
   }, []);
 
   return (
@@ -35,10 +35,38 @@ function App() {
       <BaseLayout>
         <Routes>
           <Route path="/" element={<WorkbookPage />} />
-          <Route path="/workbooks/:id" element={<WorkbookDetailPage />} />
-          <Route path="/mock" element={<WorkbookMockPage user={user} />} />
-          <Route path="/range" element={<WorkbookRangePage />} />
-          <Route path="/custom" element={<WorkbookCustomPage />} />
+          <Route
+            path="/workbooks/:id"
+            element={
+              <RequireAuth loading={userLoading}>
+                <WorkbookDetailPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/mock"
+            element={
+              <RequireAuth loading={userLoading}>
+                <WorkbookMockPage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/range"
+            element={
+              <RequireAuth loading={userLoading}>
+                <WorkbookRangePage />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path="/custom"
+            element={
+              <RequireAuth loading={userLoading}>
+                <WorkbookCustomPage />
+              </RequireAuth>
+            }
+          />
           <Route path="/login" element={<LoginPage />} />
           <Route
             path="/oauth2/redirect/*"

@@ -3,6 +3,7 @@ import { Route, Routes, useSearchParams, Navigate } from "react-router-dom";
 function Oauth2RedirectHandler() {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
+
   if (token) {
     localStorage.setItem("accessToken", token);
     return (

@@ -30,15 +30,13 @@ import {
   SELECT_SIZE,
 } from "../../components/constant/theme";
 import CustomInput from "../../components/common/Input/CustomInput";
-import { userState } from "../../recoil";
 import { CREATE_VALID, TITLE_VALID } from "../../components/constant/message";
 import Button from "../../components/common/Button/Button";
 import PALETTE from "../../components/constant/palette";
 import Modal from "../../components/common/Modal/Modal";
 
 function WorkbookCustomPage() {
-  const { goHomePage, goLoginPage } = useMovePage();
-  const { authenticated } = useRecoilValue(userState);
+  const { goHomePage } = useMovePage();
 
   const [title, setTitle] = useState("");
   const [questionList, setQuestionList] = useState([]);
@@ -112,12 +110,6 @@ function WorkbookCustomPage() {
     await requestPostCustomWorkbook({ title, selectedQuestionId });
     goHomePage();
   };
-
-  useEffect(() => {
-    if (!authenticated) {
-      goLoginPage();
-    }
-  }, [authenticated]);
 
   useEffect(() => {
     const selectedQuestions = [];
