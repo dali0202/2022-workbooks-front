@@ -52,7 +52,7 @@ function WorkbookCustomPage() {
   const titleErrorVisible = useRef(false);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const [monthList, setMonthList] = useState(MONTH_LIST);
+  const [monthList, setMonthList] = useState(EXTENDED_MONTH_LIST);
   const gradeList = GRADE_LIST;
   const pointList = POINT_LIST;
   const sortList = SORT_LIST;
@@ -67,10 +67,8 @@ function WorkbookCustomPage() {
   };
 
   const setGradeAndMonth = (event) => {
-    setPage(0);
-    setQuestionList([]);
     setGrade(event.target.value);
-    if (Number(event.target.value) === 3) {
+    if (Number(event.target.value) === 3 || 0) {
       setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
