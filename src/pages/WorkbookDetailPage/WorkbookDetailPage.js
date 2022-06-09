@@ -64,7 +64,7 @@ function WorkbookDetailPage() {
             {questionList.map((question) => {
               return (
                 <CarouselItem key={question.id}>
-                  {question.descriptionPath}
+                  <img src={question.descriptionPath} alt={question.id} />
                 </CarouselItem>
               );
             })}

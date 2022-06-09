@@ -52,7 +52,7 @@ function QuestionItem({
           ""
         )}
       </TopBar>
-      <QuestionImg />
+      <QuestionImg src={question.descriptionPath} />
       <BottomBar>
         <div>{source}</div>
         <div style={{ marginLeft: "auto" }}>{point}</div>

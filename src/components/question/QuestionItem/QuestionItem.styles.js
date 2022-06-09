@@ -10,7 +10,7 @@ const Container = styled.div`
   }
   border-radius: 0.5rem;
 `;
-const QuestionImg = styled.div`
+const QuestionImg = styled.img`
   background: beige;
   height: 19rem;
   width: 19rem;
