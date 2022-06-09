@@ -26,6 +26,10 @@ const INPUT_STYLE = {
     width: "6rem",
     height: "2.5rem",
   },
+  TINY: {
+    width: "3rem",
+    height: "2rem",
+  },
 };
 const INPUT_LABEL_STYLE = {
   fontSize: "0.8rem",
