@@ -10,7 +10,6 @@ const Form = styled.div`
 `;
 const Question = styled.div`
   display: flex;
-
   justify-content: center;
   align-items: center;
 `;

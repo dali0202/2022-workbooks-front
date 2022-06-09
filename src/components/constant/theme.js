@@ -1,5 +1,9 @@
 import PALETTE from "./palette";
 
+const QUESTION_DESCRIPTION_SIZE = {
+  width: "26rem",
+  height: "26rem",
+};
 const BUTTON_COLOR = {
   BASIC: PALETTE.WHITE,
   SELECTED: PALETTE.GRAY1,
@@ -51,6 +55,7 @@ const SELECT_SIZE = {
 };
 
 export {
+  QUESTION_DESCRIPTION_SIZE,
   BUTTON_COLOR,
   BUTTON_SIZE,
   INPUT_STYLE,

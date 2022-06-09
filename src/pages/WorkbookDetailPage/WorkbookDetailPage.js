@@ -12,8 +12,7 @@ import {
   Question,
 } from "./WorkbookDetailPage.styles";
 import Carousel, { CarouselItem } from "./Carousel";
-import CustomInput from "../../components/common/Input/CustomInput";
-import { INPUT_STYLE } from "../../components/constant/theme";
+import { QUESTION_DESCRIPTION_SIZE } from "../../components/constant/theme";
 
 function WorkbookDetailPage() {
   const { id } = useParams();
@@ -64,7 +63,11 @@ function WorkbookDetailPage() {
             {questionList.map((question) => {
               return (
                 <CarouselItem key={question.id}>
-                  <img src={question.descriptionPath} alt={question.id} />
+                  <img
+                    style={QUESTION_DESCRIPTION_SIZE}
+                    src={question.descriptionPath}
+                    alt={question.id}
+                  />
                 </CarouselItem>
               );
             })}

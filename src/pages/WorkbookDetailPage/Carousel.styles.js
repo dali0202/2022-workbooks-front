@@ -9,8 +9,6 @@ const Item = styled.div`
   align-items: center;
   justify-content: center;
   height: 32rem;
-  background-color: green;
-  color: white;
 `;
 const Items = styled.div`
   transform: translateX(-${({ curIndex }) => curIndex * 100}%);
