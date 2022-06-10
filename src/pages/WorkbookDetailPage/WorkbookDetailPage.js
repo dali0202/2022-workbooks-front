@@ -11,7 +11,9 @@ import {
   Nav,
   Question,
 } from "./WorkbookDetailPage.styles";
-import Carousel, { CarouselItem } from "./Carousel";
+import Carousel, {
+  CarouselItem,
+} from "../../components/common/Carousel/Carousel";
 import { QUESTION_DESCRIPTION_SIZE } from "../../components/constant/theme";
 
 function WorkbookDetailPage() {
