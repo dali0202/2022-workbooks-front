@@ -1,17 +1,19 @@
 import styled from "styled-components";
 
 const Container = styled.div`
+  border: 1px solid #a7aaad;
+  border-radius: 0.2rem;
+  padding: 0.4rem;
+  margin-bottom: 0.4rem;
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   font-size: 0.7rem;
   &:hover {
     background: #f0f0f1;
   }
-  border-radius: 0.5rem;
 `;
 const QuestionImg = styled.img`
-  background: beige;
+  padding: 0.15rem;
   height: 19rem;
   width: 19rem;
 `;

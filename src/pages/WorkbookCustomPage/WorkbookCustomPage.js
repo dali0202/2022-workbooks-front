@@ -68,7 +68,7 @@ function WorkbookCustomPage() {
     setGrade(event.target.value);
     setPage(0);
     setQuestionList([]);
-    if (Number(event.target.value) === 3 || 0) {
+    if (Number(event.target.value) === 3 || Number(event.target.value) === 0) {
       setMonthList(EXTENDED_MONTH_LIST);
       return;
     }
