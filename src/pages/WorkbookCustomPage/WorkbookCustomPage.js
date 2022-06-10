@@ -215,14 +215,7 @@ function WorkbookCustomPage() {
               );
             })}
           </SearchedContainer>
-          <div
-            style={{
-              width: "2rem",
-              height: "2rem",
-              background: "red",
-            }}
-            ref={obsRef}
-          />
+          <div ref={obsRef} />
         </QuestionSearchContainer>
         <CartFrame>
           <QuestionCartContainer>
