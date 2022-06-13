@@ -9,11 +9,11 @@ import App from "./App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <RecoilRoot>
-        <React.Suspense fallback={<div>Loading...</div>}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-        </React.Suspense>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </React.Suspense>
   </RecoilRoot>
 );
 
