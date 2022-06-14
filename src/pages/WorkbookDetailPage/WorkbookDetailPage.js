@@ -1,26 +1,26 @@
-import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import NavigateBeforeIcon from "@mui/icons-material/NavigateBefore";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { requestGetWorkbook } from "../../api";
+import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import IconButton from '@mui/material/IconButton';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import { requestGetWorkbook } from '../../api';
 import {
   Container,
   Form,
   Input,
   Nav,
   Question,
-} from "./WorkbookDetailPage.styles";
+} from './WorkbookDetailPage.styles';
 import Carousel, {
   CarouselItem,
-} from "../../components/common/Carousel/Carousel";
-import { QUESTION_DESCRIPTION_SIZE } from "../../components/constant/theme";
+} from '../../components/common/Carousel/Carousel';
+import { QUESTION_DESCRIPTION_SIZE } from '../../components/constant/theme';
 
 function WorkbookDetailPage() {
   const { id } = useParams();
   const [questionList, setQuestionList] = useState([]);
-  const [title, setTitle] = useState("");
-  const [userName, setUserName] = useState("");
+  const [title, setTitle] = useState('');
+  const [userName, setUserName] = useState('');
   const [curNum, setCurNum] = useState(1);
 
   const updateNum = (newNum) => {

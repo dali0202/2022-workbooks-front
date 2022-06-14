@@ -1,18 +1,18 @@
-import { getCurrentUserSelector, useRecoilState, useRecoilValue } from "recoil";
-import { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import { userState } from "./recoil";
-import { requestGetCurrentUser } from "./api";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import Oauth2RedirectHandler from "./components/auth/Oauth2RedirectHandler";
+import { getCurrentUserSelector, useRecoilState, useRecoilValue } from 'recoil';
+import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { userState } from './recoil';
+import { requestGetCurrentUser } from './api';
+import LoginPage from './pages/LoginPage/LoginPage';
+import Oauth2RedirectHandler from './components/auth/Oauth2RedirectHandler';
 
-import WorkbookMockPage from "./pages/WorkbookMockPage/WorkbookMockPage";
-import WorkbookRangePage from "./pages/WorkbookRangePage/WorkbookRangePage";
-import WorkbookCustomPage from "./pages/WorkbookCustomPage/WorkbookCustomPage";
-import WorkbookDetailPage from "./pages/WorkbookDetailPage/WorkbookDetailPage";
-import WorkbookPage from "./pages/WorkbookPage/WorkbookPage";
-import RequireAuth from "./routes/RequireAuth";
-import BaseLayout from "./components/common/BaseLayout/BaseLayout";
+import WorkbookMockPage from './pages/WorkbookMockPage/WorkbookMockPage';
+import WorkbookRangePage from './pages/WorkbookRangePage/WorkbookRangePage';
+import WorkbookCustomPage from './pages/WorkbookCustomPage/WorkbookCustomPage';
+import WorkbookDetailPage from './pages/WorkbookDetailPage/WorkbookDetailPage';
+import WorkbookPage from './pages/WorkbookPage/WorkbookPage';
+import RequireAuth from './routes/RequireAuth';
+import BaseLayout from './components/common/BaseLayout/BaseLayout';
 
 function App() {
   const [user, setUser] = useRecoilState(userState);
@@ -31,12 +31,12 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <BaseLayout>
         <Routes>
-          <Route path="/" element={<WorkbookPage />} />
+          <Route path='/' element={<WorkbookPage />} />
           <Route
-            path="/workbooks/:id"
+            path='/workbooks/:id'
             element={
               <RequireAuth loading={userLoading}>
                 <WorkbookDetailPage />
@@ -44,7 +44,7 @@ function App() {
             }
           />
           <Route
-            path="/mock"
+            path='/mock'
             element={
               <RequireAuth loading={userLoading}>
                 <WorkbookMockPage />
@@ -52,7 +52,7 @@ function App() {
             }
           />
           <Route
-            path="/range"
+            path='/range'
             element={
               <RequireAuth loading={userLoading}>
                 <WorkbookRangePage />
@@ -60,16 +60,16 @@ function App() {
             }
           />
           <Route
-            path="/custom"
+            path='/custom'
             element={
               <RequireAuth loading={userLoading}>
                 <WorkbookCustomPage />
               </RequireAuth>
             }
           />
-          <Route path="/login" element={<LoginPage />} />
+          <Route path='/login' element={<LoginPage />} />
           <Route
-            path="/oauth2/redirect/*"
+            path='/oauth2/redirect/*'
             element={<Oauth2RedirectHandler />}
           />
         </Routes>
