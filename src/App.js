@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     loadCurrentUser();
-    console.log('hi');
+    console.log('test2');
   }, []);
 
   return (
