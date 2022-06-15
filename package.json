@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --env=dev",
-    "build": "rm -rf dist/ && webpack --env=prod"
+    "build": "rm -rf build/ && webpack --env=prod",
+    "deploy": "aws s3 sync ./build s3://workbooks-front --profile=workbooks-deploy-s3",
+    "invalidate": "aws cloudfront create-invalidation --profile=workbooks-deploy-s3 --distribution-id E1J18WVTCWY8CR --paths / /index.html /bundle.js /bundle.js.map"
   },
   "devDependencies": {
     "@babel/core": "^7.18.5",
@@ -31,6 +33,7 @@
     "prettier": "^2.6.2",
     "sass-loader": "^13.0.0",
     "style-loader": "^3.3.1",
+    "terser-webpack-plugin": "^5.3.3",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2"

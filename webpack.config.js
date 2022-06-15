@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = (env) => {
@@ -11,7 +12,7 @@ module.exports = (env) => {
     entry: './src/index.js',
     output: {
       publicPath: '/',
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'build'),
       filename: 'bundle.js',
     },
     devtool: isDevelopment ? 'eval-cheap-source-map' : 'source-map',
@@ -58,7 +59,9 @@ module.exports = (env) => {
         },
       ],
     },
-
+    optimization: {
+      minimizer: [new TerserPlugin({ extractComments: false })],
+    },
     plugins: [
       new HtmlWebpackPlugin({
         template: 'public/index.html',
