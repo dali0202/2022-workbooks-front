@@ -5,7 +5,7 @@ import {
 } from "../components/constant/list";
 
 const client = axios.create({
-  baseUrl: "http://127.0.0.1:8080",
+  baseURL: "http://ec2-3-39-76-242.ap-northeast-2.compute.amazonaws.com",
 });
 
 export const requestGetCurrentUser = () => {

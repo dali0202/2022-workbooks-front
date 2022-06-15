@@ -59,14 +59,15 @@ function App() {
               </RequireAuth>
             }
           />
-          <Route
-            path='/custom'
-            element={
-              <RequireAuth loading={userLoading}>
-                <WorkbookCustomPage />
-              </RequireAuth>
-            }
-          />
+            <Route path='/custom' element={<WorkbookCustomPage />} />
+          {/*<Route*/}
+          {/*  path='/custom'*/}
+          {/*  element={*/}
+          {/*    <RequireAuth loading={userLoading}>*/}
+          {/*      <WorkbookCustomPage />*/}
+          {/*    </RequireAuth>*/}
+          {/*  }*/}
+          {/*/>*/}
           <Route path='/login' element={<LoginPage />} />
           <Route
             path='/oauth2/redirect/*'
