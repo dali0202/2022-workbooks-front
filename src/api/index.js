@@ -5,7 +5,7 @@ import {
 } from "../components/constant/list";
 
 const client = axios.create({
-  baseURL: "http://ec2-3-39-76-242.ap-northeast-2.compute.amazonaws.com",
+  baseURL: "https://workbooksapi.ga",
 });
 
 export const requestGetCurrentUser = () => {
@@ -121,7 +121,7 @@ export const requestGetQuestionList = ({
   return client.get("/api/questions", {
     params: { grade, month, point, offset, size: QUESTION_PAGING_SIZE, sort },
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
     },
   });
 };
