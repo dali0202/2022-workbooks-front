@@ -1,5 +1,5 @@
-import { TextField } from "@mui/material";
-import { Container, ErrorMessage } from "./CustomInput.styles";
+import { TextField } from '@mui/material';
+import { Container, ErrorMessage } from './CustomInput.styles';
 
 function CustomInput({
   label,
@@ -14,13 +14,13 @@ function CustomInput({
     <Container>
       <TextField
         label={label}
-        variant="outlined"
+        variant='outlined'
         InputProps={{ style: inputStyle }}
         InputLabelProps={{ style: labelStyle }}
         onChange={onChange}
       />
       {error && errorVisible.current && (
-        <ErrorMessage style={{ alignSelf: "start" }}>
+        <ErrorMessage style={{ alignSelf: 'start' }}>
           {errorMessage}
         </ErrorMessage>
       )}

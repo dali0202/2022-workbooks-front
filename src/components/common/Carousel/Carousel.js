@@ -1,5 +1,5 @@
-import React from "react";
-import { Container, Item, Items } from "./Carousel.styles";
+import React from 'react';
+import { Container, Item, Items } from './Carousel.styles';
 
 export function CarouselItem({ children }) {
   return <Item>{children}</Item>;

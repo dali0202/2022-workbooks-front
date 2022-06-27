@@ -3,7 +3,7 @@ import { QUESTION_POINT } from '../../components/constant/list';
 import { requestPostRangeWorkbook } from '../../api';
 import useMovePage from '../../hooks/useMovePage';
 import Tag from '../../components/common/Tag/Tag';
-import RangeSlider from '../../components/common/Range/RangeSlider';
+import RangeSlider from '../../components/common/RangeSlider/RangeSlider';
 import {
   Container,
   Desc,

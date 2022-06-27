@@ -1,7 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PALETTE from '../../constant/palette';
 
 const Container = styled.div`
-  border-bottom: 1px solid #a7aaad;
+  border-bottom: 1px solid ${PALETTE.GRAY};
   background: white;
   z-index: 2;
   height: 12.5vh;
@@ -21,7 +22,7 @@ const Title = styled.div`
   background: white;
   height: 5vh;
   font-size: 1.4rem;
-  font-family: "Amazon Ember", sans-serif;
+  font-family: 'Amazon Ember', sans-serif;
   cursor: pointer;
 `;
 const Tabs = styled.div`
@@ -36,11 +37,11 @@ const Tab = styled.div`
   display: flex;
   align-items: center;
   font-size: 0.8rem;
-  font-family: "Amazon Ember", sans-serif;
+  font-family: 'Amazon Ember', sans-serif;
   cursor: pointer;
   text-align: center;
   &: hover {
-    color: #0366d6;
+    color: ${PALETTE.DEEP_BLUE};
     transition: 0.3s;
   }
 `;

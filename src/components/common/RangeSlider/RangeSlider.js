@@ -5,7 +5,7 @@ import {
   Slider,
   Thumb,
   Track,
-} from "./RangeSlider.styles";
+} from './RangeSlider.styles';
 
 function RangeSlider({ min, max, minDif, setMin, setMax }) {
   const setLeftValue = (e) => {
@@ -27,25 +27,24 @@ function RangeSlider({ min, max, minDif, setMin, setMax }) {
   };
 
   return (
-    <div style={{ width: "24rem" }}>
+    <div style={{ width: '24rem' }}>
       <Slider>
-        <Input type="range" value={min * 100} onChange={setLeftValue} />
-        <Input type="range" value={max * 100} onChange={setRightValue} />
+        <Input type='range' value={min * 100} onChange={setLeftValue} />
+        <Input type='range' value={max * 100} onChange={setRightValue} />
         <Track>
-          {/* 숫자만 입력가능하게 해주기 */}
           <Range position={[min * 100, 100 - max * 100]} />
-          <Thumb position={["left", min * 100]} direction="LEFT" />
-          <Thumb position={["right", 100 - max * 100]} direction="RIGHT" />
+          <Thumb position={['left', min * 100]} direction='LEFT' />
+          <Thumb position={['right', 100 - max * 100]} direction='RIGHT' />
           <RangeLabel
             value={Math.floor(min * 100)}
-            position={["left", min * 100]}
-            direction="RIGHT"
+            position={['left', min * 100]}
+            direction='RIGHT'
             onChange={setLeftValue}
           />
           <RangeLabel
             value={Math.floor(max * 100)}
-            direction="LEFT"
-            position={["right", 100 - max * 100]}
+            direction='LEFT'
+            position={['right', 100 - max * 100]}
             onChange={setRightValue}
           />
         </Track>

@@ -1,11 +1,11 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const LabelDirection = {
   LEFT: {
-    bottom: "1rem",
+    bottom: '1rem',
   },
   RIGHT: {
-    top: "1rem",
+    top: '1rem',
   },
 };
 

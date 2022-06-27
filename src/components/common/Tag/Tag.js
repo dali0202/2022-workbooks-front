@@ -1,6 +1,6 @@
-import { BUTTON_COLOR } from "../../constant/theme";
-import { QUESTION_UNIT } from "../../constant/list";
-import { Button } from "./Tag.styles";
+import { BUTTON_COLOR } from '../../constant/theme';
+import { QUESTION_UNIT } from '../../constant/list';
+import { Button } from './Tag.styles';
 
 function Tag({ name, item, selectedItem, setSelectedItem }) {
   const onClick = () => {
@@ -18,7 +18,7 @@ function Tag({ name, item, selectedItem, setSelectedItem }) {
         selectedItem.includes(item) ? BUTTON_COLOR.SELECTED : BUTTON_COLOR.BASIC
       }
     >
-      {name !== "unit" ? item : QUESTION_UNIT[item]}
+      {name !== 'unit' ? item : QUESTION_UNIT[item]}
     </Button>
   );
 }

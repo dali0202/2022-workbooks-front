@@ -1,5 +1,5 @@
-import { Container, Tab, Tabs, Title } from "./Nav.styles";
-import useMovePage from "../../../hooks/useMovePage";
+import { Container, Tab, Tabs, Title } from './Nav.styles';
+import useMovePage from '../../../hooks/useMovePage';
 
 function Nav() {
   const {

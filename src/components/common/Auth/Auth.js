@@ -1,7 +1,7 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import { userState } from "../../../recoil";
-import useMovePage from "../../../hooks/useMovePage";
-import { Button, Container, UserName } from "./Auth.styles";
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { userState } from '../../../recoil';
+import useMovePage from '../../../hooks/useMovePage';
+import { Button, Container, UserName } from './Auth.styles';
 
 function Auth() {
   const { currentUser, authenticated } = useRecoilValue(userState);
@@ -13,7 +13,7 @@ function Auth() {
       goLoginPage();
       return;
     }
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem('accessToken');
     setUser({
       currentUser: undefined,
       authenticated: false,
@@ -24,7 +24,7 @@ function Auth() {
     <Container>
       {authenticated ? <UserName>{currentUser.name}</UserName> : undefined}
       <Button onClick={authHandler}>
-        {authenticated ? "로그아웃" : "로그인"}
+        {authenticated ? '로그아웃' : '로그인'}
       </Button>
     </Container>
   );

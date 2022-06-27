@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.div`
   z-index: 2;
@@ -14,13 +14,13 @@ const Container = styled.div`
 const UserName = styled.div`
   cursor: Default;
   font-size: 0.7rem;
-  font-family: "Amazon Ember", sans-serif;
+  font-family: 'Amazon Ember', sans-serif;
 `;
 const Button = styled.div`
   padding: 0 1.5rem 0 1rem;
   cursor: pointer;
   font-size: 0.7rem;
-  font-family: "Amazon Ember", sans-serif;
+  font-family: 'Amazon Ember', sans-serif;
   &:hover {
     text-decoration: underline;
   }
