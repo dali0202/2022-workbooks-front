@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.div`
-  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
+  font-family: -apple-system, system-ui, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
   display: flex;
   justify-content: center;

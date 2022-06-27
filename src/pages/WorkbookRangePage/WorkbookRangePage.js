@@ -1,9 +1,9 @@
-import { useEffect, useRef, useState } from "react";
-import { QUESTION_POINT } from "../../components/constant/list";
-import { requestPostRangeWorkbook } from "../../api";
-import useMovePage from "../../hooks/useMovePage";
-import Tag from "../../components/common/Tag/Tag";
-import RangeSlider from "../../components/common/Range/RangeSlider";
+import { useEffect, useRef, useState } from 'react';
+import { QUESTION_POINT } from '../../components/constant/list';
+import { requestPostRangeWorkbook } from '../../api';
+import useMovePage from '../../hooks/useMovePage';
+import Tag from '../../components/common/Tag/Tag';
+import RangeSlider from '../../components/common/Range/RangeSlider';
 import {
   Container,
   Desc,
@@ -11,28 +11,28 @@ import {
   Label,
   Option,
   TagWrap,
-} from "./WorkbookRangePage.styles";
+} from './WorkbookRangePage.styles';
 import {
   CREATE_VALID,
   MULTI_SELECT_VALID,
   QUESTION_NUM_VALID,
   RANGE_DESC,
   TITLE_VALID,
-} from "../../components/constant/message";
+} from '../../components/constant/message';
 import {
   BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
-} from "../../components/constant/theme";
-import CustomInput from "../../components/common/Input/CustomInput";
-import Button from "../../components/common/Button/Button";
-import PALETTE from "../../components/constant/palette";
-import { ErrorMessage } from "../../components/common/Input/CustomInput.styles";
-import Modal from "../../components/common/Modal/Modal";
+} from '../../components/constant/theme';
+import CustomInput from '../../components/common/Input/CustomInput';
+import Button from '../../components/common/Button/Button';
+import PALETTE from '../../components/constant/palette';
+import { ErrorMessage } from '../../components/common/Input/CustomInput.styles';
+import Modal from '../../components/common/Modal/Modal';
 
 function WorkbookRangePage() {
   const { goHomePage } = useMovePage();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [questionNum, setQuestionNum] = useState(30);
   const [lowerBound, setLowerBound] = useState(0);
   const [upperBound, setUpperBound] = useState(1);
@@ -126,7 +126,7 @@ function WorkbookRangePage() {
         <Form>
           <Desc>{pageDesc}</Desc>
           <CustomInput
-            label="문제집 이름"
+            label='문제집 이름'
             inputStyle={INPUT_STYLE.LONG}
             labelStyle={INPUT_LABEL_STYLE}
             error={titleError}
@@ -135,7 +135,7 @@ function WorkbookRangePage() {
             onChange={onChangeTitle}
           />
           <CustomInput
-            label="문항 수"
+            label='문항 수'
             inputStyle={INPUT_STYLE.LONG}
             labelStyle={INPUT_LABEL_STYLE}
             onChange={onChangeNum}
@@ -144,7 +144,7 @@ function WorkbookRangePage() {
             errorMessage={QUESTION_NUM_VALID}
           />
           <Option>
-            <Label style={{ position: "relative", bottom: "1rem" }}>
+            <Label style={{ position: 'relative', bottom: '1rem' }}>
               정답률
             </Label>
             <RangeSlider
@@ -156,7 +156,7 @@ function WorkbookRangePage() {
             />
           </Option>
           <Option>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Label>단원 선택</Label>
               {unitError && unitErrorVisible.current && (
                 <ErrorMessage>{MULTI_SELECT_VALID}</ErrorMessage>
@@ -166,7 +166,7 @@ function WorkbookRangePage() {
               {unitList.map((item) => {
                 return (
                   <Tag
-                    name="unit"
+                    name='unit'
                     key={item}
                     item={item}
                     selectedItem={selectedUnit}
@@ -177,7 +177,7 @@ function WorkbookRangePage() {
             </TagWrap>
           </Option>
           <Option>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <Label>점수 선택</Label>
               {pointError && pointErrorVisible.current && (
                 <ErrorMessage>{MULTI_SELECT_VALID}</ErrorMessage>
@@ -187,7 +187,7 @@ function WorkbookRangePage() {
               {pointList.map((item) => {
                 return (
                   <Tag
-                    name="point"
+                    name='point'
                     key={item}
                     item={item}
                     selectedItem={selectedPoint}

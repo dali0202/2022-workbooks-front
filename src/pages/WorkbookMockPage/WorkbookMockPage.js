@@ -1,33 +1,32 @@
-import { useState, useRef } from "react";
-import { requestPostMockWorkbook } from "../../api";
-import useMovePage from "../../hooks/useMovePage";
-import { Container, Desc, Form, SelectWrap } from "./WorkbookMockPage.styles";
+import { useState, useRef } from 'react';
+import { requestPostMockWorkbook } from '../../api';
+import useMovePage from '../../hooks/useMovePage';
+import { Container, Desc, Form, SelectWrap } from './WorkbookMockPage.styles';
 import {
   EXTENDED_MONTH_LIST,
   GRADE_LIST,
   MONTH_LIST,
-} from "../../components/constant/list";
+} from '../../components/constant/list';
 import {
   CREATE_VALID,
   MOCK_DESC,
   TITLE_VALID,
-} from "../../components/constant/message";
+} from '../../components/constant/message';
 import {
   BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
   SELECT_SIZE,
-} from "../../components/constant/theme";
-import CustomInput from "../../components/common/Input/CustomInput";
-import CustomSelect from "../../components/common/Select/CustomSelect";
-import Button from "../../components/common/Button/Button";
-import PALETTE from "../../components/constant/palette";
-import Modal from "../../components/common/Modal/Modal";
-import { userState } from "../../recoil";
+} from '../../components/constant/theme';
+import CustomInput from '../../components/common/Input/CustomInput';
+import CustomSelect from '../../components/common/Select/CustomSelect';
+import Button from '../../components/common/Button/Button';
+import PALETTE from '../../components/constant/palette';
+import Modal from '../../components/common/Modal/Modal';
 
 function WorkbookMockPage() {
   const { goHomePage } = useMovePage();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [grade, setGrade] = useState(1);
   const [month, setMonth] = useState(3);
   const [titleError, setTitleError] = useState(true);
@@ -93,7 +92,7 @@ function WorkbookMockPage() {
         <Form>
           <Desc>{pageDesc}</Desc>
           <CustomInput
-            label="모의고사 이름"
+            label='모의고사 이름'
             inputStyle={INPUT_STYLE.LONG}
             labelStyle={INPUT_LABEL_STYLE}
             onChange={onChangeTitle}
@@ -105,19 +104,19 @@ function WorkbookMockPage() {
             <CustomSelect
               width={SELECT_SIZE.LONG.width}
               height={SELECT_SIZE.LONG.height}
-              fontSize="0.8rem"
+              fontSize='0.8rem'
               options={gradeList}
               value={grade}
-              label="학년"
+              label='학년'
               onChange={setGradeAndMonth}
             />
             <CustomSelect
               width={SELECT_SIZE.LONG.width}
               height={SELECT_SIZE.LONG.height}
-              fontSize="0.8rem"
+              fontSize='0.8rem'
               options={monthList}
               value={month}
-              label="월"
+              label='월'
               onChange={onSetMonth}
             />
           </SelectWrap>
