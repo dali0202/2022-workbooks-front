@@ -7,7 +7,6 @@ import { OAUTH_URL } from '../../components/constant/url';
 function LoginPage() {
   return (
     <Container>
-      로그인
       <GoogleLogin />
       <KakaoLogin />
       <NaverLogin />
