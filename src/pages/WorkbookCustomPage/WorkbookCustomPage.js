@@ -1,8 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import useMovePage from "../../hooks/useMovePage";
-import { requestGetQuestionList, requestPostCustomWorkbook } from "../../api";
-import QuestionCart from "../../components/question/QuestionCart/QuestionCart";
-import QuestionItem from "../../components/question/QuestionItem/QuestionItem";
+import { useEffect, useRef, useState } from 'react';
+import { requestGetQuestionList, requestPostCustomWorkbook } from '../../api';
 import {
   CartFrame,
   CartInfo,
@@ -12,8 +9,7 @@ import {
   QuestionSearchContainer,
   SearchedContainer,
   SelectWrap,
-} from "./WorkbookCustomPage.styles";
-import CustomSelect from "../../components/common/Select/CustomSelect";
+} from './WorkbookCustomPage.styles';
 import {
   EXTENDED_MONTH_LIST,
   GRADE_LIST,
@@ -21,22 +17,26 @@ import {
   POINT_LIST,
   QUESTION_PAGING_SIZE,
   SORT_LIST,
-} from "../../components/constant/list";
+} from '../../components/constant/list';
 import {
   BUTTON_SIZE,
   INPUT_LABEL_STYLE,
   INPUT_STYLE,
   SELECT_SIZE,
-} from "../../components/constant/theme";
-import CustomInput from "../../components/common/Input/CustomInput";
-import { CREATE_VALID, TITLE_VALID } from "../../components/constant/message";
-import Button from "../../components/common/Button/Button";
-import PALETTE from "../../components/constant/palette";
-import Modal from "../../components/common/Modal/Modal";
+} from '../../components/constant/theme';
+import { CREATE_VALID, TITLE_VALID } from '../../components/constant/message';
+import PALETTE from '../../components/constant/palette';
+import useMovePage from '../../hooks/useMovePage';
+import QuestionCart from '../../components/question/QuestionCart/QuestionCart';
+import QuestionItem from '../../components/question/QuestionItem/QuestionItem';
+import CustomSelect from '../../components/common/Select/CustomSelect';
+import CustomInput from '../../components/common/Input/CustomInput';
+import Button from '../../components/common/Button/Button';
+import Modal from '../../components/common/Modal/Modal';
 
 function WorkbookCustomPage() {
   const { goHomePage } = useMovePage();
-  const [title, setTitle] = useState("");
+  const [title, setTitle] = useState('');
   const [questionList, setQuestionList] = useState([]);
   const [selectedQuestionList, setSelectedQuestionList] = useState([]);
   const [selectedQuestionId, setSelectedQuestionId] = useState([]);
@@ -44,7 +44,7 @@ function WorkbookCustomPage() {
   const [grade, setGrade] = useState(0);
   const [month, setMonth] = useState(0);
   const [point, setPoint] = useState(0);
-  const [sort, setSort] = useState("CREATED_DESC");
+  const [sort, setSort] = useState('CREATED_DESC');
   const [page, setPage] = useState(0);
   const [titleError, setTitleError] = useState(true);
   const titleErrorVisible = useRef(false);
@@ -89,6 +89,15 @@ function WorkbookCustomPage() {
     setPage(0);
     setQuestionList([]);
   };
+  const onChangeTitle = (e) => {
+    titleErrorVisible.current = true;
+    setTitle(e.target.value);
+    if (e.target.value.length > 20 || e.target.value.length === 0) {
+      setTitleError(true);
+      return;
+    }
+    setTitleError(false);
+  };
 
   const getQuestionList = async () => {
     const response = await requestGetQuestionList({
@@ -102,16 +111,6 @@ function WorkbookCustomPage() {
       return;
     }
     setQuestionList((prevState) => [...prevState, ...response.data]);
-  };
-
-  const onChangeTitle = (e) => {
-    titleErrorVisible.current = true;
-    setTitle(e.target.value);
-    if (e.target.value.length > 20 || e.target.value.length === 0) {
-      setTitleError(true);
-      return;
-    }
-    setTitleError(false);
   };
 
   const createWorkbook = async () => {
@@ -168,8 +167,8 @@ function WorkbookCustomPage() {
             <CustomSelect
               width={SELECT_SIZE.SMALL.width}
               height={SELECT_SIZE.SMALL.height}
-              fontSize="0.8rem"
-              label="학년"
+              fontSize='0.8rem'
+              label='학년'
               value={grade}
               onChange={setGradeAndMonth}
               options={gradeList}
@@ -177,8 +176,8 @@ function WorkbookCustomPage() {
             <CustomSelect
               width={SELECT_SIZE.SMALL.width}
               height={SELECT_SIZE.SMALL.height}
-              fontSize="0.8rem"
-              label="월"
+              fontSize='0.8rem'
+              label='월'
               value={month}
               onChange={onSetMonth}
               options={monthList}
@@ -186,8 +185,8 @@ function WorkbookCustomPage() {
             <CustomSelect
               width={SELECT_SIZE.SMALL.width}
               height={SELECT_SIZE.SMALL.height}
-              fontSize="0.8rem"
-              label="점수"
+              fontSize='0.8rem'
+              label='점수'
               value={point}
               onChange={onSetPoint}
               options={pointList}
@@ -195,7 +194,7 @@ function WorkbookCustomPage() {
             <CustomSelect
               width={SELECT_SIZE.SMALL.width}
               height={SELECT_SIZE.SMALL.height}
-              fontSize="0.8rem"
+              fontSize='0.8rem'
               value={sort}
               onChange={onSetSort}
               options={sortList}
@@ -218,9 +217,9 @@ function WorkbookCustomPage() {
         </QuestionSearchContainer>
         <CartFrame>
           <QuestionCartContainer>
-            <div style={{ position: "relative", top: "1rem" }}>
+            <div style={{ position: 'relative', top: '1rem' }}>
               <CustomInput
-                label="문제집 이름"
+                label='문제집 이름'
                 inputStyle={INPUT_STYLE.BASIC}
                 labelStyle={INPUT_LABEL_STYLE}
                 error={titleError}

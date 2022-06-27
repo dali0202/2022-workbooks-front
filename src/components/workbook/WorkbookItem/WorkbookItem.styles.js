@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PALETTE from '../../constant/palette';
 
 const Label = styled.div`
   display: flex;
@@ -13,14 +14,14 @@ const Label = styled.div`
 `;
 
 const Tr = styled.div`
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid ${PALETTE.GRAY_WHITE};
   height: 2.2rem;
   overflow: hidden;
   display: flex;
   align-items: center;
   position: relative;
   &:hover {
-    background: #f0f0f1;
+    background: ${PALETTE.WHITE_GRAY};
   }
 `;
 const Td = styled.div`

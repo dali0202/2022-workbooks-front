@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PALETTE from '../../constant/palette';
 
 const Item = styled.div`
   padding: 0 1rem 0;
@@ -10,7 +11,7 @@ const Item = styled.div`
   position: relative;
   top: 1rem;
   &:hover {
-    background: #f0f0f1;
+    background: ${PALETTE.WHITE_GRAY};
   }
   border-radius: 0.3rem;
 `;

@@ -15,7 +15,7 @@ function LoginPage() {
 
 function GoogleLogin() {
   return (
-    <Login href='http://localhost:8080/oauth2/authorization/google?redirect_uri=http://localhost:3000/oauth2/redirect'>
+    <Login href='https://workbooksapi.ga/oauth2/authorization/google?redirect_uri=https://workbooks.ga/oauth2/redirect'>
       <img src={googleIcon} width='40px' />
       <Text>구글로 로그인 하기</Text>
     </Login>
@@ -24,7 +24,7 @@ function GoogleLogin() {
 
 function KakaoLogin() {
   return (
-    <Login href='http://localhost:8080/oauth2/authorization/kakao?redirect_uri=http://localhost:3000/oauth2/redirect'>
+    <Login href='https://workbooksapi.ga/oauth2/authorization/kakao?redirect_uri=https://workbooks.ga/oauth2/redirect'>
       <img src={kakaoIcon} width='40px' />
       <Text>카카오로 로그인 하기</Text>
     </Login>
@@ -33,7 +33,7 @@ function KakaoLogin() {
 
 function NaverLogin() {
   return (
-    <Login href='http://localhost:8080/oauth2/authorization/naver?redirect_uri=http://localhost:3000/oauth2/redirect'>
+    <Login href='https://workbooksapi.ga/oauth2/authorization/naver?redirect_uri=https://workbooks.ga/oauth2/redirect'>
       <img src={naverIcon} width='40px' />
       <Text>네이버로 로그인 하기</Text>
     </Login>

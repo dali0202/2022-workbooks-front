@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Container = styled.button`
   width: ${({ sizeType }) => sizeType.width};
@@ -10,7 +10,7 @@ const Container = styled.button`
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: nunito, roboto, proxima-nova, "proxima nova", sans-serif;
+  font-family: nunito, roboto, proxima-nova, 'proxima nova', sans-serif;
   font-size: 0.9rem;
   font-weight: 800;
   line-height: 16px;

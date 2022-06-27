@@ -1,12 +1,12 @@
-import IconButton from "@mui/material/IconButton";
-import AddIcon from "@mui/icons-material/Add";
-import { useState } from "react";
+import IconButton from '@mui/material/IconButton';
+import AddIcon from '@mui/icons-material/Add';
+import { useState } from 'react';
 import {
   BottomBar,
   Container,
   QuestionImg,
   TopBar,
-} from "./QuestionItem.styles";
+} from './QuestionItem.styles';
 
 function QuestionItem({
   question,
@@ -26,6 +26,7 @@ function QuestionItem({
   const point = `${(question.answerRate * 100).toFixed(2)}% ${
     question.point
   }점`;
+
   return (
     <Container
       onMouseOver={() => setIsHovering(1)}
@@ -36,26 +37,26 @@ function QuestionItem({
         {isHovering === 1 ? (
           !selectedQuestionId.includes(question.id) ? (
             <IconButton
-              color="primary"
-              size="small"
-              style={{ marginLeft: "auto" }}
+              color='primary'
+              size='small'
+              style={{ marginLeft: 'auto' }}
               onClick={addCart}
             >
-              <AddIcon fontSize="inherit" />
+              <AddIcon fontSize='inherit' />
             </IconButton>
           ) : (
-            <IconButton size="small" disabled style={{ marginLeft: "auto" }}>
-              <AddIcon fontSize="inherit" />
+            <IconButton size='small' disabled style={{ marginLeft: 'auto' }}>
+              <AddIcon fontSize='inherit' />
             </IconButton>
           )
         ) : (
-          ""
+          ''
         )}
       </TopBar>
       <QuestionImg src={question.descriptionPath} />
       <BottomBar>
         <div>{source}</div>
-        <div style={{ marginLeft: "auto" }}>{point}</div>
+        <div style={{ marginLeft: 'auto' }}>{point}</div>
       </BottomBar>
     </Container>
   );

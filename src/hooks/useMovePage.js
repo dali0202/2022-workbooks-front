@@ -1,53 +1,33 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const useMovePage = () => {
   const navigate = useNavigate();
 
   const goHomePage = () => {
-    navigate("/");
+    navigate('/');
   };
   const goLoginPage = () => {
-    navigate("/login");
-  };
-  const goBoardWritePage = () => {
-    navigate("/boards/write");
-  };
-  const goBoardEditPage = (id) => {
-    navigate(`/boards/edit/${id}`);
-  };
-  const goBoardDetailPage = (id) => {
-    navigate(`/boards/${id}`);
+    navigate('/login');
   };
   const goWorkbookDetailPage = (id) => {
     navigate(`/workbooks/${id}`);
   };
-  const goWorkbookCreatePage = () => {
-    navigate("/create");
-  };
   const goWorkbookMockPage = () => {
-    navigate("/mock");
+    navigate('/mock');
   };
   const goWorkbookRangePage = () => {
-    navigate("/range");
+    navigate('/range');
   };
   const goWorkbookCustomPage = () => {
-    navigate("/custom");
-  };
-  const goStoragePage = () => {
-    navigate("/storage");
+    navigate('/custom');
   };
   return {
     goHomePage,
     goLoginPage,
     goWorkbookDetailPage,
-    goWorkbookCreatePage,
-    goBoardWritePage,
-    goBoardEditPage,
-    goBoardDetailPage,
     goWorkbookMockPage,
     goWorkbookRangePage,
     goWorkbookCustomPage,
-    goStoragePage,
   };
 };
 export default useMovePage;

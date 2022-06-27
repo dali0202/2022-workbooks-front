@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { Button } from "@mui/material";
+import styled from 'styled-components';
+import { Button } from '@mui/material';
+import PALETTE from '../../constant/palette';
 
 const SearchWrap = styled.div`
   margin: 2rem;
@@ -26,7 +27,7 @@ const CustomButton = styled.div`
   height: 100%;
   cursor: pointer;
   &:hover {
-    background-color: tomato;
+    background-color: ${PALETTE.BRAND_COLOR};
   }
 `;
 

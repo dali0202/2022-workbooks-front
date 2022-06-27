@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PALETTE from '../../components/constant/palette';
 
 const Container = styled.div`
   position: relative;
@@ -13,14 +14,14 @@ const Table = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  border: 1px solid rgb(224, 224, 224);
+  border: 1px solid ${PALETTE.GRAY_WHITE};
   border-radius: 4px;
 `;
 const Thead = styled.div`
-  border-bottom: 1px solid rgb(224, 224, 224);
   font-weight: 550;
   height: 3.2rem;
   display: flex;
+  border-bottom: 1px solid ${PALETTE.GRAY_WHITE};
   align-items: center;
 `;
 const Column = styled.div`
@@ -28,5 +29,4 @@ const Column = styled.div`
   text-align: center;
 `;
 const Tbody = styled.div``;
-const Side = styled.div``;
-export { Container, Table, Thead, Column, Tbody, Side };
+export { Container, Table, Thead, Column, Tbody };

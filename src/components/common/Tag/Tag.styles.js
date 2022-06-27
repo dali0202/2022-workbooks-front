@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import PALETTE from "../../constant/palette";
+import styled from 'styled-components';
+import PALETTE from '../../constant/palette';
 
 const Button = styled.button`
   width: 8rem;
@@ -8,9 +8,9 @@ const Button = styled.button`
   border-radius: 0.5rem;
   box-sizing: border-box;
   color: #111827;
-  font-family: "Inter var", ui-sans-serif, system-ui, -apple-system, system-ui,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Inter var', ui-sans-serif, system-ui, -apple-system, system-ui,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   font-size: 0.775rem;
   font-weight: 400;
   line-height: 1.25rem;
@@ -24,10 +24,10 @@ const Button = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   &:hover {
-    background-color: ${PALETTE.GRAY1};
+    background-color: ${PALETTE.WHITE_GRAY};
   }
   &:active {
-    background-color: ${PALETTE.GRAY1};
+    background-color: ${PALETTE.WHITE_GRAY};
     opacity: 0.6;
   }
 `;

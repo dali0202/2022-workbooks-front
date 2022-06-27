@@ -1,9 +1,8 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import PALETTE from '../../components/constant/palette';
 
 const Container = styled.div`
   display: flex;
-  font-family: -apple-system, system-ui, "Segoe UI", Roboto, Helvetica, Arial,
-    sans-serif;
   padding: 0 5rem 0;
 `;
 const QuestionSearchContainer = styled.div`
@@ -21,7 +20,7 @@ const QuestionCartContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-left: 1px solid #a7aaad;
+  border-left: 1px solid ${PALETTE.GRAY};
   flex-shrink:0
   height: 82.5vh;
   position: fixed;
@@ -45,7 +44,7 @@ const CartInfo = styled.div`
   font-size: 0.8rem;
 `;
 const Questions = styled.div`
-  border: 1px solid #c3c4c7;
+  border: 1px solid ${PALETTE.LIGHT_GRAY};
   border-radius: 0.3rem;
   width: 20rem;
   height: 56vh;

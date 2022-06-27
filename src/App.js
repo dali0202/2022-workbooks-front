@@ -1,4 +1,4 @@
-import { getCurrentUserSelector, useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { userState } from './recoil';
@@ -35,14 +35,7 @@ function App() {
       <BaseLayout>
         <Routes>
           <Route path='/' element={<WorkbookPage />} />
-          <Route
-            path='/workbooks/:id'
-            element={
-              <RequireAuth loading={userLoading}>
-                <WorkbookDetailPage />
-              </RequireAuth>
-            }
-          />
+          <Route path='/workbooks/:id' element={<WorkbookDetailPage />} />
           <Route
             path='/mock'
             element={
@@ -59,15 +52,14 @@ function App() {
               </RequireAuth>
             }
           />
-            <Route path='/custom' element={<WorkbookCustomPage />} />
-          {/*<Route*/}
-          {/*  path='/custom'*/}
-          {/*  element={*/}
-          {/*    <RequireAuth loading={userLoading}>*/}
-          {/*      <WorkbookCustomPage />*/}
-          {/*    </RequireAuth>*/}
-          {/*  }*/}
-          {/*/>*/}
+          <Route
+            path='/custom'
+            element={
+              <RequireAuth loading={userLoading}>
+                <WorkbookCustomPage />
+              </RequireAuth>
+            }
+          />
           <Route path='/login' element={<LoginPage />} />
           <Route
             path='/oauth2/redirect/*'
