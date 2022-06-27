@@ -6,6 +6,7 @@ import { default as naverIcon } from '../../assets/icons/naver.svg';
 function LoginPage() {
   return (
     <Container>
+      로그인
       <GoogleLogin />
       <KakaoLogin />
       <NaverLogin />
