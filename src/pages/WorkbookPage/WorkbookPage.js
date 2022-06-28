@@ -5,7 +5,7 @@ import SearchContainer from '../../components/workbook/SearchContainer/SearchCon
 import { Column, Container, Table, Tbody, Thead } from './WorkbookPage.styles';
 
 function WorkbookPage() {
-  const [keyword, setKeyword] = useState(null);
+  const [keyword, setKeyword] = useState('');
   const [lastWorkbookId, setLastWorkbookId] = useState(null);
   const [workbookList, setWorkbookList] = useState([]);
   const obsRef = useRef(null);

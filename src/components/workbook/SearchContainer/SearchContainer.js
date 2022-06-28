@@ -7,7 +7,7 @@ function SearchContainer({ keyword, setKeyword, setWorkbookList, cursor }) {
     _setKeyword(e.target.value);
   };
   const search = () => {
-    _keyword === '' ? setKeyword(null) : setKeyword(_keyword);
+    setKeyword(_keyword);
     cursor.current = null;
     setWorkbookList([]);
   };
