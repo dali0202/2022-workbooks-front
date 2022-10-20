@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { userState } from './recoil';
 import { requestGetCurrentUser } from './api';
 import LoginPage from './pages/LoginPage/LoginPage';
-import Oauth2RedirectHandler from './components/auth/Oauth2RedirectHandler';
+import OauthPage from './components/auth/OauthPage';
 
 import WorkbookMockPage from './pages/WorkbookMockPage/WorkbookMockPage';
 import WorkbookRangePage from './pages/WorkbookRangePage/WorkbookRangePage';
@@ -61,10 +61,7 @@ function App() {
             }
           />
           <Route path='/login' element={<LoginPage />} />
-          <Route
-            path='/oauth2/redirect/*'
-            element={<Oauth2RedirectHandler />}
-          />
+          <Route path='/auth/*' element={<OauthPage />} />
         </Routes>
       </BaseLayout>
     </div>

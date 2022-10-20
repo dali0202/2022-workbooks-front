@@ -27,7 +27,7 @@ const CustomButton = styled.div`
   height: 100%;
   cursor: pointer;
   &:hover {
-    background-color: ${PALETTE.BRAND_COLOR};
+    background-color: ${PALETTE.GRAY};
   }
 `;
 

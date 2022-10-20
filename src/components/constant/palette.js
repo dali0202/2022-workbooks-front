@@ -4,7 +4,7 @@ const PALETTE = {
   WHITE_GRAY: '#e1ecf4',
   LIGHT_GRAY: '#c3c4c7',
   GRAY: '#a7aaad',
-  BRAND_COLOR: '#ff4742',
+  BRAND_COLOR: '#04243c',
   ORANGE: '#e65100',
   DEEP_GREEN: '#1b5e20',
   SKYBLUE: '#55B3D9',

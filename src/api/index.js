@@ -6,7 +6,16 @@ import {
 
 const client = axios.create({
   baseURL: 'https://workbooksapi.ga',
+  // baseURL: 'http://localhost:8080',
 });
+
+export const requestGetOAuthUri = (provider) => {
+  return client.get(`/api/auth/${provider}`);
+};
+
+export const requestPostCode = (provider, data) => {
+  return client.post(`/api/auth/${provider}/token`, data);
+};
 
 export const requestGetCurrentUser = () => {
   if (!localStorage.getItem('accessToken')) {
